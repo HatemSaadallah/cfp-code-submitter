@@ -7,6 +7,12 @@ import "prismjs/components/prism-javascript";
 import firebase from "firebase";
 import Questions from "./Questions";
 import weeksproblem from "./weeklyQuestions";
+
+// import AceEditor from 'react-ace';
+
+// import "ace-builds/src-noconflict/mode-python";
+// import "ace-builds/src-noconflict/theme-github";
+
 var firebaseConfig = {
   apiKey: "AIzaSyAW7-NGHjYyEOUWZL9eIvSp-glELUXuq0E",
   authDomain: "inclass-qs.firebaseapp.com",
@@ -56,26 +62,37 @@ export default function Code({ name }) {
             }}
           />
         </div>
-        <p>Select the problem</p>
         {
-          // <select
-          //   name="questions"
-          //   id="questions"
-          //   onChange={e => {
-          //     console.log(e);
-          //     setSelectedQuestion(e.target.value);
+          // <AceEditor
+          //   placeholder="Placeholder Text"
+          //   mode="python"
+          //   theme="monokai"
+          //   name="blah2"
+          //   onLoad={() => {}}
+          //   onChange={code => {
+          //     console.log(code);
+          //     setCode(code);
           //   }}
-          // >
-          //   {weeksproblem.map(item => {
-          //     return <option value={item}>{item["qName"]}</option>;
-          //   })}
-          // </select>
+          //   fontSize={12}
+          //   showPrintMargin={true}
+          //   showGutter={true}
+          //   highlightActiveLine={true}
+          //   value={code}
+          //   setOptions={{
+          //     enableBasicAutocompletion: true,
+          //     enableLiveAutocompletion: true,
+          //     enableSnippets: true,
+          //     showLineNumbers: true,
+          //     tabSize: 2
+          //   }}
+          // />
         }
+        <p>Select the problem</p>
         {weeksproblem.map(item => {
           return (
             <div
               onChange={event => {
-                console.log(event.target.value)
+                console.log(event.target.value);
                 setSelectedQuestion(event.target.value);
               }}
             >
