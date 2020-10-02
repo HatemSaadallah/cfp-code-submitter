@@ -50,7 +50,7 @@ export default class App extends React.Component {
     if (!this.state.isSignedIn) {
       return (
         <div>
-          <NavBar name="Hatem" signedIn={false} />
+          <NavBar name="" signedIn={false} />
           <h1 className="welcome-msg">
             Welcome to All Code for Palestine Students, TAs, and Instructors
           </h1>
@@ -64,24 +64,28 @@ export default class App extends React.Component {
     }
     return (
       <div>
+        
+
+        <Router>
+      <div>
+        
         <NavBar
           name={firebase.auth().currentUser.displayName}
           signedIn={true}
         />
-
-        <Router>
-          <div>
-            <Switch>
-              <Route path="/">
-                <Code name={firebase.auth().currentUser.displayName} />
-              </Route>
-              <Route path="/pastproblems">
-                <PastProblems />
-              </Route>
-              
-            </Switch>
-          </div>
-        </Router>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          
+          <Route path="/main">
+            <Code />
+          </Route>
+          <Route path="/pastproblems">
+            <PastProblems />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
       </div>
     );
   }

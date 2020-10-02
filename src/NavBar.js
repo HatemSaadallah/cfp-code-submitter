@@ -24,7 +24,7 @@ export default function NavBar({ name, signedIn }) {
         Code for Palestine Online Submitter
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Nav.Link href="/">Current Week's Problems</Nav.Link>
+      <Nav.Link href="/main">Current Week's Problems</Nav.Link>
       <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>

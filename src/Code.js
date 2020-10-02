@@ -56,7 +56,7 @@ export default function Code({ name }) {
             }}
           />
         </div>
-        <p>Submit your code</p>
+        <p>Select the problem</p>
         {
           // <select
           //   name="questions"
@@ -80,7 +80,8 @@ export default function Code({ name }) {
               }}
             >
               <input type="radio" value={item["qName"]} name="problem" />
-              {item["qName"]}
+              <label>{item["qName"]}</label>
+              <br />
             </div>
           );
         })}
