@@ -4,32 +4,26 @@ import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
-import firebase from "firebase";
+import * as firebase from 'firebase';
 import Questions from "./Questions";
 import weeksproblem from "./weeklyQuestions";
 
-// import AceEditor from 'react-ace';
-
-// import "ace-builds/src-noconflict/mode-python";
-// import "ace-builds/src-noconflict/theme-github";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyAW7-NGHjYyEOUWZL9eIvSp-glELUXuq0E",
-  authDomain: "inclass-qs.firebaseapp.com",
-  databaseURL: "https://inclass-qs.firebaseio.com",
-  projectId: "inclass-qs",
-  storageBucket: "inclass-qs.appspot.com",
-  messagingSenderId: "76230869433",
-  appId: "1:76230869433:web:de34cca5ec6ecc92457668",
-  measurementId: "G-151K89PMKH"
+  apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
+  authDomain: "cfp-code-submitter.firebaseapp.com",
+  databaseURL: "https://cfp-code-submitter.firebaseio.com",
+  projectId: "cfp-code-submitter",
+  storageBucket: "cfp-code-submitter.appspot.com",
+  messagingSenderId: "483775167429",
+  appId: "1:483775167429:web:6c0f89494372bc871829ac",
+  measurementId: "G-L6BZEQ6ZJ9"
 };
 
-try {
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-} catch {}
-var db = firebase.firestore();
+try{firebase.initializeApp(firebaseConfig);
+firebase.analytics();}catch{}
 
+var db = firebase.firestore();
 export default function Code({ name }) {
   const [code, setCode] = useState(
     `def main():
@@ -41,13 +35,28 @@ export default function Code({ name }) {
   const [selectedQuestion, setSelectedQuestion] = useState(
     weeksproblem[0]["qName"]
   );
-  // const [name, setName] = firebase.auth().currentUser.displayName;
 
   return (
     <div>
       <Questions questions={weeksproblem} className="currentQs" />
 
       <form className="codeSubmission">
+        <p>Select the problem</p>
+        {weeksproblem.map(item => {
+          return (
+            <div
+              onChange={event => {
+                console.log(event.target.value, name, code);
+
+                setSelectedQuestion(event.target.value);
+              }}
+            >
+              <input type="radio" value={item["qName"]} name="problem" />
+              <label>{item["qName"]}</label>
+              <br />
+            </div>
+          );
+        })}
         <div className="codeblock">
           <Editor
             value={code}
@@ -62,61 +71,23 @@ export default function Code({ name }) {
             }}
           />
         </div>
-        {
-          // <AceEditor
-          //   placeholder="Placeholder Text"
-          //   mode="python"
-          //   theme="monokai"
-          //   name="blah2"
-          //   onLoad={() => {}}
-          //   onChange={code => {
-          //     console.log(code);
-          //     setCode(code);
-          //   }}
-          //   fontSize={12}
-          //   showPrintMargin={true}
-          //   showGutter={true}
-          //   highlightActiveLine={true}
-          //   value={code}
-          //   setOptions={{
-          //     enableBasicAutocompletion: true,
-          //     enableLiveAutocompletion: true,
-          //     enableSnippets: true,
-          //     showLineNumbers: true,
-          //     tabSize: 2
-          //   }}
-          // />
-        }
-        <p>Select the problem</p>
-        {weeksproblem.map(item => {
-          return (
-            <div
-              onChange={event => {
-                console.log(event.target.value);
-                setSelectedQuestion(event.target.value);
-              }}
-            >
-              <input type="radio" value={item["qName"]} name="problem" />
-              <label>{item["qName"]}</label>
-              <br />
-            </div>
-          );
-        })}
+
 
         <button
+        type='button'
           className="send-button"
           onClick={() => {
-            db.collection(name)
-              .doc(selectedQuestion)
-              .set({
-                code: code
+            console.log("I am clicked");
+            db.collection(name).doc(selectedQuestion).set({
+             code: code
+            })
+              .then(function () {
+                console.log("Document successfully written!");
               })
-              .then(function() {
-                console.log("Question sent successfully!");
-              })
-              .catch(function(error) {
-                console.error("Error sending question: ", error);
+              .catch(function (error) {
+                console.error("Error writing document: ", error);
               });
+
           }}
         >
           Send Code

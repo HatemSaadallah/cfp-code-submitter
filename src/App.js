@@ -9,18 +9,18 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PastProblems from "./PastProblems";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyAW7-NGHjYyEOUWZL9eIvSp-glELUXuq0E",
-  authDomain: "inclass-qs.firebaseapp.com",
-  databaseURL: "https://inclass-qs.firebaseio.com",
-  projectId: "inclass-qs",
-  storageBucket: "inclass-qs.appspot.com",
-  messagingSenderId: "76230869433",
-  appId: "1:76230869433:web:de34cca5ec6ecc92457668",
-  measurementId: "G-151K89PMKH"
+  apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
+  authDomain: "cfp-code-submitter.firebaseapp.com",
+  databaseURL: "https://cfp-code-submitter.firebaseio.com",
+  projectId: "cfp-code-submitter",
+  storageBucket: "cfp-code-submitter.appspot.com",
+  messagingSenderId: "483775167429",
+  appId: "1:483775167429:web:6c0f89494372bc871829ac",
+  measurementId: "G-L6BZEQ6ZJ9"
 };
-try {
-  firebase.initializeApp(firebaseConfig);
-} catch {}
+
+try{firebase.initializeApp(firebaseConfig);
+firebase.analytics();}catch{}
 
 export default class App extends React.Component {
   state = {
@@ -33,7 +33,6 @@ export default class App extends React.Component {
       firebase.auth.GithubAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      // Avoid redirects after sign-in.
       signInSuccessWithAuthResult: () => false
     }
   };
@@ -50,7 +49,7 @@ export default class App extends React.Component {
     if (!this.state.isSignedIn) {
       return (
         <div>
-          <NavBar name="" signedIn={false} />
+          <NavBar name="hatem" signedIn={false} />
           <h1 className="welcome-msg">
             Welcome to All Code for Palestine Students, TAs, and Instructors
           </h1>
@@ -64,42 +63,25 @@ export default class App extends React.Component {
     }
     return (
       <div>
-        
-
         <Router>
-      <div>
-        
-        <NavBar
-          name={firebase.auth().currentUser.displayName}
-          signedIn={true}
-        />
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          
-          <Route path="/main">
-            <Code />
-          </Route>
-          <Route path="/pastproblems">
-            <PastProblems />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          <div>
+
+            <NavBar
+              name={firebase.auth().currentUser.displayName}
+              signedIn={true}
+            />
+            <Switch>
+
+              <Route path="/main">
+                <Code name={firebase.auth().currentUser.displayName}/>
+              </Route>
+              <Route path="/pastproblems">
+                <PastProblems />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       </div>
     );
   }
 }
-//  <nav>
-//             <ul>
-//               <li>
-//                 <Link to="/">Home</Link>
-//               </li>
-//               <li>
-//                 <Link to="/about">About</Link>
-//               </li>
-//               <li>
-//                 <Link to="/users">Users</Link>
-//               </li>
-//             </ul>
-//           </nav>
