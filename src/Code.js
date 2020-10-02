@@ -69,6 +69,7 @@ export default function Code({ name }) {
           />
         </div>
         <button
+          className="send-button"
           onClick={() => {
             db.collection(name)
               .doc(selectedQuestion)

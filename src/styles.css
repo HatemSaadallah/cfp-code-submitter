@@ -48,4 +48,7 @@ h1, p {
 .signin-msg{
   text-align: center;
 }
-
+.send-button{
+    display: block;
+    margin: 12px auto;
+}
