@@ -5,7 +5,7 @@ const week3qs = [
     },
     {
       "num": 2,
-      "qName": "Print Date",
+      "qName": "Print",
       "content": " Write a Python program to display the current date and time"
     },
 ]

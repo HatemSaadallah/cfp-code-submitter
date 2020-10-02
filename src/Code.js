@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./styles.css";
-import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
 import firebase from "firebase";
 import Questions from "./Questions";
 import weeksproblem from "./weeklyQuestions";
@@ -42,18 +42,6 @@ export default function Code({ name }) {
       <Questions questions={weeksproblem} className="currentQs" />
 
       <form className="codeSubmission">
-        <p>Submit your code</p>
-        <select
-          name="questions"
-          id="questions"
-          onChange={item => {
-            setSelectedQuestion(item.target.value);
-          }}
-        >
-          {weeksproblem.map(item => {
-            return <option value={item}>{item.qName}</option>;
-          })}
-        </select>
         <div className="codeblock">
           <Editor
             value={code}
@@ -64,10 +52,39 @@ export default function Code({ name }) {
             style={{
               fontFamily: '"Fira code", "Fira Mono", monospace',
               fontSize: 12,
-              height: 320,
+              height: 320
             }}
           />
         </div>
+        <p>Submit your code</p>
+        {
+          // <select
+          //   name="questions"
+          //   id="questions"
+          //   onChange={e => {
+          //     console.log(e);
+          //     setSelectedQuestion(e.target.value);
+          //   }}
+          // >
+          //   {weeksproblem.map(item => {
+          //     return <option value={item}>{item["qName"]}</option>;
+          //   })}
+          // </select>
+        }
+        {weeksproblem.map(item => {
+          return (
+            <div
+              onChange={event => {
+                console.log(event.target.value)
+                setSelectedQuestion(event.target.value);
+              }}
+            >
+              <input type="radio" value={item["qName"]} name="problem" />
+              {item["qName"]}
+            </div>
+          );
+        })}
+
         <button
           className="send-button"
           onClick={() => {
