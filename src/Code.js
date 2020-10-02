@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./styles.css";
-import Editor from "react-simple-code-editor";
-import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
+import Editor from 'react-simple-code-editor';
+import { highlight, languages } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
 import firebase from "firebase";
 import Questions from "./Questions";
-import weeksproblem from './weeklyQuestions'
+import weeksproblem from "./weeklyQuestions";
 var firebaseConfig = {
   apiKey: "AIzaSyAW7-NGHjYyEOUWZL9eIvSp-glELUXuq0E",
   authDomain: "inclass-qs.firebaseapp.com",
@@ -24,15 +24,17 @@ try {
 } catch {}
 var db = firebase.firestore();
 
-export default function Code({name}) {
+export default function Code({ name }) {
   const [code, setCode] = useState(
     `def main():
       pass
     if __name__ == "__main__":
       main()`
   );
- 
-  const [selectedQuestion, setSelectedQuestion] = useState(weeksproblem[0]["qName"]);
+
+  const [selectedQuestion, setSelectedQuestion] = useState(
+    weeksproblem[0]["qName"]
+  );
   // const [name, setName] = firebase.auth().currentUser.displayName;
 
   return (
@@ -41,13 +43,14 @@ export default function Code({name}) {
 
       <form className="codeSubmission">
         <p>Submit your code</p>
-        <select 
-          name="questions" 
-          id="questions" 
+        <select
+          name="questions"
+          id="questions"
           onChange={item => {
             setSelectedQuestion(item.target.value);
-        }}>
-          { weeksproblem.map(item => {
+          }}
+        >
+          {weeksproblem.map(item => {
             return <option value={item}>{item.qName}</option>;
           })}
         </select>
@@ -57,16 +60,18 @@ export default function Code({name}) {
             onValueChange={code => setCode(code)}
             highlight={code => highlight(code, languages.js)}
             padding={10}
+            tabSize={2}
             style={{
               fontFamily: '"Fira code", "Fira Mono", monospace',
-              fontSize: 12
+              fontSize: 12,
+              height: 320,
             }}
           />
         </div>
         <button
           onClick={() => {
             db.collection(name)
-              .doc(JSON.stringify(selectedQuestion))
+              .doc(selectedQuestion)
               .set({
                 code: code
               })
