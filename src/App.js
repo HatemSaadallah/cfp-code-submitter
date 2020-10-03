@@ -78,6 +78,9 @@ export default class App extends React.Component {
               <Route path="/pastproblems">
                 <PastProblems />
               </Route>
+dep              <Route path="/">
+              <Code name={firebase.auth().currentUser.displayName}/>
+              </Route>
             </Switch>
           </div>
         </Router>
