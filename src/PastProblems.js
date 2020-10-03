@@ -1,6 +1,7 @@
 import React from 'react';
 import { pastproblems } from './weeklyQuestions';
 import { Table } from 'react-bootstrap';
+import ReactMarkdown from 'react-markdown';
 
 export default function PastProblems() {
 
@@ -24,7 +25,7 @@ export default function PastProblems() {
                     <tr>
                       <td>{index+1}</td>
                       <td>{problem["qName"]}</td>
-                      <td>{problem["content"]}</td>
+                      <td><ReactMarkdown source={problem["content"]}/></td>
                     </tr>
                   </tbody>
                 );
