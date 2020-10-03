@@ -5,7 +5,7 @@
 - [ ] Better confirmation message after code submission. (Easy)
 - [ ] Make the text editor's width bigger (Easy)
 - [x] Add a gists page (Medium)
-    - Make hyperlink for each gist.
+    - [ ] Make hyperlink for each gist.
 - [ ] Make question selection easier.
 - [ ] Put next lecture main points on the front page. (Easy)
 - [ ] Add office hours times on the front page (Easy)
