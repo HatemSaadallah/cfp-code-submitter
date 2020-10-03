@@ -34,9 +34,9 @@ var db = firebase.firestore();
 export default function Code({ name }) {
   const [code, setCode] = useState(
     `def main():
-      pass
-    if __name__ == "__main__":
-      main()`
+  pass
+if __name__ == "__main__":
+  main()`
   );
 
   const [selectedQuestion, setSelectedQuestion] = useState(
