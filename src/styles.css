@@ -92,3 +92,11 @@ body {
 .gistOuter {
   color: red;
 }
+
+.notify {
+  text-align: center;
+  margin: 0em auto;
+  color: red;
+  position: fixed;
+  bottom: 10px;
+}
