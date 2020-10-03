@@ -43,12 +43,11 @@ if __name__ == "__main__":
   main()`
   );
 
-  const [selectedQuestion, setSelectedQuestion] = useState(
-    weeksproblem[0]["qName"]
-  );
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [anchorEl, setanchorEl] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
+  
+  const [message, setMessage] = useState("Select Question to Submit");
 
 
   const recordButtonPosition = (event) => {
@@ -81,7 +80,7 @@ if __name__ == "__main__":
         })} */}
         <div className="selectProblem">
           <Button aria-controls="simple-menu" aria-haspopup="true" onClick={recordButtonPosition}>
-            Select Question to Submit
+            {message}
         </Button>
           <Menu
             className="simple-menu"
@@ -97,6 +96,7 @@ if __name__ == "__main__":
                     <MenuItem onClick={(event) => { 
                       console.log(event.nativeEvent.target.outerText)
                       setSelectedQuestion(event.nativeEvent.target.outerText);
+                      setMessage(event.nativeEvent.target.outerText);
                       setanchorEl(false);
                     }}>{item["qName"]}</MenuItem>
                   </div>
@@ -132,17 +132,20 @@ if __name__ == "__main__":
           className="send-button"
           onClick={() => {
             console.log("I am clicked");
-            db.collection(name).doc(selectedQuestion).set({
-              code: code
+            try{
+              db.collection(name).doc(selectedQuestion).set({
+              code: code != null ? code : null
             })
               .then(function () {
                 alert("Code Sent successfully");
               })
               .catch(function (error) {
                 alert("Error sending, please contact Hatem");
-                // console.error("Error writing document: ", error);
               });
-
+            }
+            catch (FirebaseError){
+              alert("Please select a question to submit");
+            }
           }}
         >
           Send Code
