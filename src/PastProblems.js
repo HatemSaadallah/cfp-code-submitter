@@ -2,7 +2,7 @@ import React from 'react';
 import { pastproblems } from './weeklyQuestions';
 import { Table } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
-
+import './styles.css';
 export default function PastProblems() {
 
   return (
@@ -10,7 +10,7 @@ export default function PastProblems() {
       { pastproblems.map(week => {
         return (
           <div>
-            <h1>Week {week[0]["week"]}</h1>
+            <h1 className="week-in-past-problems">Week {week[0]["week"]}</h1>
             <Table striped bordered hover>
               <thead>
                 <tr>

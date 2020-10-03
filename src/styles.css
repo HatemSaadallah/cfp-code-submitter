@@ -56,3 +56,8 @@ h1, p {
   display: block;
   margin: 0 auto;
 }
+
+.week-in-past-problems {
+  text-align: center;
+  margin: 1em;
+}
