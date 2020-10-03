@@ -21,8 +21,10 @@ var firebaseConfig = {
   measurementId: "G-L6BZEQ6ZJ9"
 };
 
-try{firebase.initializeApp(firebaseConfig);
-firebase.analytics();}catch{}
+try {
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+} catch { }
 
 export default class App extends React.Component {
   state = {
@@ -51,6 +53,9 @@ export default class App extends React.Component {
     if (!this.state.isSignedIn) {
       return (
         <div>
+          <head>
+            <title>CFP Code Submitter</title>
+          </head>
           <NavBar name="hatem" signedIn={false} />
           <h1 className="welcome-msg">
             Welcome to All Code for Palestine Students, TAs, and Instructors
@@ -65,6 +70,9 @@ export default class App extends React.Component {
     }
     return (
       <div>
+        <head>
+          <title>CFP Code Submitter</title>
+        </head>
         <Router>
           <div>
 
@@ -75,7 +83,7 @@ export default class App extends React.Component {
             <Switch>
 
               <Route path="/main">
-                <Code name={firebase.auth().currentUser.displayName}/>
+                <Code name={firebase.auth().currentUser.displayName} />
               </Route>
               <Route path="/pastproblems">
                 <PastProblems />
@@ -84,7 +92,7 @@ export default class App extends React.Component {
                 <Gists />
               </Route>
               <Route path="/">
-              <Code name={firebase.auth().currentUser.displayName}/>
+                <Code name={firebase.auth().currentUser.displayName} />
               </Route>
             </Switch>
           </div>

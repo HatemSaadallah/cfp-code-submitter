@@ -27,14 +27,11 @@ Return -1 if there is no such index.
 Your algorithm should be very performant.
 
 ### Examples
-input: \`[-8, 0, 2, 5]\`
+        input: \[-8, 0, 2, 5]\
+        output: 2 # since array[2] == 2
 
-output: \` 2 # since array[2] == 2\`
-
-
-input: \`[-1, 0, 3, 6]\`
-
-output: \`-1 # since no index array satisfies array[index] == index\`
+        input: \[-1, 0, 3, 6]\
+        output: -1 # since no index array satisfies array[index] == index
 `
     },
 ]
