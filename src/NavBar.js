@@ -15,21 +15,27 @@ var firebaseConfig = {
 };
 try {
   firebase.initializeApp(firebaseConfig);
-} catch {}
+} catch { }
 
 export default function NavBar({ name, signedIn }) {
   return (
     <Navbar>
-      <Navbar.Brand>       
+      <Navbar.Brand>
         <Nav.Link href="/main">Code for Palestine Online Submitter</Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle />
-      {/* <Nav.Link href="/main">Current Week's Problems</Nav.Link> */}
-      <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
-      <Nav.Link href="/gists">Gists</Nav.Link>
+      {(signedIn) ? 
+        <span>
+        <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
+        <Nav.Link href="/gists">Gists</Nav.Link>
+        </span> 
+        : 
+        null
+      }
+
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>
-          
+
           {(signedIn) ? <a>signed in as {name}</a> : <a>You are not signed in</a>}
           {signedIn ? (
             <a

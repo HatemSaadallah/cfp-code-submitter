@@ -10,6 +10,6 @@
 - [ ] Put next lecture main points on the front page. (Easy)
 - [ ] Add office hours times on the front page (Easy)
 - [ ] Add customized profile picture for each member. (Medium)
-
+- [x] Removed unnecessary navbar items, for unauthorized users 
 ## Bugs to fix:
 - [ ] Fix the login page arbitrary appearance.
