@@ -3,7 +3,7 @@
 
 ## Ideas to be deployed
 - [ ] Better confirmation message after code submission. (Easy)
-- [ ] Make the text editor's width bigger (Easy)
+- [x] Make the text editor's width bigger (Easy)
 - [x] Add a gists page (Medium)
     - [ ] Make hyperlink for each gist.
 - [ ] Make question selection easier.
