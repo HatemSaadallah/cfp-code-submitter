@@ -24,12 +24,12 @@ export default function NavBar({ name, signedIn }) {
         <Nav.Link href="/main">Code for Palestine Online Submitter</Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle />
-      {(signedIn) ? 
-        <span>
-        <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
-        <Nav.Link href="/gists">Gists</Nav.Link>
-        </span> 
-        : 
+      {(signedIn) ?
+        <div class="userNav">
+          <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
+          <Nav.Link href="/gists">Gists</Nav.Link>
+        </div>
+        :
         null
       }
 
