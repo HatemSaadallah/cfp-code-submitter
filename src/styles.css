@@ -3,11 +3,12 @@ h1, p {
   font-family:  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 #root {
-  background-color: aquamarine;
+  background-color: white;
   height: 100%;
 }
 body {
-  background-color: aquamarine !important;
+  background-color: white !important;
+
 }
 .App {
   font-family: sans-serif;
@@ -74,4 +75,20 @@ body {
 
 .nav-link{
   display: inline !important;
+}
+
+.gistFold {
+  width: 100%;
+  height: 2em;
+  font-size: 3em !important;
+  text-align: center;
+  margin-top: 30px;
+  z-index: -50;
+}
+.NavBar {
+  background-color: aliceblue;
+}
+
+.gistOuter {
+  color: red;
 }

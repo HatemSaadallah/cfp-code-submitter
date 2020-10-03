@@ -19,7 +19,7 @@ try {
 
 export default function NavBar({ name, signedIn }) {
   return (
-    <Navbar>
+    <Navbar className="NavBar">
       <Navbar.Brand>
         <Nav.Link href="/main">Code for Palestine Online Submitter</Nav.Link>
       </Navbar.Brand>
