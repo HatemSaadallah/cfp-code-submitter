@@ -20,12 +20,13 @@ try {
 export default function NavBar({ name, signedIn }) {
   return (
     <Navbar>
-      <Navbar.Brand>
-        Code for Palestine Online Submitter
+      <Navbar.Brand>       
+        <Nav.Link href="/main">Code for Palestine Online Submitter</Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Nav.Link href="/main">Current Week's Problems</Nav.Link>
+      {/* <Nav.Link href="/main">Current Week's Problems</Nav.Link> */}
       <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
+      <Nav.Link href="/gists">Gists</Nav.Link>
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>
           

@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PastProblems from "./PastProblems";
-
+import Gists from './Gists';
 
 
 var firebaseConfig = {
@@ -79,6 +79,9 @@ export default class App extends React.Component {
               </Route>
               <Route path="/pastproblems">
                 <PastProblems />
+              </Route>
+              <Route path="/gists">
+                <Gists />
               </Route>
               <Route path="/">
               <Code name={firebase.auth().currentUser.displayName}/>
