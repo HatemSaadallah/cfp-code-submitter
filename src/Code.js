@@ -14,6 +14,10 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-monokai";
 
+
+import { Button, Menu, MenuItem } from '@material-ui/core';
+
+
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
   authDomain: "cfp-code-submitter.firebaseapp.com",
@@ -42,14 +46,25 @@ if __name__ == "__main__":
   const [selectedQuestion, setSelectedQuestion] = useState(
     weeksproblem[0]["qName"]
   );
-  
+  const [anchorEl, setanchorEl] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+
+
+  const recordButtonPosition = (event) => {
+    console.log(event.currentTarget);
+    setanchorEl(event.currentTarget);
+    setMenuOpen(true);
+  }
+
+
   return (
     <div>
       <Questions questions={weeksproblem} className="currentQs" />
 
       <form className="codeSubmission">
-        <p>Select the problem</p>
-        {weeksproblem.map(item => {
+
+        {/* {weeksproblem.map(item => {
           return (
             <div
               onChange={event => {
@@ -63,26 +78,52 @@ if __name__ == "__main__":
               <br />
             </div>
           );
-        })}
-          <AceEditor
-            className = "theEditor"
-            placeholder="Insert your Python code"
-            mode="python"
-            theme="monokai"
-            name="blah2"
-            onChange={(code) => setCode(code)}
-            fontSize={20}
-            showPrintMargin={true}
-            showGutter={true}
-            highlightActiveLine={true}
-            value={code}
-            setOptions={{
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: false,
-              showLineNumbers: true,
-              tabSize: 2,
-            }} />
+        })} */}
+        <div className="selectProblem">
+          <Button aria-controls="simple-menu" aria-haspopup="true" onClick={recordButtonPosition}>
+            Select Question to Submit
+        </Button>
+          <Menu
+            className="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={() => setanchorEl(false)}
+          >
+            {
+              weeksproblem.map(item => {
+                return (
+                  <div>
+                    <MenuItem onClick={(event) => { 
+                      console.log(event.nativeEvent.target.outerText)
+                      setSelectedQuestion(event.nativeEvent.target.outerText);
+                      setanchorEl(false);
+                    }}>{item["qName"]}</MenuItem>
+                  </div>
+                );
+              })
+            }
+          </Menu>
+        </div>
+        <AceEditor
+          className="theEditor"
+          placeholder="Insert your Python code"
+          mode="python"
+          theme="monokai"
+          name="blah2"
+          onChange={(code) => setCode(code)}
+          fontSize={20}
+          showPrintMargin={true}
+          showGutter={true}
+          highlightActiveLine={true}
+          value={code}
+          setOptions={{
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            enableSnippets: false,
+            showLineNumbers: true,
+            tabSize: 2,
+          }} />
 
 
 
@@ -107,6 +148,6 @@ if __name__ == "__main__":
           Send Code
         </button>
       </form>
-    </div>
+    </div >
   );
 }

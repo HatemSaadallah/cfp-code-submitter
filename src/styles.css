@@ -27,7 +27,7 @@ h1, p {
 }
 
 .codeSubmission {
-  width: 27%;
+  width: 54%;
   margin: 2em auto;
 }
 
@@ -55,9 +55,12 @@ h1, p {
 .theEditor {
   display: block;
   margin: 0 auto;
+  width: 50em !important;
 }
 
 .week-in-past-problems {
   text-align: center;
   margin: 1em;
 }
+
+
