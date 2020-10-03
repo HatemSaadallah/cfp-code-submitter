@@ -27,7 +27,7 @@ h1, p {
 }
 
 .codeSubmission {
-  width: 40%;
+  width: 27%;
   margin: 2em auto;
 }
 
@@ -51,4 +51,8 @@ h1, p {
 .send-button{
     display: block;
     margin: 12px auto;
+}
+.theEditor {
+  display: block;
+  margin: 0 auto;
 }

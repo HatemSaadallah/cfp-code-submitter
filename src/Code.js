@@ -8,6 +8,11 @@ import * as firebase from 'firebase';
 import Questions from "./Questions";
 import weeksproblem from "./weeklyQuestions";
 
+import AceEditor from "react-ace";
+
+
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/theme-monokai";
 
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
@@ -20,8 +25,10 @@ var firebaseConfig = {
   measurementId: "G-L6BZEQ6ZJ9"
 };
 
-try{firebase.initializeApp(firebaseConfig);
-firebase.analytics();}catch{}
+try {
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+} catch { }
 
 var db = firebase.firestore();
 export default function Code({ name }) {
@@ -35,7 +42,7 @@ export default function Code({ name }) {
   const [selectedQuestion, setSelectedQuestion] = useState(
     weeksproblem[0]["qName"]
   );
-
+  
   return (
     <div>
       <Questions questions={weeksproblem} className="currentQs" />
@@ -57,35 +64,42 @@ export default function Code({ name }) {
             </div>
           );
         })}
-        <div className="codeblock">
-          <Editor
+          <AceEditor
+            className = "theEditor"
+            placeholder="Insert your Python code"
+            mode="python"
+            theme="monokai"
+            name="blah2"
+            onChange={(code) => setCode(code)}
+            fontSize={20}
+            showPrintMargin={true}
+            showGutter={true}
+            highlightActiveLine={true}
             value={code}
-            onValueChange={code => setCode(code)}
-            highlight={code => highlight(code, languages.js)}
-            padding={10}
-            tabSize={2}
-            style={{
-              fontFamily: '"Fira code", "Fira Mono", monospace',
-              fontSize: 12,
-              height: 320
-            }}
-          />
-        </div>
+            setOptions={{
+              enableBasicAutocompletion: true,
+              enableLiveAutocompletion: true,
+              enableSnippets: false,
+              showLineNumbers: true,
+              tabSize: 2,
+            }} />
+
 
 
         <button
-        type='button'
+          type='button'
           className="send-button"
           onClick={() => {
             console.log("I am clicked");
             db.collection(name).doc(selectedQuestion).set({
-             code: code
+              code: code
             })
               .then(function () {
-                console.log("Document successfully written!");
+                alert("Code Sent successfully");
               })
               .catch(function (error) {
-                console.error("Error writing document: ", error);
+                alert("Error sending, please contact Hatem");
+                // console.error("Error writing document: ", error);
               });
 
           }}

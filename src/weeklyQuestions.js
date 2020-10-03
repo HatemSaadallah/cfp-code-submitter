@@ -9,5 +9,7 @@ const week3qs = [
       "content": " Write a Python program to display the current date and time"
     },
 ]
-
+export const week2qs = [
+  
+]
 export default week3qs;

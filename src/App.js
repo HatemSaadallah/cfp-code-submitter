@@ -8,6 +8,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PastProblems from "./PastProblems";
 
+
+
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
   authDomain: "cfp-code-submitter.firebaseapp.com",
@@ -78,7 +80,7 @@ export default class App extends React.Component {
               <Route path="/pastproblems">
                 <PastProblems />
               </Route>
-dep              <Route path="/">
+              <Route path="/">
               <Code name={firebase.auth().currentUser.displayName}/>
               </Route>
             </Switch>

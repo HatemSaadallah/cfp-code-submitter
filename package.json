@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@firebase/app": "0.6.11",
+    "ace-builds": "^1.4.12",
     "bootstrap": "4.5.2",
     "firebase": "7.22.0",
     "firebaseui": "4.6.1",
