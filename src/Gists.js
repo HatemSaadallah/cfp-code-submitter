@@ -6,12 +6,9 @@ import { Accordion, Card } from "react-bootstrap";
 
 
 export default function Gists() {
-    const [markdown, setMarkdown] = useState("");
 
     return (
         <div>
-
-
             {gists.map((gist) => {
                 return (
                     <div>
@@ -25,9 +22,7 @@ export default function Gists() {
                                         file={gist["fileName"]} />
                                 </Accordion.Collapse>
                             </Card>
-
                         </Accordion>
-
                     </div>
                 );
             })}

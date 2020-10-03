@@ -1,6 +1,6 @@
 const week3qs = [
   { 
-      "num": 1,
+      "num": "1",
       "qName": "Test's results",
       "content": `
 It's important day today: the class has just had a math test. You will be given a list of marks. Complete the function that will:
@@ -19,7 +19,7 @@ It's important day today: the class has just had a math test. You will be given 
       `
     },
     { 
-      "num": 2,
+      "num": "2",
       "qName": "Number = Index",
       "content": `Given a sorted array of distinct integers, write a function index_equals_value that returns the lowest index for which array[index] == index.
 Return -1 if there is no such index.

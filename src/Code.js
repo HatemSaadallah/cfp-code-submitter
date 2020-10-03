@@ -15,6 +15,7 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-monokai";
 
 
+
 import { Button, Menu, MenuItem } from '@material-ui/core';
 
 
@@ -63,21 +64,6 @@ if __name__ == "__main__":
 
       <form className="codeSubmission">
 
-        {/* {weeksproblem.map(item => {
-          return (
-            <div
-              onChange={event => {
-                console.log(event.target.value, name, code);
-
-                setSelectedQuestion(event.target.value);
-              }}
-            >
-              <input type="radio" value={item["qName"]} name="problem" />
-              <label>{item["qName"]}</label>
-              <br />
-            </div>
-          );
-        })} */}
         <div className="selectProblem">
           <Button aria-controls="simple-menu" aria-haspopup="true" onClick={recordButtonPosition}>
             {message}
