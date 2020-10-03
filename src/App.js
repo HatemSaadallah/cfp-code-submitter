@@ -10,6 +10,7 @@ import PastProblems from "./PastProblems";
 import Gists from './Gists';
 
 
+
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
   authDomain: "cfp-code-submitter.firebaseapp.com",
@@ -28,8 +29,12 @@ try {
 
 export default class App extends React.Component {
   state = {
-    isSignedIn: false
+    isSignedIn: false,
+    loading : false
   };
+  setLoading=()=>{
+    this.setState({ loading: true})
+  }
   uiConfig = {
     signInFlow: "popup",
     signInOptions: [
@@ -48,6 +53,7 @@ export default class App extends React.Component {
 
   componentWillUnmount() {
     this.unregisterAuthObserver();
+    
   }
   render() {
     if (!this.state.isSignedIn) {
