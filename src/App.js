@@ -5,11 +5,14 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import NavBar from "./NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import PastProblems from "./PastProblems";
 import Gists from './Gists';
 
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
 
+import SignIn from './SignIn';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
@@ -30,11 +33,9 @@ try {
 export default class App extends React.Component {
   state = {
     isSignedIn: false,
-    loading : false
+    loading: false
   };
-  setLoading=()=>{
-    this.setState({ loading: true})
-  }
+
   uiConfig = {
     signInFlow: "popup",
     signInOptions: [
@@ -53,7 +54,7 @@ export default class App extends React.Component {
 
   componentWillUnmount() {
     this.unregisterAuthObserver();
-    
+
   }
   render() {
     if (!this.state.isSignedIn) {
@@ -73,37 +74,49 @@ export default class App extends React.Component {
           />
         </div>
       );
+    } else {
+      return (
+        <div>
+          <head>
+            <title>CFP Code Submitter</title>
+          </head>
+          <Router>
+            <div>
+
+              <NavBar
+                name={firebase.auth().currentUser.displayName}
+                signedIn={true}
+              />
+              <Switch>
+
+                <Route path="/main">
+                  <Code name={firebase.auth().currentUser.displayName} />
+                </Route>
+                <Route path="/pastproblems">
+                  <PastProblems />
+                </Route>
+                <Route path="/gists">
+                  <Gists />
+                </Route>
+                <Route path="/">
+                  <Code name={firebase.auth().currentUser.displayName} />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+        </div>
+      );
+
+      // return (
+      //   <BrowserRouter>
+      //     <Switch>
+      //       <PublicRoute restricted={false} component={SignIn} path="/" exact />
+      //       <PrivateRoute restricted={true}  component={Code} path="/main" exact />
+      //       {/* <PrivateRoute component={Dashboard} path="/dashboard" exact /> */}
+      //     </Switch>
+      //   </BrowserRouter>
+      // );
     }
-    return (
-      <div>
-        <head>
-          <title>CFP Code Submitter</title>
-        </head>
-        <Router>
-          <div>
-
-            <NavBar
-              name={firebase.auth().currentUser.displayName}
-              signedIn={true}
-            />
-            <Switch>
-
-              <Route path="/main">
-                <Code name={firebase.auth().currentUser.displayName} />
-              </Route>
-              <Route path="/pastproblems">
-                <PastProblems />
-              </Route>
-              <Route path="/gists">
-                <Gists />
-              </Route>
-              <Route path="/">
-                <Code name={firebase.auth().currentUser.displayName} />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </div>
-    );
   }
 }
+

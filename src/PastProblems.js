@@ -14,7 +14,7 @@ export default function PastProblems() {
           <div>
               <Accordion >
             <Accordion.Toggle as={Card.Header} eventKey="0">
-              <h1 className="week-in-past-problems">Week {week[0]["week"]}</h1>
+              <h1 className="week-in-past-problems">Week {week[0]["week"]} Problems</h1>
             </Accordion.Toggle>
             
               <Card>
