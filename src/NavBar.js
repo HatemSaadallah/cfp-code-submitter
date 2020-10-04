@@ -17,7 +17,7 @@ try {
   firebase.initializeApp(firebaseConfig);
 } catch { }
 
-export default function NavBar({ name, signedIn }) {
+export default function NavBar({ name, signedIn, isSuperUser=false}) {
   return (
     <Navbar className="NavBar">
       <Navbar.Brand>
@@ -28,10 +28,17 @@ export default function NavBar({ name, signedIn }) {
         <div class="userNav">
           <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
           <Nav.Link href="/gists">Gists</Nav.Link>
+          <Nav.Link href="/previous-submissions">Previous Submissions</Nav.Link>
+          {(isSuperUser) ?
+          <Nav.Link href="/admin">Admin Panel</Nav.Link>
+          :
+          null
+          }
         </div>
         :
         null
       }
+
 
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>

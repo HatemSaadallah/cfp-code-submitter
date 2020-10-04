@@ -10,10 +10,7 @@ import PastProblems from "./PastProblems";
 import Gists from './Gists';
 import TAs from './TAs';
 
-import PublicRoute from "./PublicRoute";
-import PrivateRoute from "./PrivateRoute";
-
-import SignIn from './SignIn';
+import PreviousSubmissions from './PreviousSubmissions';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
@@ -56,6 +53,7 @@ export default class App extends React.Component {
     this.unregisterAuthObserver();
 
   }
+
   render() {
     if (!this.state.isSignedIn) {
       return (
@@ -89,6 +87,7 @@ export default class App extends React.Component {
               <NavBar
                 name={firebase.auth().currentUser.displayName}
                 signedIn={true}
+                isSuperUser={firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.displayName == "fZlj3iLifVM49ixPPzucktMgrkq2"}
               />
               <Switch>
 
@@ -101,7 +100,9 @@ export default class App extends React.Component {
                 <Route path="/gists">
                   <Gists />
                 </Route>
-                
+                <Route path="/previous-submissions">
+                  <PreviousSubmissions nameOfUser={firebase.auth().currentUser.displayName}/>
+                </Route>
                 <Route path="/admin">
                 {firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.displayName == "fZlj3iLifVM49ixPPzucktMgrkq2"? 
                   <TAs /> :

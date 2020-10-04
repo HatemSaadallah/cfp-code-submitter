@@ -75,7 +75,6 @@ export default function TAs() {
                                     setStudentCode(data)     
                                 });
                                 nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
-                                    console.log(data);
                                     setQuestionName(data);
                                 })
                             }}>{item}</Dropdown.Item>
