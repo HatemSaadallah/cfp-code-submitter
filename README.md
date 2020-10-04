@@ -12,6 +12,7 @@
 - [ ] Add customized profile picture for each member. (Medium)
 - [x] Removed unnecessary navbar items, for unauthorized users 
 - [x] Added React Bootstrap Accordion Component to all pages, which reduces the amount of information there is at a time.
+- [ ] Deploy Redux in the website to fix glitching. (Exteremly Hard)
 ## Bugs to fix:
 - [ ] Fix the login page arbitrary appearance.
 
