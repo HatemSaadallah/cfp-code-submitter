@@ -18,6 +18,7 @@ import "ace-builds/src-noconflict/theme-monokai";
 
 import { Button, Menu, MenuItem } from '@material-ui/core';
 
+import MyVerticallyCenteredModal from './Modal';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
@@ -47,7 +48,7 @@ if __name__ == "__main__":
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [anchorEl, setanchorEl] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
   const [message, setMessage] = useState("Select Question to Submit");
 
 
@@ -57,7 +58,7 @@ if __name__ == "__main__":
     setMenuOpen(true);
   }
 
-
+  const [modalShow, setModalShow] = useState(false);
   return (
     <div>
       <Questions questions={weeksproblem} className="currentQs" />
@@ -67,7 +68,7 @@ if __name__ == "__main__":
         <div className="selectProblem">
           <Button aria-controls="simple-menu" aria-haspopup="true" onClick={recordButtonPosition}>
             {message}
-        </Button>
+          </Button>
           <Menu
             className="simple-menu"
             anchorEl={anchorEl}
@@ -79,7 +80,7 @@ if __name__ == "__main__":
               weeksproblem.map(item => {
                 return (
                   <div>
-                    <MenuItem onClick={(event) => { 
+                    <MenuItem onClick={(event) => {
                       setSelectedQuestion(event.nativeEvent.target.outerText);
                       setMessage(event.nativeEvent.target.outerText);
                       setanchorEl(false);
@@ -110,26 +111,27 @@ if __name__ == "__main__":
             tabSize: 2,
           }} />
 
-
+        <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} nameOfQuestion={selectedQuestion} code={code} />
 
         <button
           type='button'
           className="send-button"
           onClick={() => {
             console.log("I am clicked");
-            try{
+            try {
               db.collection(name).doc(selectedQuestion).set({
-              code: code != null ? code : null,
-              nameOfQuestion: selectedQuestion != null ? selectedQuestion : null,
-            })
-              .then(function () {
-                alert("Code Sent successfully");
+                code: code != null ? code : null,
+                nameOfQuestion: selectedQuestion != null ? selectedQuestion : null,
               })
-              .catch(function (error) {
-                alert("Error sending, please contact Hatem");
-              });
+                .then(function () {
+                  setModalShow(true);
+                  // alert("Code Sent successfully");
+                })
+                .catch(function (error) {
+                  alert("Error sending, please contact Hatem");
+                });
             }
-            catch (FirebaseError){
+            catch (FirebaseError) {
               alert("Please select a question to submit");
             }
           }}
