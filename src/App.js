@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import PastProblems from "./PastProblems";
 import Gists from './Gists';
+import TAs from './TAs';
 
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -97,6 +98,9 @@ export default class App extends React.Component {
                 </Route>
                 <Route path="/gists">
                   <Gists />
+                </Route>
+                <Route path="/admin">
+                  <TAs />
                 </Route>
                 <Route path="/">
                   <Code name={firebase.auth().currentUser.displayName} />
