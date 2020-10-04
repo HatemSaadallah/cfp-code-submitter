@@ -23,10 +23,20 @@ try {
 
 async function name(nameOfStudent) {
     const snapshot = await firebase.firestore().collection(nameOfStudent).get()
+    console.log(snapshot.docs[0].Nf.key.path.segments);
     return snapshot.docs.map(doc =>
         doc.data().code
     )
 }
+
+async function nameOfQuestion(nameOfStudent){
+    const snapshot = await firebase.firestore().collection(nameOfStudent).get()
+    return snapshot.docs.map(doc =>
+        doc.data().nameOfQuestion
+    )
+}
+
+console.log(nameOfQuestion("Hatem Saadallah"))
 const studentsNames = [
     "Ahmad Herzallah",
     "Ahmad Mortaja",
@@ -34,11 +44,13 @@ const studentsNames = [
     "Hosny Omar Arfat Al-khatib",
     "Mohammed Eyad Atalah",
     "Kareem Fadi",
-    "hadil owda"
+    "hadil owda",
+    "Hatem Saadallah"
 ]
 export default function TAs() {
     const [studentCode, setStudentCode] = useState([]);
     const [studentName, setStudentName] = useState("");
+    const [questionName, setQuestionName] = useState([]);
     // useEffect(() => {
     //     name("Hatem Saadallah").then((data) => {
     //         setStudentCode(data)
@@ -60,9 +72,12 @@ export default function TAs() {
                             <Dropdown.Item onClick={(e) => {
                                 setStudentName(e.nativeEvent.target.outerText);
                                 name(e.nativeEvent.target.outerText).then((data) => {
-                                    setStudentCode(data)
-                                    
+                                    setStudentCode(data)     
                                 });
+                                nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
+                                    console.log(data);
+                                    setQuestionName(data);
+                                })
                             }}>{item}</Dropdown.Item>
 
                         );
@@ -70,10 +85,10 @@ export default function TAs() {
                 </Dropdown.Menu>
             </Dropdown>
             {<h1>{studentName}</h1>}
-            {studentCode.map(code => {
+            {studentCode.map((code, index) => {
                 return (
-                    <div>
-                    
+                    <div>   
+                        <h1>{questionName[index]}</h1>     
                         <SyntaxHighlighter language="python" style={docco}>
                             {code}
                         </SyntaxHighlighter>

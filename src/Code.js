@@ -80,7 +80,6 @@ if __name__ == "__main__":
                 return (
                   <div>
                     <MenuItem onClick={(event) => { 
-                      console.log(event.nativeEvent.target.outerText)
                       setSelectedQuestion(event.nativeEvent.target.outerText);
                       setMessage(event.nativeEvent.target.outerText);
                       setanchorEl(false);
@@ -120,7 +119,8 @@ if __name__ == "__main__":
             console.log("I am clicked");
             try{
               db.collection(name).doc(selectedQuestion).set({
-              code: code != null ? code : null
+              code: code != null ? code : null,
+              nameOfQuestion: selectedQuestion,
             })
               .then(function () {
                 alert("Code Sent successfully");
