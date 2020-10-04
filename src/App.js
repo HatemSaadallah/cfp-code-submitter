@@ -73,6 +73,7 @@ export default class App extends React.Component {
             firebaseAuth={firebase.auth()}
           />
           <h4 className="version">v 1.0.0 beta</h4>
+          <h5 className="version">Github Login is working!</h5>
           <h4 className="notify">Thanks for everyone who sent me a heads up for regarding the signin page poping up whenever page changes. Due to some technical issues, this bug will take a while to fix, henceforth, I urge you to overlook it for a while (since it's been less than two days from the first line of code for this website)</h4>
         </div>
       );
