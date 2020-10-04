@@ -100,3 +100,8 @@ body {
   position: fixed;
   bottom: 10px;
 }
+
+.version {
+  text-align: center;
+  margin-top: 2em;
+}

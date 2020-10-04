@@ -1,6 +1,6 @@
 {
   "name": "cfp-code-submitter",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@firebase/app": "0.6.11",
