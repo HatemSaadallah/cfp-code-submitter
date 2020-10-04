@@ -83,11 +83,10 @@ export default class App extends React.Component {
           </head>
           <Router>
             <div>
-
               <NavBar
                 name={firebase.auth().currentUser.displayName}
                 signedIn={true}
-                isSuperUser={firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.displayName == "fZlj3iLifVM49ixPPzucktMgrkq2"}
+                isSuperUser={firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.uid == "fZlj3iLifVM49ixPPzucktMgrkq2" || firebase.auth().currentUser.uid == "w80C141S5CQA8qcWGadFlzHuAbO2"}
               />
               <Switch>
 
@@ -101,13 +100,13 @@ export default class App extends React.Component {
                   <Gists />
                 </Route>
                 <Route path="/previous-submissions">
-                  <PreviousSubmissions nameOfUser={firebase.auth().currentUser.displayName}/>
+                  <PreviousSubmissions nameOfUser={firebase.auth().currentUser.displayName} />
                 </Route>
                 <Route path="/admin">
-                {firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.displayName == "fZlj3iLifVM49ixPPzucktMgrkq2"? 
-                  <TAs /> :
-                  <h1>Sorry You do not have permission to view this page</h1>
-                }
+                  {firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.uid == "fZlj3iLifVM49ixPPzucktMgrkq2" || firebase.auth().currentUser.uid == "w80C141S5CQA8qcWGadFlzHuAbO2" ?
+                    <TAs /> :
+                    <h1>Sorry You do not have permission to view this page</h1>
+                  }
                 </Route>
                 <Route path="/">
                   <Code name={firebase.auth().currentUser.displayName} />
@@ -117,16 +116,6 @@ export default class App extends React.Component {
           </Router>
         </div>
       );
-
-      // return (
-      //   <BrowserRouter>
-      //     <Switch>
-      //       <PublicRoute restricted={false} component={SignIn} path="/" exact />
-      //       <PrivateRoute restricted={true}  component={Code} path="/main" exact />
-      //       {/* <PrivateRoute component={Dashboard} path="/dashboard" exact /> */}
-      //     </Switch>
-      //   </BrowserRouter>
-      // );
     }
   }
 }

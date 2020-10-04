@@ -19,8 +19,6 @@ export default function Questions({ questions }) {
                 </Accordion.Collapse>
               </Card>
             </Accordion>
-            
-            
             <hr />
           </div>
         );

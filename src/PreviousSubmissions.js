@@ -27,17 +27,17 @@ async function name(nameOfStudent) {
     )
 }
 
-async function nameOfQuestion(nameOfStudent) {
-    const snapshot = await firebase.firestore().collection(nameOfStudent).get()
-    return snapshot.docs.map(doc =>
-        doc.data().nameOfQuestion
-    )
-}
+// async function nameOfQuestion(nameOfStudent) {
+//     const snapshot = await firebase.firestore().collection(nameOfStudent).get()
+//     return snapshot.docs.map(doc =>
+//         doc.data().nameOfQuestion
+//     )
+// }
 
 
 export default function PreviousSubmissions({nameOfUser}) {
     const [studentCode, setStudentCode] = useState([]);
-    const [questionName, setQuestionName] = useState([]);
+    // const [questionName, setQuestionName] = useState([]);
 
     useEffect(() => {
         console.log(nameOfUser);

@@ -78,7 +78,6 @@ export default function TAs() {
                                     setQuestionName(data);
                                 })
                             }}>{item}</Dropdown.Item>
-
                         );
                     })}
                 </Dropdown.Menu>
