@@ -100,8 +100,12 @@ export default class App extends React.Component {
                 <Route path="/gists">
                   <Gists />
                 </Route>
+                
                 <Route path="/admin">
-                  <TAs />
+                {firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.displayName == "fZlj3iLifVM49ixPPzucktMgrkq2"? 
+                  <TAs /> :
+                  <h1>Sorry You do not have permission to view this page</h1>
+                }
                 </Route>
                 <Route path="/">
                   <Code name={firebase.auth().currentUser.displayName} />

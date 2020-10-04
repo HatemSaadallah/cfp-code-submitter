@@ -120,7 +120,7 @@ if __name__ == "__main__":
             try{
               db.collection(name).doc(selectedQuestion).set({
               code: code != null ? code : null,
-              nameOfQuestion: selectedQuestion,
+              nameOfQuestion: selectedQuestion != null ? selectedQuestion : null,
             })
               .then(function () {
                 alert("Code Sent successfully");
