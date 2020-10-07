@@ -166,6 +166,10 @@ body {
   display: inline !important;
   border-color: white !important;
 }
+
+pre code {
+  color: white !important;
+}
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
 
 
@@ -1759,7 +1763,7 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #212529
+  color: white;
 }
 
 .table td,.table th {
