@@ -11,6 +11,7 @@ import Gists from './Gists';
 import TAs from './TAs';
 
 import PreviousSubmissions from './PreviousSubmissions';
+import Profile from './Profile';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
@@ -101,6 +102,9 @@ export default class App extends React.Component {
                 </Route>
                 <Route path="/previous-submissions">
                   <PreviousSubmissions nameOfUser={firebase.auth().currentUser.displayName} />
+                </Route>
+                <Route path="/profile">
+                  <Profile imageURL={firebase.auth().currentUser.photoURL} name={firebase.auth().currentUser.displayName}/>
                 </Route>
                 <Route path="/admin">
                   {firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.uid == "fZlj3iLifVM49ixPPzucktMgrkq2" || firebase.auth().currentUser.uid == "w80C141S5CQA8qcWGadFlzHuAbO2" ?
