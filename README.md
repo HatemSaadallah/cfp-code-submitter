@@ -17,6 +17,7 @@
 - [ ] Add The ability to grade assignments. (Medium)
 - [ ] Add the ability to add comments. 
 - [ ] Add external link tab (Kahoot, Games, etc) (Easy)
+- [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems.
 ## Bugs to fix:
 - [ ] Fix the login page arbitrary appearance.
 
