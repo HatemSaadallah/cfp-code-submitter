@@ -1,6 +1,8 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import firebase from "firebase";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Dropdown } from "react-bootstrap";
 
 
 var firebaseConfig = {
@@ -43,16 +45,23 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>
 
-          {(signedIn) ? <a>signed in as {name}</a> : <a>You are not signed in</a>}
+          {(signedIn) ? null: <a>You are not sign in</a>}
           {signedIn ? (
             <div className="signedIn">
-              <img />
-              <a
-                className="singout-button"
-                onClick={() => firebase.auth().signOut()}
-              >
-                Sign out
-            </a>
+
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic" className="profile">
+                  <a>{name}</a>
+                  <img className="profileImg" src={firebase.auth().currentUser.photoURL} />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => firebase.auth().signOut()}>Sign Out</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
             </div>
           ) : null}
         </Navbar.Text>

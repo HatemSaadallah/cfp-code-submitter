@@ -154,7 +154,18 @@ body {
 .signedIn {
   display: inline;
 }
-
+.profileImg {
+  display: inline;
+  border-radius: 50%;
+  width: 60px;
+  margin-left: 15px;
+}
+.profile {
+  colro: black;
+  background-color: white !important;
+  display: inline !important;
+  border-color: white !important;
+}
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
 
 
