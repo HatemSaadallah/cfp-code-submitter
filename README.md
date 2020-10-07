@@ -16,6 +16,7 @@
 - [ ] Deploy Redux in the website to fix glitching. (Exteremly Hard)
 - [ ] Add The ability to grade assignments. (Medium)
 - [ ] Add the ability to add comments. 
+- [ ] Add betetr coloring
 ## Bugs to fix:
 - [ ] Fix the login page arbitrary appearance.
 
