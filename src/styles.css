@@ -146,7 +146,10 @@ body {
 
 }
 
-
+.previousSubsWelcomeMessage{
+  text-align: center;
+  color: white;
+}
 
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
 
@@ -181,7 +184,6 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
   text-align: left;
  
 }
@@ -621,7 +623,7 @@ pre code {
   font-size: inherit;
   color: inherit;
   word-break: normal;
-  color: white;
+  /* color: white; */
 }
 
 .pre-scrollable {
@@ -5698,7 +5700,8 @@ a.close.disabled {
   background-clip: padding-box;
   border: 1px solid rgba(0,0,0,.2);
   border-radius: .3rem;
-  outline: 0
+  outline: 0;
+  color: black
 }
 
 .modal-backdrop {

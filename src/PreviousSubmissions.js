@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import firebase from "firebase";
-
+import "./styles.css"
 var firebaseConfig = {
     apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
     authDomain: "cfp-code-submitter.firebaseapp.com",
@@ -48,8 +48,8 @@ export default function PreviousSubmissions({nameOfUser}) {
 
     return (
         <div>
-            <h1>Hello {nameOfUser}</h1>
-            <h3>Here are your previous submissions</h3>
+            <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
+            <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
             {studentCode.map((code) => {
                 return (
                     <div>
