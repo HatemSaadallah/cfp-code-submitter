@@ -1,0 +1,47 @@
+[debug] [2020-10-07T20:29:09.723Z] ----------------------------------------------------------------------
+[debug] [2020-10-07T20:29:09.726Z] Command:       /usr/local/bin/firebase /home/hatem/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2020-10-07T20:29:09.727Z] CLI Version:   8.11.2
+[debug] [2020-10-07T20:29:09.727Z] Platform:      linux
+[debug] [2020-10-07T20:29:09.727Z] Node Version:  v10.21.0
+[debug] [2020-10-07T20:29:09.727Z] Time:          Wed Oct 07 2020 23:29:09 GMT+0300 (Israel Daylight Time)
+[debug] [2020-10-07T20:29:09.727Z] ----------------------------------------------------------------------
+[debug] [2020-10-07T20:29:09.728Z] 
+[debug] [2020-10-07T20:29:09.739Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-07T20:29:09.740Z] > authorizing via signed-in user
+[debug] [2020-10-07T20:29:09.740Z] [iam] checking project cfp-code-submitter for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2020-10-07T20:29:09.747Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/cfp-code-submitter:testIamPermissions  
+ {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2020-10-07T20:29:10.964Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 07 Oct 2020 20:29:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=628","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-07T20:29:10.970Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/cfp-code-submitter  
+ 
+[debug] [2020-10-07T20:29:11.514Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 07 Oct 2020 20:29:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'cfp-code-submitter'...
+[info] 
+[info] i  deploying database, storage, firestore, hosting 
+[info] i  database: checking rules syntax... 
+[debug] [2020-10-07T20:29:11.524Z] >>> HTTP REQUEST PUT https://cfp-code-submitter.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+[debug] [2020-10-07T20:29:12.301Z] <<< HTTP RESPONSE 200 {"server":"nginx","date":"Wed, 07 Oct 2020 20:29:12 GMT","content-type":"application/json; charset=utf-8","content-length":"15","connection":"keep-alive","access-control-allow-origin":"*","cache-control":"no-cache","strict-transport-security":"max-age=31556926; includeSubDomains; preload"}
+[info] ✔  database: rules syntax for database cfp-code-submitter is valid 
+[debug] [2020-10-07T20:29:12.307Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/cfp-code-submitter  
+ 
+[debug] [2020-10-07T20:29:13.210Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 07 Oct 2020 20:29:13 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  firebase.storage: checking storage.rules for compilation errors... 
+[debug] [2020-10-07T20:29:13.212Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/cfp-code-submitter:test  
+ {"source":{"files":[{"name":"storage.rules","content":"rules_version = '2';\nservice firebase.storage {\n  match /b/{bucket}/o {\n    match /{allPaths=**} {\n      allow read, write: if request.auth!=null;\n    }\n  }\n}\n"}]}}
+[debug] [2020-10-07T20:29:14.318Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 07 Oct 2020 20:29:14 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  firebase.storage: rules file storage.rules compiled successfully 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2020-10-07T20:29:14.324Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/cfp-code-submitter:test  
+ {"source":{"files":[{"name":"firestore.rules","content":"rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /{document=**} {\n      allow read, write: if true;\n    }\n  }\n}"}]}}
+[debug] [2020-10-07T20:29:14.816Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 07 Oct 2020 20:29:14 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2020-10-07T20:29:14.824Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/cfp-code-submitter/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "./styling/styles.css";
 import ReactMarkdown from 'react-markdown';
 import { Accordion, Card } from "react-bootstrap";
 

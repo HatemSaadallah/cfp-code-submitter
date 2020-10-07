@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles.css";
+import "./styling/styles.css";
 import Code from "./Code";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";

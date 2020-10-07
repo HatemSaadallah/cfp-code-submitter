@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import ReactMarkdown from 'react-markdown';
 import Gist from 'super-react-gist' // <-- import the library
-import { gists } from './gistsLinks';
+import { gists } from './data/gistsLinks';
 import { Accordion, Card } from "react-bootstrap";
 
 

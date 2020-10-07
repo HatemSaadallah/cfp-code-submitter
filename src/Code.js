@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "./styles.css";
+import "./styling/styles.css";
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import * as firebase from 'firebase';
 import Questions from "./Questions";
-import weeksproblem from "./weeklyQuestions";
+import weeksproblem from "./data/weeklyQuestions";
 
 import AceEditor from "react-ace";
 

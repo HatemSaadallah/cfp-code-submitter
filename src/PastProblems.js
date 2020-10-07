@@ -1,8 +1,8 @@
 import React from 'react';
-import { pastproblems } from './weeklyQuestions';
+import { pastproblems } from './data/weeklyQuestions';
 import { Table } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
-import './styles.css';
+import "./styling/styles.css";
 import { Accordion, Card } from "react-bootstrap";
 
 export default function PastProblems() {

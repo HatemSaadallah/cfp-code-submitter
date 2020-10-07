@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import "./styling/styles.css";
 import NavBar from "./NavBar";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";

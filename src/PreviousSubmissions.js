@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import firebase from "firebase";
-import "./styles.css"
+import "./styling/styles.css";
 var firebaseConfig = {
     apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
     authDomain: "cfp-code-submitter.firebaseapp.com",
