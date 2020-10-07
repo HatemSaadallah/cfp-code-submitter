@@ -17,7 +17,7 @@ try {
   firebase.initializeApp(firebaseConfig);
 } catch { }
 
-export default function NavBar({ name, signedIn, isSuperUser=false}) {
+export default function NavBar({ name, signedIn, isSuperUser = false }) {
   return (
     <Navbar className="NavBar">
       <Navbar.Brand>
@@ -30,9 +30,9 @@ export default function NavBar({ name, signedIn, isSuperUser=false}) {
           <Nav.Link href="/gists">Gists</Nav.Link>
           <Nav.Link href="/previous-submissions">Previous Submissions</Nav.Link>
           {(isSuperUser) ?
-          <Nav.Link href="/admin">Admin Panel</Nav.Link>
-          :
-          null
+            <Nav.Link href="/admin">Admin Panel</Nav.Link>
+            :
+            null
           }
         </div>
         :
@@ -45,12 +45,15 @@ export default function NavBar({ name, signedIn, isSuperUser=false}) {
 
           {(signedIn) ? <a>signed in as {name}</a> : <a>You are not signed in</a>}
           {signedIn ? (
-            <a
-              className="singout-button"
-              onClick={() => firebase.auth().signOut()}
-            >
-              Sign out
+            <div className="signedIn">
+              <img />
+              <a
+                className="singout-button"
+                onClick={() => firebase.auth().signOut()}
+              >
+                Sign out
             </a>
+            </div>
           ) : null}
         </Navbar.Text>
       </Navbar.Collapse>
