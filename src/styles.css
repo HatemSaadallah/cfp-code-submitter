@@ -175,9 +175,7 @@ pre code{
   color: white !important;
 }
 
-.navbar-text a{
-  color: #8899a6 !important;
-}
+
 th{
   color: white;
 }
@@ -205,6 +203,18 @@ td{
 .version a{
   color: #1da1f2;
 }
-
-
+.profileImg {
+  display: inline;
+  border-radius: 50%;
+  width: 60px;
+  margin-left: 15px;
+}
+.profile {
+  background-color: #192734 !important;
+  display: inline !important;
+  border: 0 !important;
+}
+.nameUser {
+  color: white !important;
+}
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */

@@ -51,7 +51,7 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
 
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-basic" className="profile">
-                  <a>{name}</a>
+                  <a className="nameUser">{name}</a>
                   <img className="profileImg" src={firebase.auth().currentUser.photoURL} />
                 </Dropdown.Toggle>
 
