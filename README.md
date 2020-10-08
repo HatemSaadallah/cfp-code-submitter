@@ -15,7 +15,7 @@
 - [x] Activated Github login
 - [ ] Deploy Redux in the website to fix glitching. (Exteremly Hard)
 - [ ] Add The ability to grade assignments. (Medium)
-- [ ] Add the ability to add comments. 
+- [ ] Add the ability to add notes on assignments. 
 - [ ] Add external link tab (Kahoot, Games, etc) (Easy)
 - [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems.
 ## Bugs to fix:
