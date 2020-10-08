@@ -108,7 +108,7 @@ export default class App extends React.Component {
                 </Route>
                 <Route path="/admin">
                   {firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.uid == "fZlj3iLifVM49ixPPzucktMgrkq2" || firebase.auth().currentUser.uid == "w80C141S5CQA8qcWGadFlzHuAbO2" ?
-                    <TAs /> :
+                    <TAs nameOfTA={firebase.auth().currentUser.displayName}/> :
                     <h1>Sorry You do not have permission to view this page</h1>
                   }
                 </Route>

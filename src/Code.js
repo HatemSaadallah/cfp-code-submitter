@@ -122,6 +122,7 @@ if __name__ == "__main__":
               db.collection(name).doc(selectedQuestion).set({
                 code: code != null ? code : null,
                 nameOfQuestion: selectedQuestion != null ? selectedQuestion : null,
+                dateSubmitted: firebase.firestore.FieldValue.serverTimestamp(),
               })
                 .then(function () {
                   setModalShow(true);

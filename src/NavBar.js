@@ -45,7 +45,7 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>
 
-          {(signedIn) ? null: <a>You are not sign in</a>}
+          {(signedIn) ? null: <a>You are not signed in</a>}
           {signedIn ? (
             <div className="signedIn">
 

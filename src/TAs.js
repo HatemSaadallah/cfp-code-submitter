@@ -23,20 +23,31 @@ try {
 
 async function name(nameOfStudent) {
     const snapshot = await firebase.firestore().collection(nameOfStudent).get()
-    console.log(snapshot.docs[0].Nf.key.path.segments);
+
     return snapshot.docs.map(doc =>
         doc.data().code
     )
 }
 
-async function nameOfQuestion(nameOfStudent){
+async function nameOfQuestion(nameOfStudent) {
     const snapshot = await firebase.firestore().collection(nameOfStudent).get()
-    return snapshot.docs.map(doc =>
-        doc.data().nameOfQuestion
-    )
+    let qNames = [];
+    snapshot.docs.map(doc => {
+        qNames.push(doc.Nf.key.path.segments[6]);
+    })
+    return qNames;
 }
 
-console.log(nameOfQuestion("Hatem Saadallah"))
+async function noteRetrieve(nameOfStudent, nameOfQuestion) {
+    const snapshot = await firebase.firestore().collection(nameOfStudent).doc(nameOfQuestion).collection("notes").get()
+    let output = [];
+    snapshot.docs.map(doc => {
+        output.push(doc.data())
+    })
+    return output;
+}
+var db = firebase.firestore();
+
 const studentsNames = [
     "Ahmad Herzallah",
     "Ahmad Mortaja",
@@ -45,12 +56,21 @@ const studentsNames = [
     "Mohammed Eyad Atalah",
     "Kareem Fadi",
     "hadil owda",
+    "Abdalrahman Abu Nimer",
+    "Dina Saqer",
+    "Eren yeager",
+    "Rama Al Zeer",
+    "diyar mershed",
+    "shimaa azoom",
+    "Hassan Jouda",
+    "Rawaa Zaqqut",
     "Hatem Saadallah"
 ]
-export default function TAs() {
+export default function TAs({ nameOfTA }) {
     const [studentCode, setStudentCode] = useState([]);
     const [studentName, setStudentName] = useState("");
     const [questionName, setQuestionName] = useState([]);
+    const [note, setNote] = useState([]);
     // useEffect(() => {
     //     name("Hatem Saadallah").then((data) => {
     //         setStudentCode(data)
@@ -72,11 +92,18 @@ export default function TAs() {
                             <Dropdown.Item onClick={(e) => {
                                 setStudentName(e.nativeEvent.target.outerText);
                                 name(e.nativeEvent.target.outerText).then((data) => {
-                                    setStudentCode(data)     
+                                    setStudentCode(data)
                                 });
                                 nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
                                     setQuestionName(data);
                                 })
+                                questionName.map(qname => {
+                                    nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
+                                        console.log(noteRetrieve(e.nativeEvent.target.outerText, data));
+                                    })
+                                    // console.log(noteRetrieve(e.nativeEvent.target.outerText, qname));
+                                })
+                                
                             }}>{item}</Dropdown.Item>
                         );
                     })}
@@ -85,11 +112,39 @@ export default function TAs() {
             {<h1>{studentName}</h1>}
             {studentCode.map((code, index) => {
                 return (
-                    <div>   
-                        <h1>{questionName[index]}</h1>     
+                    <div>
+                        <h1>{questionName[index]}</h1>
                         <SyntaxHighlighter language="python" style={docco}>
                             {code}
                         </SyntaxHighlighter>
+                        <h1>Notes: </h1>
+                        <div>
+                            {/* <button onClick={() => {
+                                noteRetrieve(studentName, questionName[index]).then((item) => {
+                                    
+                                        console.log(item)
+                                    
+                                });
+                            }}>Click</button> */}
+                            {/* {noteRetrieve(studentName, questionName[index]).then((item) => {
+                                console.log(item);
+                            })} */}
+                        </div>
+                        <textarea onChange={(text) => setNote(text.target.value)}></textarea>
+                        <button onClick={() => {
+                            db.collection(studentName).doc(questionName[index]).collection("notes").add({
+                                name: nameOfTA,
+                                note: note,
+                            })
+                                .then(function () {
+                                    console.log("Document successfully updated!");
+                                })
+                                .catch(function (error) {
+                                    // The document probably doesn't exist.
+                                    console.log("Error updating document: ", error);
+                                });
+
+                        }}>Send note</button>
                     </div>);
             })}
         </div>
