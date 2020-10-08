@@ -3,7 +3,7 @@ import firebase from "firebase";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Dropdown } from "react-bootstrap";
-
+import "./styling/TAstyle.css"
 
 var firebaseConfig = {
     apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
@@ -43,7 +43,22 @@ async function noteRetrieve(nameOfStudent, nameOfQuestion) {
     let output = [];
     snapshot.docs.map(doc => {
         output.push(doc.data())
+        // console.log(doc.data())
     })
+    function compare(a, b) {
+        // Use toUpperCase() to ignore character casing
+        const timeA = a.dateCreated;
+        const timeB = b.dateCreated;
+      
+        let comparison = 0;
+        if (timeA > timeB) {
+          comparison = 1;
+        } else if (timeA < timeB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      output.sort(compare);
     return output;
 }
 var db = firebase.firestore();
@@ -70,14 +85,15 @@ export default function TAs({ nameOfTA }) {
     const [studentCode, setStudentCode] = useState([]);
     const [studentName, setStudentName] = useState("");
     const [questionName, setQuestionName] = useState([]);
-    const [note, setNote] = useState([]);
+    const [note, setNote] = useState();
+    const [notesRet, setNotesRet] = useState([]);
     // useEffect(() => {
     //     name("Hatem Saadallah").then((data) => {
     //         setStudentCode(data)
     //         // console.log([0])
     //     });
     // }, []);
-
+    let questions;
     return (
         <div>
             <h1>Hello from Admin</h1>
@@ -96,14 +112,17 @@ export default function TAs({ nameOfTA }) {
                                 });
                                 nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
                                     setQuestionName(data);
+                                    questions = data;
                                 })
-                                questionName.map(qname => {
-                                    nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
-                                        console.log(noteRetrieve(e.nativeEvent.target.outerText, data));
-                                    })
-                                    // console.log(noteRetrieve(e.nativeEvent.target.outerText, qname));
-                                })
-                                
+
+                                // console.log(studentName)
+                                // noteRetrieve(e.nativeEvent.target.outerText, "Number = Index").then(data => {
+                                //     console.log(data)
+                                //     console.log(questions)
+                                // })
+                                // console.log(qname);
+
+
                             }}>{item}</Dropdown.Item>
                         );
                     })}
@@ -119,22 +138,32 @@ export default function TAs({ nameOfTA }) {
                         </SyntaxHighlighter>
                         <h1>Notes: </h1>
                         <div>
-                            {/* <button onClick={() => {
+                            <button onClick={() => {
                                 noteRetrieve(studentName, questionName[index]).then((item) => {
-                                    
-                                        console.log(item)
-                                    
+                                    setNotesRet(item);
+
                                 });
-                            }}>Click</button> */}
+                            }}>Show Notes</button>
                             {/* {noteRetrieve(studentName, questionName[index]).then((item) => {
                                 console.log(item);
                             })} */}
+                            {notesRet.map(item => {
+                                return (
+                                    <div>
+                                        <span>{item?.name}</span>
+                                        <span>Date sent {item?.dateCreated?.seconds}</span>
+                                        <p>{item?.note}</p>
+                                    </div>
+                                );
+                            })}
+
                         </div>
                         <textarea onChange={(text) => setNote(text.target.value)}></textarea>
                         <button onClick={() => {
                             db.collection(studentName).doc(questionName[index]).collection("notes").add({
                                 name: nameOfTA,
                                 note: note,
+                                dateCreated: firebase.firestore.FieldValue.serverTimestamp(),
                             })
                                 .then(function () {
                                     console.log("Document successfully updated!");
