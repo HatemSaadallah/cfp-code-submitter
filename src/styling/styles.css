@@ -218,10 +218,25 @@ td{
   color: white !important;
 }
 .navbar-text a{
-  color: white !important;
+  color: white;
 }
 .MuiButtonBase-root {
   color: #212529 !important
 }
 
+.dropdown-item {
+  color: #212529 !important
+}
+.question_name {
+  color: #212529 !important
+}
+.dropdown-item {
+  color: #212529 !important
+}
+
+.office-hours-sheet {
+  border: 1px solid #dedede;
+  background: transparent;
+  height: 50%;
+}
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */

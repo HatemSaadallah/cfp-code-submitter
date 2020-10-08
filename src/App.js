@@ -12,6 +12,7 @@ import TAs from './TAs';
 
 import PreviousSubmissions from './PreviousSubmissions';
 import Profile from './Profile';
+import OfficeHours from './OfficeHours'
 
 var firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
@@ -102,6 +103,9 @@ export default class App extends React.Component {
                 </Route>
                 <Route path="/previous-submissions">
                   <PreviousSubmissions nameOfUser={firebase.auth().currentUser.displayName} />
+                </Route>
+                <Route path="/office-hours">
+                  <OfficeHours nameOfUser={firebase.auth().currentUser.displayName} />
                 </Route>
                 <Route path="/profile">
                   <Profile imageURL={firebase.auth().currentUser.photoURL} name={firebase.auth().currentUser.displayName}/>
