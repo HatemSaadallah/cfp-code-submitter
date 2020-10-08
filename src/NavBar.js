@@ -31,6 +31,7 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
           <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
           <Nav.Link href="/gists">Gists</Nav.Link>
           <Nav.Link href="/previous-submissions">Previous Submissions</Nav.Link>
+          <Nav.Link href="/office-hours">Office Hours</Nav.Link>
           {(isSuperUser) ?
             <Nav.Link href="/admin">Admin Panel</Nav.Link>
             :
@@ -57,7 +58,7 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="profile">Profile</Dropdown.Item>
-                  <Dropdown.Item
+                  <Dropdown.Item 
                     onClick={() => firebase.auth().signOut()}>Sign Out</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
