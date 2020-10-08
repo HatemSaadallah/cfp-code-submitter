@@ -11,3 +11,17 @@
     margin-top: 4em;
     margin-bottom: 2em;
 }
+.profileImg {
+    display: inline;
+    border-radius: 50%;
+    width: 40px;
+    margin-left: 15px;
+  }
+  .profile {
+    background-color: #192734 !important;
+    display: inline !important;
+    border: 0 !important;
+  }
+  .nameUser {
+    color: white !important;
+  }
