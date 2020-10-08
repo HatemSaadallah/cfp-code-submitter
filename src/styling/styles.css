@@ -217,8 +217,8 @@ td{
 .nameUser {
   color: white !important;
 }
-.navbar-text a{
-  color: white !important;
+.dropdown-menu a{
+  color:black !important;
 }
 .office-hours-sheet {
   border: 1px solid #dedede;
@@ -226,3 +226,12 @@ td{
   height: 50%;
 }
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
+.MuiMenuItem-root {
+  color: black !important;
+}
+.modal-body h4 {
+  color: black !important;
+}
+.dropdown-item a {
+  color: black !important;
+}
