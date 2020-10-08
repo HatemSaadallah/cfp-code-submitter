@@ -203,35 +203,78 @@ td{
 .version a{
   color: #1da1f2;
 }
-.profileImg {
-  display: inline;
-  border-radius: 50%;
-  width: 60px;
-  margin-left: 15px;
-}
-.profile {
-  background-color: #192734 !important;
-  display: inline !important;
-  border: 0 !important;
-}
-.nameUser {
+
+.navbar-text a{
   color: white !important;
-}
-.dropdown-menu a{
-  color:black !important;
 }
 .office-hours-sheet {
   border: 1px solid #dedede;
   background: transparent;
-  height: 50%;
+  height: 40%;
+  border-radius: 8px;
+  
 }
+.dropdown-menu , .MuiPaper-root{
+  background-color: #253341 !important ;
+}
+.dropdown-menu .dropdown-item , .MuiPaper-root li{
+  color: #bfc7cd!important;
+}
+.dropdown-menu .dropdown-item:hover , .MuiListItem-button:hover{
+  background-color: #16202b !important;
+}
+.problems-card{
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  
+}
+.problems-card .card-header{
+  /* border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important; */
+  border-radius: 8px !important;
+}
+.problems-card .card{
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+}
+
+.gists-card{
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 20px;
+  
+  
+}
+.gists-card .card-header{
+  padding-top: 16px !important;
+}
+.previousSubsWelcomeMessage{
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.previous-s-container{
+  width: 60%;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 20px !important;
+  border-radius: 8px;
+}
+
+.office-hours-container{
+  width: 70% ;
+  margin: auto;
+  margin-top: 120px;
+  
+}
+.office-hours-container h2{
+  margin-bottom: 20px;
+}
+
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
-.MuiMenuItem-root {
-  color: black !important;
-}
-.modal-body h4 {
-  color: black !important;
-}
-.dropdown-item a {
-  color: black !important;
-}
