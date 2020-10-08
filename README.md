@@ -8,7 +8,7 @@
     ~~Make hyperlink for each gist Make the gists foldable.~~
 - [x] Make question selection ~~easier~~ `more intuitive`.
 - [ ] Put next lecture main points on the front page. (Easy)
-- [ ] Add office hours times on the front page (Easy)
+- [x] Add office hours times ~~on the front page~~page (Easy) (by Ahmed Herzallah) 
 - [ ] Add customized profile picture for each member. (Medium)
 - [x] Removed unnecessary navbar items, for unauthorized users 
 - [x] Added React Bootstrap Accordion Component to all pages, which reduces the amount of information there is at a time.
