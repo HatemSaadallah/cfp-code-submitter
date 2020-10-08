@@ -50,18 +50,19 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
           {signedIn ? (
             <div className="signedIn">
 
-              <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic" className="profile">
-                  <a className="nameUser">{name}</a>
+              {/* <Dropdown> */}
+              
+                {/* <Dropdown.Toggle id="dropdown-basic" className="profile"> */}
+                  <Nav.Link href="profile"><a className="nameUser">{name}</a></Nav.Link>
                   <img className="profileImg" src={firebase.auth().currentUser.photoURL} />
-                </Dropdown.Toggle>
+                {/* </Dropdown.Toggle> */}
 
-                <Dropdown.Menu>
-                  <Dropdown.Item href="profile">Profile</Dropdown.Item>
+                {/* <Dropdown.Menu>
+                  
                   <Dropdown.Item 
                     onClick={() => firebase.auth().signOut()}>Sign Out</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                </Dropdown.Menu> */}
+              {/* </Dropdown> */}
 
             </div>
           ) : null}
