@@ -18,7 +18,7 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4 className="question_name">{props.nameOfQuestion}</h4>
+      <h4>{props.nameOfQuestion}</h4>
         <p>
 
           <SyntaxHighlighter language="python" style={docco}>
