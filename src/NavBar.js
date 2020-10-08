@@ -57,9 +57,9 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item className="drop-down-btn" href="profile">Profile</Dropdown.Item>
+                  <Dropdown.Item href="profile">Profile</Dropdown.Item>
                   <Dropdown.Item 
-                    onClick={() => firebase.auth().signOut()} className="drop-down-btn">Sign Out</Dropdown.Item>
+                    onClick={() => firebase.auth().signOut()}>Sign Out</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
 
