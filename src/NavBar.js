@@ -31,7 +31,7 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
           <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
           <Nav.Link href="/gists">Gists</Nav.Link>
           <Nav.Link href="/previous-submissions">Previous Submissions</Nav.Link>
-          <Nav.Link href="/office-hours">Office Hours</Nav.Link>
+          <Nav.Link href="/office-hours">Sessions</Nav.Link>
           {(isSuperUser) ?
             <Nav.Link href="/admin">Admin Panel</Nav.Link>
             :
