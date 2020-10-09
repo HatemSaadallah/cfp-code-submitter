@@ -1,7 +1,7 @@
 import React from 'react';
 import './styling/styles.css';
 import './styling/profileStyles.css';
-import Footer from './footer';
+
 
 
 export default function Profile({ imageURL, name }) {
@@ -16,7 +16,7 @@ export default function Profile({ imageURL, name }) {
             
             
         </div>
-        <Footer/>
+        
         </div>
             
            
