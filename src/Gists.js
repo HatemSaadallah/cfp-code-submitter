@@ -12,7 +12,7 @@ export default function Gists() {
             {gists.map((gist) => {
                 return (
                     <div>
-                        <Accordion >
+                        <Accordion className="gists-card" >
                             <Card>
                                 <Accordion.Toggle as={Card.Header} eventKey="0">
                                     {gist["gistName"]}
