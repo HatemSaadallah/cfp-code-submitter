@@ -9,6 +9,14 @@ export default function Gists() {
 
     return (
         <div>
+
+            <Accordion className="gists-card  next-session-topics-card" >
+                <h2>Next session topics: </h2>
+                <Card>
+                    <iframe className="office-hours-sheet" src="https://sheet2api.com/table/Aut0uCtvTSQJ/next-session/Sheet1"
+                    width="100%" height="600" frameBorder="0"></iframe>
+                </Card>
+            </Accordion>
             {gists.map((gist) => {
                 return (
                     <div>
@@ -22,11 +30,13 @@ export default function Gists() {
                                         file={gist["fileName"]} />
                                 </Accordion.Collapse>
                             </Card>
-                        </Accordion>
+                            </Accordion>
+                        
                     </div>
                 );
             })}
-
+            
+                        
         </div>
     );
 
