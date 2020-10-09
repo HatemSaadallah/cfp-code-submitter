@@ -48,12 +48,12 @@ export default function PreviousSubmissions({nameOfUser}) {
 
     return (
         <div>
-            <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
+            {/* <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1> */}
             <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
             {studentCode.map((code) => {
                 return (
                     <div>
-                        <SyntaxHighlighter language="python" style={docco}>
+                        <SyntaxHighlighter language="python" style={docco} className="previous-s-container">
                             {code}
                         </SyntaxHighlighter>
                     </div>);

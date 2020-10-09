@@ -7,7 +7,7 @@
 - [x] Add a gists page (Medium)
     ~~Make hyperlink for each gist Make the gists foldable.~~
 - [x] Make question selection ~~easier~~ `more intuitive`.
-- [ ] Put next lecture main points on the front page. (Easy)
+- [x] Put next lecture main points ~~on the front page~~. (Easy) (by Mohammed Atalah)
 - [x] Add office hours times ~~on the front page~~page (Easy) (by Ahmed Herzallah) 
 - [ ] Add customized profile picture for each member. (Medium)
 - [x] Removed unnecessary navbar items, for unauthorized users 
@@ -16,8 +16,9 @@
 - [ ] Deploy Redux in the website to fix glitching. (Exteremly Hard)
 - [ ] Add The ability to grade assignments. (Medium)
 - [ ] Add the ability to add notes on assignments. 
-- [ ] Add external link tab (Kahoot, Games, etc) (Easy)
-- [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems.
+- [x] Add external link tab (Kahoot, Games, etc) (Easy) (by Mohammed Atalah)
+- [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems. 
+- [x] Add next session link.(Easy) (by Mohammed Atalah)
 ## Bugs to fix:
 - [ ] Fix the login page arbitrary appearance.
 

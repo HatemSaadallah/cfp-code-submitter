@@ -9,10 +9,12 @@ export default function Gists() {
 
     return (
         <div>
+
+            
             {gists.map((gist) => {
                 return (
                     <div>
-                        <Accordion >
+                        <Accordion className="gists-card" >
                             <Card>
                                 <Accordion.Toggle as={Card.Header} eventKey="0">
                                     {gist["gistName"]}
@@ -22,11 +24,13 @@ export default function Gists() {
                                         file={gist["fileName"]} />
                                 </Accordion.Collapse>
                             </Card>
-                        </Accordion>
+                            </Accordion>
+                        
                     </div>
                 );
             })}
-
+            
+                        
         </div>
     );
 
