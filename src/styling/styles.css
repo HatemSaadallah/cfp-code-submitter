@@ -319,5 +319,8 @@ td{
 .footer button{
   float: right !important ;
 }
+.next-session-topics-card h2{
+  text-align: left;
+}
 
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
