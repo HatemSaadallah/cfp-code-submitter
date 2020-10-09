@@ -10,14 +10,7 @@ export default function Gists() {
     return (
         <div>
 
-            <Accordion className="gists-card  next-session-topics-card" >
-                <h2>Next session topics: </h2>
-                <Card>
-                    <iframe className="office-hours-sheet" src="https://sheet2api.com/table/Aut0uCtvTSQJ/next-session/Sheet1"
-                    width="100%" height="600" frameBorder="0"></iframe>
-                </Card>
-                <p><a href="https://zoom.us/j/94592609039">Zoom Session Link</a></p>
-            </Accordion>
+            
             {gists.map((gist) => {
                 return (
                     <div>
