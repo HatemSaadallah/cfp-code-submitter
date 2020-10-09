@@ -16,7 +16,7 @@
 - [ ] Deploy Redux in the website to fix glitching. (Exteremly Hard)
 - [ ] Add The ability to grade assignments. (Medium)
 - [ ] Add the ability to add notes on assignments. 
-- [ ] Add external link tab (Kahoot, Games, etc) (Easy)
+- [x] Add external link tab (Kahoot, Games, etc) (Easy) (by Mohammed Atalah)
 - [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems.
 ## Bugs to fix:
 - [ ] Fix the login page arbitrary appearance.
