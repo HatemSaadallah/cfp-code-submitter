@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import PastProblems from "./PastProblems";
 import Gists from './Gists';
 import TAs from './TAs';
+import Footer from './footer';
 
 import PreviousSubmissions from './PreviousSubmissions';
 import Profile from './Profile';
@@ -122,6 +123,7 @@ export default class App extends React.Component {
               </Switch>
             </div>
           </Router>
+          <Footer/>
         </div>
       );
     }
