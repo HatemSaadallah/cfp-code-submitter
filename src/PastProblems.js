@@ -12,7 +12,7 @@ export default function PastProblems() {
       { pastproblems.map(week => {
         return (
           <div>
-              <Accordion >
+              <Accordion className="problems-card" >
             <Accordion.Toggle as={Card.Header} eventKey="0">
               <h1 className="week-in-past-problems">Week {week[0]["week"]} Problems</h1>
             </Accordion.Toggle>
