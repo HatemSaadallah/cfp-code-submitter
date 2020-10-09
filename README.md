@@ -7,7 +7,7 @@
 - [x] Add a gists page (Medium)
     ~~Make hyperlink for each gist Make the gists foldable.~~
 - [x] Make question selection ~~easier~~ `more intuitive`.
-- [ ] Put next lecture main points on the front page. (Easy)
+- [x] Put next lecture main points on the front page. (Easy) (by Mohammed Atalah)
 - [x] Add office hours times ~~on the front page~~page (Easy) (by Ahmed Herzallah) 
 - [ ] Add customized profile picture for each member. (Medium)
 - [x] Removed unnecessary navbar items, for unauthorized users 
