@@ -5,7 +5,7 @@ import firebase from "firebase";
 
 const Footer = () => (
   <div className="footer">
-    <p>Contact |</p>
+    <p>Contact a TA |</p>
     
     <p><a href="https://www.facebook.com/messages/t/HeatoMu">Hatem</a></p>
     <p><a href="https://www.facebook.com/messages/t/hanaa.zaqout.351">Hanaa</a></p>
