@@ -49,18 +49,28 @@ async function noteRetrieve(nameOfStudent, nameOfQuestion) {
         // Use toUpperCase() to ignore character casing
         const timeA = a.dateCreated;
         const timeB = b.dateCreated;
-      
+
         let comparison = 0;
         if (timeA > timeB) {
-          comparison = 1;
+            comparison = 1;
         } else if (timeA < timeB) {
-          comparison = -1;
+            comparison = -1;
         }
         return comparison;
-      }
-      output.sort(compare);
+    }
+    output.sort(compare);
     return output;
 }
+
+function fixEverything(name, questionData) {
+    questionData.map(qnm => {
+        noteRetrieve(name, qnm).then(data => {
+            console.log(data);
+
+        });
+    })
+}
+
 var db = firebase.firestore();
 
 const studentsNames = [
@@ -93,7 +103,7 @@ export default function TAs({ nameOfTA }) {
     //         // console.log([0])
     //     });
     // }, []);
-    let questions;
+    let qn, pn;
     return (
         <div>
             <h1>Hello from Admin</h1>
@@ -112,14 +122,14 @@ export default function TAs({ nameOfTA }) {
                                 });
                                 nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
                                     setQuestionName(data);
-                                    questions = data;
+                                    console.log(e)
+                                    // fixEverything(e.nativeEvent.target.outerText, data);
                                 })
 
                                 // console.log(studentName)
-                                // noteRetrieve(e.nativeEvent.target.outerText, "Number = Index").then(data => {
-                                //     console.log(data)
-                                //     console.log(questions)
-                                // })
+
+
+
                                 // console.log(qname);
 
 
@@ -144,9 +154,7 @@ export default function TAs({ nameOfTA }) {
 
                                 });
                             }}>Show Notes</button>
-                            {/* {noteRetrieve(studentName, questionName[index]).then((item) => {
-                                console.log(item);
-                            })} */}
+
                             {notesRet.map(item => {
                                 return (
                                     <div>
