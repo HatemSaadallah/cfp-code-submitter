@@ -43,22 +43,8 @@ async function noteRetrieve(nameOfStudent, nameOfQuestion) {
     let output = [];
     snapshot.docs.map(doc => {
         output.push(doc.data())
-        // console.log(doc.data())
     })
-    function compare(a, b) {
-        // Use toUpperCase() to ignore character casing
-        const timeA = a.dateCreated;
-        const timeB = b.dateCreated;
 
-        let comparison = 0;
-        if (timeA > timeB) {
-            comparison = 1;
-        } else if (timeA < timeB) {
-            comparison = -1;
-        }
-        return comparison;
-    }
-    output.sort(compare);
     return output;
 }
 
@@ -91,19 +77,28 @@ const studentsNames = [
     "Rawaa Zaqqut",
     "Hatem Saadallah"
 ]
+const realdb = firebase.database();
+
 export default function TAs({ nameOfTA }) {
     const [studentCode, setStudentCode] = useState([]);
     const [studentName, setStudentName] = useState("");
     const [questionName, setQuestionName] = useState([]);
     const [note, setNote] = useState();
-    const [notesRet, setNotesRet] = useState([]);
-    // useEffect(() => {
-    //     name("Hatem Saadallah").then((data) => {
-    //         setStudentCode(data)
-    //         // console.log([0])
-    //     });
-    // }, []);
-    let qn, pn;
+    const [notesRet, setNotesRet] = useState({});
+    const note_id = `note-${Date.now()}`;
+
+    useEffect(() => {
+        realdb.ref("notes").on("value", snapshot => {
+            let allNotes = {};
+            snapshot.forEach(snap => {
+                // console.log(snap)
+                // allNotes.push(snap.val());
+                allNotes[snap.key] = snap.val()
+            })
+            console.log(allNotes);
+            setNotesRet(allNotes);
+        })
+    }, []);
     return (
         <div>
             <h1>Hello from Admin</h1>
@@ -123,16 +118,7 @@ export default function TAs({ nameOfTA }) {
                                 nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
                                     setQuestionName(data);
                                     console.log(e)
-                                    // fixEverything(e.nativeEvent.target.outerText, data);
                                 })
-
-                                // console.log(studentName)
-
-
-
-                                // console.log(qname);
-
-
                             }}>{item}</Dropdown.Item>
                         );
                     })}
@@ -148,38 +134,47 @@ export default function TAs({ nameOfTA }) {
                         </SyntaxHighlighter>
                         <h1>Notes: </h1>
                         <div>
-                            <button onClick={() => {
-                                noteRetrieve(studentName, questionName[index]).then((item) => {
-                                    setNotesRet(item);
+                            {
+                                Object.keys(notesRet).length!=0 ?
+                                
+                                Object.entries(notesRet[studentName]).map(item => {
+                                    {/* console.log(item) */ }
+                                    return (
+                                        <div>
+                                            {Object.entries(item[1]).map(itemChild => {
+                                                console.log("This is item child", itemChild);
+                                                if (itemChild[1].question_name == questionName[index]) 
+                                                    return(
+                                                    <div>
+                                                        <h1>{itemChild[1].nameOfTA}</h1>
+                                                        <p>{itemChild[1].note}</p>
+                                                    </div>
+                                                    )
+                                                 else return(<span></span>)
+                                            })}
+                                        </div>
+                                    );
 
-                                });
-                            }}>Show Notes</button>
-
-                            {notesRet.map(item => {
-                                return (
-                                    <div>
-                                        <span>{item?.name}</span>
-                                        <span>Date sent {item?.dateCreated?.seconds}</span>
-                                        <p>{item?.note}</p>
-                                    </div>
-                                );
-                            })}
-
+                                })
+                               : <h1>Theres no comments here</h1>
+                            }
+                               
                         </div>
                         <textarea onChange={(text) => setNote(text.target.value)}></textarea>
                         <button onClick={() => {
-                            db.collection(studentName).doc(questionName[index]).collection("notes").add({
-                                name: nameOfTA,
-                                note: note,
-                                dateCreated: firebase.firestore.FieldValue.serverTimestamp(),
-                            })
-                                .then(function () {
-                                    console.log("Document successfully updated!");
+                            let question_name = questionName[index]
+                            realdb.ref(`notes/${studentName}/${questionName[index]}/${note_id}`)
+                                .set({
+                                    nameOfTA,
+                                    note,
+                                    note_id,
+                                    question_name
                                 })
-                                .catch(function (error) {
-                                    // The document probably doesn't exist.
-                                    console.log("Error updating document: ", error);
-                                });
+                                .then(_ => {
+                                    console.log("Note sent successfully");
+                                }).catch(error => {
+                                    console.log("An error occurred", error);
+                                })
 
                         }}>Send note</button>
                     </div>);
