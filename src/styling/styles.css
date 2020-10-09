@@ -278,12 +278,23 @@ td{
 .office-hours-container{
   width: 70% ;
   margin: auto;
-  padding-top: 100px;
+  margin-bottom: 30px;
   
   
 }
 .office-hours-container h2{
   margin-bottom: 20px;
+}
+.office-hours-container p{
+  margin: 0px !important;
+  margin-top: 10px !important;
+  text-align: left !important;
+  color: #1da1f2 !important;
+  margin-bottom: 20px !important;
+}
+
+.office-hours-container p a {
+  color: #1da1f2 !important;
 }
 .sign-out-button{
    background-color: transparent;
@@ -322,14 +333,6 @@ td{
 .next-session-topics-card h2{
   text-align: left;
 }
-.next-session-topics-card p{
-  margin: 0px !important;
-  margin-top: 10px !important;
-  text-align: left !important;
-  color: #1da1f2 !important;
-}
 
-.next-session-topics-card p a {
-  color: #1da1f2 !important;
-}
+
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
