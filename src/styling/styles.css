@@ -119,7 +119,8 @@ body {
   color: white !important;
  
 }
-.nav-link:hover{
+.nav-link:hover {
+  transition: all 0.3s;
   color: #1da1f2 !important;
 }
 
