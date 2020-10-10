@@ -51,7 +51,7 @@ async function noteRetrieve(nameOfStudent, nameOfQuestion) {
 function fixEverything(name, questionData) {
     questionData.map(qnm => {
         noteRetrieve(name, qnm).then(data => {
-            console.log(data);
+            // console.log(data);
 
         });
     })
@@ -97,6 +97,7 @@ export default function TAs({ nameOfTA }) {
             })
             console.log(allNotes);
             setNotesRet(allNotes);
+            console.log(Object.keys(allNotes).length)
         })
     }, []);
     return (
@@ -117,7 +118,7 @@ export default function TAs({ nameOfTA }) {
                                 });
                                 nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
                                     setQuestionName(data);
-                                    console.log(e)
+                                    // console.log(e)
                                 })
                             }}>{item}</Dropdown.Item>
                         );
@@ -135,30 +136,30 @@ export default function TAs({ nameOfTA }) {
                         <h1>Notes: </h1>
                         <div>
                             {
-                                Object.keys(notesRet).length!=0 ?
-                                
-                                Object.entries(notesRet[studentName]).map(item => {
-                                    {/* console.log(item) */ }
-                                    return (
-                                        <div>
-                                            {Object.entries(item[1]).map(itemChild => {
-                                                console.log("This is item child", itemChild);
-                                                if (itemChild[1].question_name == questionName[index]) 
-                                                    return(
-                                                    <div>
-                                                        <h1>{itemChild[1].nameOfTA}</h1>
-                                                        <p>{itemChild[1].note}</p>
-                                                    </div>
-                                                    )
-                                                 else return(<span></span>)
-                                            })}
-                                        </div>
-                                    );
+                                notesRet.hasOwnProperty(studentName) ?
+                                    (
+                                    Object.entries(notesRet[studentName]).map(item => {
+                                        {/* console.log(item) */ }
+                                        return (
+                                            <div>
+                                                {Object.entries(item[1]).map(itemChild => {
+                                                    {/* console.log("This is item child", itemChild); */}
+                                                    if (itemChild[1].question_name == questionName[index])
+                                                        return (
+                                                            <div>
+                                                                <h1>{itemChild[1].nameOfTA}</h1>
+                                                                <p>{itemChild[1].note}</p>
+                                                            </div>
+                                                        )
+                                                    else return (<span></span>)
+                                                })}
+                                            </div>
+                                        );
 
-                                })
-                               : <h1>Theres no comments here</h1>
+                                    })
+                                    ): <h1>Theres no comments here</h1>
                             }
-                               
+
                         </div>
                         <textarea onChange={(text) => setNote(text.target.value)}></textarea>
                         <button onClick={() => {
