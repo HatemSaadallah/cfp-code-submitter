@@ -335,5 +335,32 @@ td{
   text-align: left;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 13px;
+  background-color: #192734;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #253341;
+  margin-top: 72.5px;
+  
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+/* ::-webkit-scrollbar-button{
+  background-color: red;
+} */
+
 
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
