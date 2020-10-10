@@ -31,7 +31,8 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
           <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
           <Nav.Link href="/gists">Gists</Nav.Link>
           <Nav.Link href="/previous-submissions">Previous Submissions</Nav.Link>
-          <Nav.Link href="/office-hours">Office Hours</Nav.Link>
+          <Nav.Link href="/office-hours">Sessions</Nav.Link>
+          <Nav.Link href="/TAs_info">TAs</Nav.Link>
           {(isSuperUser) ?
             <Nav.Link href="/admin">Admin Panel</Nav.Link>
             :
@@ -46,22 +47,23 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>
 
-          {(signedIn) ? null: <a>You are not sign in</a>}
+          {(signedIn) ? null: <a>You are not signed in</a>}
           {signedIn ? (
             <div className="signedIn">
 
-              <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic" className="profile">
-                  <a className="nameUser">{name}</a>
+              {/* <Dropdown> */}
+              
+                {/* <Dropdown.Toggle id="dropdown-basic" className="profile"> */}
+                  <Nav.Link href="profile"><a className="nameUser">{name}</a></Nav.Link>
                   <img className="profileImg" src={firebase.auth().currentUser.photoURL} />
-                </Dropdown.Toggle>
+                {/* </Dropdown.Toggle> */}
 
-                <Dropdown.Menu>
-                  <Dropdown.Item href="profile">Profile</Dropdown.Item>
+                {/* <Dropdown.Menu>
+                  
                   <Dropdown.Item 
                     onClick={() => firebase.auth().signOut()}>Sign Out</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                </Dropdown.Menu> */}
+              {/* </Dropdown> */}
 
             </div>
           ) : null}

@@ -7,17 +7,19 @@
 - [x] Add a gists page (Medium)
     ~~Make hyperlink for each gist Make the gists foldable.~~
 - [x] Make question selection ~~easier~~ `more intuitive`.
-- [ ] Put next lecture main points on the front page. (Easy)
-- [ ] Add office hours times on the front page (Easy)
-- [ ] Add customized profile picture for each member. (Medium)
+- [x] Put next lecture main points ~~on the front page~~. (Easy) (by Mohammed Atalah)
+- [x] Add office hours times ~~on the front page~~page (Easy) (by Ahmed Herzallah) 
+- [x] Add customized profile picture for each member. (Medium)
 - [x] Removed unnecessary navbar items, for unauthorized users 
 - [x] Added React Bootstrap Accordion Component to all pages, which reduces the amount of information there is at a time.
 - [x] Activated Github login
 - [ ] Deploy Redux in the website to fix glitching. (Exteremly Hard)
 - [ ] Add The ability to grade assignments. (Medium)
-- [ ] Add the ability to add comments. 
-- [ ] Add external link tab (Kahoot, Games, etc) (Easy)
-- [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems.
+- [ ] Add the ability to add notes on assignments. 
+- [x] Add external link tab (Kahoot, Games, etc) (Easy) (by Mohammed Atalah)
+- [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems. 
+- [x] Add next session link.(Easy) (by Mohammed Atalah)
+- [ ] Active NavLink.
 ## Bugs to fix:
 - [ ] Fix the login page arbitrary appearance.
 

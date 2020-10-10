@@ -3,7 +3,7 @@ import firebase from "firebase";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Dropdown } from "react-bootstrap";
-
+import "./styling/TAstyle.css"
 
 var firebaseConfig = {
     apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
@@ -23,20 +23,42 @@ try {
 
 async function name(nameOfStudent) {
     const snapshot = await firebase.firestore().collection(nameOfStudent).get()
-    console.log(snapshot.docs[0].Nf.key.path.segments);
+
     return snapshot.docs.map(doc =>
         doc.data().code
     )
 }
 
-async function nameOfQuestion(nameOfStudent){
+async function nameOfQuestion(nameOfStudent) {
     const snapshot = await firebase.firestore().collection(nameOfStudent).get()
-    return snapshot.docs.map(doc =>
-        doc.data().nameOfQuestion
-    )
+    let qNames = [];
+    snapshot.docs.map(doc => {
+        qNames.push(doc.Nf.key.path.segments[6]);
+    })
+    return qNames;
 }
 
-console.log(nameOfQuestion("Hatem Saadallah"))
+async function noteRetrieve(nameOfStudent, nameOfQuestion) {
+    const snapshot = await firebase.firestore().collection(nameOfStudent).doc(nameOfQuestion).collection("notes").get()
+    let output = [];
+    snapshot.docs.map(doc => {
+        output.push(doc.data())
+    })
+
+    return output;
+}
+
+function fixEverything(name, questionData) {
+    questionData.map(qnm => {
+        noteRetrieve(name, qnm).then(data => {
+            // console.log(data);
+
+        });
+    })
+}
+
+var db = firebase.firestore();
+
 const studentsNames = [
     "Ahmad Herzallah",
     "Ahmad Mortaja",
@@ -45,19 +67,39 @@ const studentsNames = [
     "Mohammed Eyad Atalah",
     "Kareem Fadi",
     "hadil owda",
+    "Abdalrahman Abu Nimer",
+    "Dina Saqer",
+    "Eren yeager",
+    "Rama Al Zeer",
+    "diyar mershed",
+    "shimaa azoom",
+    "Hassan Jouda",
+    "Rawaa Zaqqut",
     "Hatem Saadallah"
 ]
-export default function TAs() {
+const realdb = firebase.database();
+
+export default function TAs({ nameOfTA }) {
     const [studentCode, setStudentCode] = useState([]);
     const [studentName, setStudentName] = useState("");
     const [questionName, setQuestionName] = useState([]);
-    // useEffect(() => {
-    //     name("Hatem Saadallah").then((data) => {
-    //         setStudentCode(data)
-    //         // console.log([0])
-    //     });
-    // }, []);
+    const [note, setNote] = useState();
+    const [notesRet, setNotesRet] = useState({});
+    const note_id = `note-${Date.now()}`;
 
+    useEffect(() => {
+        realdb.ref("notes").on("value", snapshot => {
+            let allNotes = {};
+            snapshot.forEach(snap => {
+                // console.log(snap)
+                // allNotes.push(snap.val());
+                allNotes[snap.key] = snap.val()
+            })
+            console.log(allNotes);
+            setNotesRet(allNotes);
+            console.log(Object.keys(allNotes).length)
+        })
+    }, []);
     return (
         <div>
             <h1>Hello from Admin</h1>
@@ -72,10 +114,11 @@ export default function TAs() {
                             <Dropdown.Item onClick={(e) => {
                                 setStudentName(e.nativeEvent.target.outerText);
                                 name(e.nativeEvent.target.outerText).then((data) => {
-                                    setStudentCode(data)     
+                                    setStudentCode(data)
                                 });
                                 nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
                                     setQuestionName(data);
+                                    // console.log(e)
                                 })
                             }}>{item}</Dropdown.Item>
                         );
@@ -85,11 +128,56 @@ export default function TAs() {
             {<h1>{studentName}</h1>}
             {studentCode.map((code, index) => {
                 return (
-                    <div>   
-                        <h1>{questionName[index]}</h1>     
+                    <div>
+                        <h1>{questionName[index]}</h1>
                         <SyntaxHighlighter language="python" style={docco}>
                             {code}
                         </SyntaxHighlighter>
+                        <h1>Notes: </h1>
+                        <div>
+                            {
+                                notesRet.hasOwnProperty(studentName) ?
+                                    (
+                                    Object.entries(notesRet[studentName]).map(item => {
+                                        {/* console.log(item) */ }
+                                        return (
+                                            <div>
+                                                {Object.entries(item[1]).map(itemChild => {
+                                                    {/* console.log("This is item child", itemChild); */}
+                                                    if (itemChild[1].question_name == questionName[index])
+                                                        return (
+                                                            <div>
+                                                                <h1>{itemChild[1].nameOfTA}</h1>
+                                                                <p>{itemChild[1].note}</p>
+                                                            </div>
+                                                        )
+                                                    else return (<span></span>)
+                                                })}
+                                            </div>
+                                        );
+
+                                    })
+                                    ): <h1>Theres no comments here</h1>
+                            }
+
+                        </div>
+                        <textarea onChange={(text) => setNote(text.target.value)}></textarea>
+                        <button onClick={() => {
+                            let question_name = questionName[index]
+                            realdb.ref(`notes/${studentName}/${questionName[index]}/${note_id}`)
+                                .set({
+                                    nameOfTA,
+                                    note,
+                                    note_id,
+                                    question_name
+                                })
+                                .then(_ => {
+                                    console.log("Note sent successfully");
+                                }).catch(error => {
+                                    console.log("An error occurred", error);
+                                })
+
+                        }}>Send note</button>
                     </div>);
             })}
         </div>

@@ -1,6 +1,6 @@
 {
   "name": "cfp-code-submitter",
-  "version": "1.0.0",
+  "version": "1.3.2",
   "private": true,
   "dependencies": {
     "@firebase/app": "0.6.11",
@@ -20,6 +20,7 @@
     "mobx-react": "^7.0.0",
     "popper.js": "1.16.1",
     "prismjs": "1.21.0",
+    "python-shell": "^2.0.2",
     "react": "16.13.1",
     "react-ace": "^9.1.4",
     "react-bootstrap": "1.3.0",

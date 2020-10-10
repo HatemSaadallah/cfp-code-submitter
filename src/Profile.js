@@ -1,11 +1,24 @@
 import React from 'react';
 import './styling/styles.css';
 import './styling/profileStyles.css';
-export default function Profile({imageURL, name}){
-    return(
+
+
+
+export default function Profile({ imageURL, name }) {
+    return (
+        <div>
         <div className="container">
-            <img className="profileImage" src={imageURL}/>
+            <head>
+            </head>
+
+            <img className="profileImage" src={imageURL} />
             <h1>{name}</h1>
+            
+            
         </div>
+        
+        </div>
+            
+           
     );
 }

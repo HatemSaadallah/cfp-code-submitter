@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import PastProblems from "./PastProblems";
 import Gists from './Gists';
 import TAs from './TAs';
+import Footer from './footer';
+import TAs_info from './TAs_info';
 
 import PreviousSubmissions from './PreviousSubmissions';
 import Profile from './Profile';
@@ -73,7 +75,7 @@ export default class App extends React.Component {
             firebaseAuth={firebase.auth()}
           />
           <h4 className="version">v 1.3.0 beta</h4>
-          <h5 className="version">Thanks to <a href="https://github.com/Mohammed-Atalah">Mohammed Atalah</a></h5>
+          <h5 className="version">Thanks to <a href="https://github.com/Mohammed-Atalah">Mohammed Atalah</a> & <a href="https://github.com/AhmadHerzallah">Ahmad Herzallah</a></h5>
           <h4 className="notify">Thanks to everyone who sent me a heads up regarding the signin page poping up whenever page changes. Due to some technical issues, this bug will take a while to fix, henceforth, I urge you to overlook it for a while (since it's been less than two days from the first line of code for this website)</h4>
         </div>
       );
@@ -107,12 +109,15 @@ export default class App extends React.Component {
                 <Route path="/office-hours">
                   <OfficeHours nameOfUser={firebase.auth().currentUser.displayName} />
                 </Route>
+                <Route path="/TAs_info">
+                  <TAs_info nameOfUser={firebase.auth().currentUser.displayName} />
+                </Route>
                 <Route path="/profile">
                   <Profile imageURL={firebase.auth().currentUser.photoURL} name={firebase.auth().currentUser.displayName}/>
                 </Route>
                 <Route path="/admin">
                   {firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.uid == "fZlj3iLifVM49ixPPzucktMgrkq2" || firebase.auth().currentUser.uid == "w80C141S5CQA8qcWGadFlzHuAbO2" ?
-                    <TAs /> :
+                    <TAs nameOfTA={firebase.auth().currentUser.displayName}/> :
                     <h1>Sorry You do not have permission to view this page</h1>
                   }
                 </Route>
@@ -122,6 +127,7 @@ export default class App extends React.Component {
               </Switch>
             </div>
           </Router>
+          <Footer/>
         </div>
       );
     }
