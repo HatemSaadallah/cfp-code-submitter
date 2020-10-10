@@ -22,9 +22,12 @@ try {
 async function name(nameOfStudent) {
     const snapshot = await firebase.firestore().collection(nameOfStudent).get()
     console.log(snapshot.docs[0].Nf.key.path.segments);
-    return snapshot.docs.map(doc =>
-        doc.data().code
-    )
+    let output=[];
+    snapshot.docs.map(doc =>{
+        let temp = {"qn": doc.data().nameOfQuestion, "code": doc.data().code};
+        output.push(temp);
+    })
+    return output;
 }
 
 // async function nameOfQuestion(nameOfStudent) {
@@ -42,19 +45,22 @@ export default function PreviousSubmissions({nameOfUser}) {
     useEffect(() => {
         console.log(nameOfUser);
         name(nameOfUser).then((data) => {
+            console.log(data);
             setStudentCode(data)
         });
     }, []);
 
     return (
         <div>
-            {/* <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1> */}
+            <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
             <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
-            {studentCode.map((code) => {
+            {studentCode.map((item) => {
+                console.log("this is from map", item);
                 return (
                     <div>
+                        <h3>{item.qn}</h3>
                         <SyntaxHighlighter language="python" style={docco} className="previous-s-container">
-                            {code}
+                            {item.code}
                         </SyntaxHighlighter>
                     </div>);
             })}
