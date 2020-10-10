@@ -119,7 +119,8 @@ body {
   color: white !important;
  
 }
-.nav-link:hover{
+.nav-link:hover {
+  transition: all 0.3s;
   color: #1da1f2 !important;
 }
 
@@ -333,6 +334,33 @@ td{
 .next-session-topics-card h2{
   text-align: left;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 13px;
+  background-color: #192734;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #253341;
+  margin-top: 72.5px;
+  
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+/* ::-webkit-scrollbar-button{
+  background-color: red;
+} */
 
 
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
