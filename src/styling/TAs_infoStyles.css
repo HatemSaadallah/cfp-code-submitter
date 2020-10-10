@@ -1,0 +1,82 @@
+.main h1{
+  text-align: center !important;
+  margin-bottom: 40px;
+ 
+}
+
+.row{
+  /* margin-top: 150px !important ; */
+  width: 90%;
+  margin: auto;
+}
+
+
+
+
+/* Three columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+    margin: auto;
+  }
+  
+  /* Display the columns below each other instead of side by side on small screens */
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  /* Add some shadows to create a card effect */
+  .card{
+    background-color: transparent !important;
+  }
+  .card img{
+    border-radius: 50%;
+    width: 70%;
+    margin: auto;
+  }
+  
+  /* Some left and right padding inside the container */
+  .container {
+    padding: 0 16px !important;
+    margin-top: 20px !important;
+  }
+  p{
+    margin-left: 0px !important;
+  }
+  /* Clear floats */
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title {
+    color: grey;
+  }
+  
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 5px;
+    background-color: #1da1f2;
+    border: 2px solid #1da1f2;
+    
+  }
+  
+  .button:hover {
+    background-color: #1d8ff2;
+ 
+    border: 2px solid #1d8ff2;
+  }
