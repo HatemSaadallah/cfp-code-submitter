@@ -15,7 +15,7 @@
     display: inline;
     border-radius: 50%;
     width: 40px;
-    margin-right: 15px;
+    /* margin-right: 15px; */
   }
 .profile {
     background-color: #192734 !important;
