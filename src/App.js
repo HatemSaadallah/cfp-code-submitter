@@ -10,6 +10,7 @@ import PastProblems from "./PastProblems";
 import Gists from './Gists';
 import TAs from './TAs';
 import Footer from './footer';
+import TAs_info from './TAs_info';
 
 import PreviousSubmissions from './PreviousSubmissions';
 import Profile from './Profile';
@@ -107,6 +108,9 @@ export default class App extends React.Component {
                 </Route>
                 <Route path="/office-hours">
                   <OfficeHours nameOfUser={firebase.auth().currentUser.displayName} />
+                </Route>
+                <Route path="/TAs_info">
+                  <TAs_info nameOfUser={firebase.auth().currentUser.displayName} />
                 </Route>
                 <Route path="/profile">
                   <Profile imageURL={firebase.auth().currentUser.photoURL} name={firebase.auth().currentUser.displayName}/>
