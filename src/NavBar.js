@@ -29,11 +29,11 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
       <Navbar.Toggle />
       {(signedIn) ?
         <div class="userNav">
-          <NavLink exact to="/pastproblems">Past Problems</NavLink>
-          <NavLink exact to="/gists">Gists</NavLink>
-          <NavLink exact to="/previous-submissions">Previous Submissions</NavLink>
-          <NavLink exact to="/office-hours">Sessions</NavLink>
-          <NavLink exact to="/TAs_info">TAs</NavLink>
+          <NavLink className="NavLink" exact to="/pastproblems">Past Problems</NavLink>
+          <NavLink className="NavLink" exact to="/gists">Gists</NavLink>
+          <NavLink className="NavLink" exact to="/previous-submissions">Previous Submissions</NavLink>
+          <NavLink className="NavLink" exact to="/office-hours">Sessions</NavLink>
+          <NavLink className="NavLink" exact to="/TAs_info">TAs</NavLink>
           {(isSuperUser) ?
             <NavLink to="/admin">Admin Panel</NavLink>
             :

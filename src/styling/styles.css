@@ -117,7 +117,7 @@ body {
 .nav-link , .userNav .NavLink{
   display: inline!important;
   font-family: Helvetica,sans-serif ;
-  color: white !important;
+  color: white;
  
 }
 .NavLink{
@@ -384,6 +384,10 @@ td{
   background-color: white;
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.active {
+  color: #1da1f2 !important;
 }
 
 
