@@ -155,13 +155,13 @@ body {
 }
 
 .notify {
-  margin: 0 auto;
+  margin: 0 auto !important;
   position: fixed;
   bottom: 10px
 }
 
 .notify,.version {
-  text-align: center
+  text-align: center !important
 }
 
 .version {
