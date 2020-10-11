@@ -32,6 +32,7 @@
     "react-markdown": "^4.3.1",
     "react-reader-view": "^1.1.17",
     "react-router-dom": "5.2.0",
+    "react-select": "^3.1.0",
     "react-simple-code-editor": "0.11.0",
     "react-syntax-highlighter": "^15.0.1",
     "semantic-ui-react": "2.0.0",
