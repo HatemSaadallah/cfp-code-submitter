@@ -100,7 +100,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                                     if (itemChild[1].question_name == item_sp.qn)
                                                         return (
                                                             <div>
-                                                                <h4>{itemChild[1].nameOfTA}</h4>
+                                                                <h4>{itemChild[1].nameOfUser}</h4>
                                                                 <p>{itemChild[1].note}</p>
                                                             </div>
                                                         )
@@ -114,7 +114,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
                         }
                         </div>
                         <hr className="hr_q"/>
-                        {/* <textarea onChange={(text) => setNote(text.target.value)}></textarea>
+                        <textarea onChange={(text) => setNote(text.target.value)}></textarea>
                         <button onClick={() => {
                             let question_name = item_sp.qn;
                             realdb.ref(`notes/${nameOfUser}/${question_name}/${note_id}`)
@@ -130,7 +130,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                     console.log("An error occurred", error);
                                 })
 
-                        }}>Send note</button> */}
+                        }}>Send note</button>
                     </div>);
                    
 
