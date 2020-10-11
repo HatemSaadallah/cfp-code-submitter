@@ -1,6 +1,6 @@
 export const weeks = [
-  { value: '3', label: 'Week 3' },
   { value: '4', label: 'Week 4' },
+  { value: '3', label: 'Week 3' },
 ]
 
 
