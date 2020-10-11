@@ -50,7 +50,7 @@ if __name__ == "__main__":
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [message, setMessage] = useState("Select Question to Submit");
-
+  const [week, setWeek] = useState(weeksproblem[0].week);
 
   const recordButtonPosition = (event) => {
     console.log(event.currentTarget);
@@ -123,6 +123,7 @@ if __name__ == "__main__":
                 code: code != null ? code : null,
                 nameOfQuestion: selectedQuestion != null ? selectedQuestion : null,
                 dateSubmitted: firebase.firestore.FieldValue.serverTimestamp(),
+                week: week, 
               })
                 .then(function () {
                   setModalShow(true);
