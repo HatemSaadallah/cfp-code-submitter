@@ -370,8 +370,14 @@ td{
   color: #212529 !important
 }
 
-.active{
-  background-color: gold !important;
-  color:Black !important;
+.note_div{
+  width: 60%;
+  margin: auto;
+}
+.hr_q{
+  width: 65%;
+  background-color: white;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
