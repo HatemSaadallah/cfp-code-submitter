@@ -179,7 +179,9 @@ body {
   padding-top:22.5px !important;
   color: white !important;
 }
-
+.card img {
+  border-radius: 0 !important;
+}
 pre code{
   color: white !important;
 }
