@@ -34,7 +34,7 @@
   .card{
     background-color: transparent !important;
   }
-.card img{
+.column .card img{
     border-radius: 50% !important; 
     width: 70% !important;
     margin: auto;
