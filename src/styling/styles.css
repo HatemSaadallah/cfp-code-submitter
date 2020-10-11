@@ -370,4 +370,8 @@ td{
   color: #212529 !important
 }
 
+.active{
+  background-color: gold !important;
+  color:Black !important;
+}
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
