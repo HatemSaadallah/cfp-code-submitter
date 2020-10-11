@@ -3,6 +3,10 @@ import './styling/styles.css';
 import './styling/TAs_infoStyles.css';
 import { Divider } from '@material-ui/core';
 
+import hatemphoto from './images/hatemphoto.jpg';
+import hanaaphoto from './images/hanaaphoto.jpg';
+import nonephoto from './images/nonephoto.jpg';
+import zayanphoto from './images/zayanphoto.jpg';
 
 
 export default function TAs_info(){
@@ -14,7 +18,7 @@ export default function TAs_info(){
             
             <div class="column">
                 <div class="card">
-                    <img src={process.env.PUBLIC_URL + '/images/hatemphoto.jpg'} alt="Hatem Saadallah"/>
+                    <img src={hatemphoto} alt="Hatem Saadallah"/>
                     <div class="container">
                         <h2>Hatem Saadallah</h2>
                         {/* <p class="title">CEO &amp; Founder</p> */}
@@ -26,7 +30,7 @@ export default function TAs_info(){
             </div>
             <div class="column">
                 <div class="card">
-                    <img src={process.env.PUBLIC_URL + '/images/nonephoto.jpg'} alt="Hanaa Zaqout" />
+                    <img src=  {hanaaphoto} alt="Hanaa Zaqout" />
                     <div class="container">
                         <h2>Hanaa Zaqout</h2>
                         {/* <p class="title">Art Director</p> */}
@@ -39,7 +43,7 @@ export default function TAs_info(){
 
             <div class="column">
                 <div class="card">
-                    <img src={process.env.PUBLIC_URL + '/images/nonephoto.jpg'} alt="Abdullah Baraka" />
+                    <img src={nonephoto} alt="Abdullah Baraka" />
                     <div class="container">
                         <h2>Abdullah Baraka</h2>
                         {/* <p class="title">Designer</p> */}
@@ -51,7 +55,7 @@ export default function TAs_info(){
             </div>
             <div class="column">
                 <div class="card">
-                    <img src={process.env.PUBLIC_URL + '/images/zayanphoto.jpg'} alt="Zayan Hassan" />
+                    <img src={zayanphoto} alt="Zayan Hassan" />
                     <div class="container">
                         <h2>Zayan Hassan</h2>
                         {/* <p class="title">Designer</p> */}

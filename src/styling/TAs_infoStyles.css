@@ -34,9 +34,9 @@
   .card{
     background-color: transparent !important;
   }
-  .card img{
-    border-radius: 50%;
-    width: 70%;
+.column .card img{
+    border-radius: 50% !important; 
+    width: 70% !important;
     margin: auto;
   }
   

@@ -3,6 +3,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import firebase from "firebase";
 import "./styling/styles.css";
+import Select from 'react-select'
+import {weeks} from './data/weeklyQuestions';
+
 var firebaseConfig = {
     apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
     authDomain: "cfp-code-submitter.firebaseapp.com",
@@ -24,7 +27,8 @@ async function name(nameOfStudent) {
     // console.log(snapshot.docs[0].Nf.key.path.segments);
     let output = [];
     snapshot.docs.map(doc => {
-        let temp = { "qn": doc.data().nameOfQuestion, "code": doc.data().code };
+        // console.log(doc.data());
+        let temp = { "qn": doc.data().nameOfQuestion, "code": doc.data().code, week: doc.data().week};
         output.push(temp);
     })
     return output;
@@ -44,6 +48,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
     // const [questionName, setQuestionName] = useState([]);
     const [notesRet, setNotesRet] = useState({});
     const [note, setNote] = useState();
+    const [studentSelection, setStudentSelection] = useState(null);
     useEffect(() => {
         name(nameOfUser).then((data) => {
             // console.log(data);
@@ -56,9 +61,9 @@ export default function PreviousSubmissions({ nameOfUser }) {
                 // allNotes.push(snap.val());
                 allNotes[snap.key] = snap.val()
             })
-            console.log(allNotes);
+            // console.log(allNotes);
             setNotesRet(allNotes);
-            console.log(Object.keys(allNotes).length)
+            // console.log(Object.keys(allNotes).length)
         })
     }, []);
     const note_id = `note-${Date.now()}`;
@@ -66,9 +71,15 @@ export default function PreviousSubmissions({ nameOfUser }) {
         <div>
             <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
             <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
+            <Select options={weeks} onChange={(e) => {
+                setStudentSelection(e.value);
+            }}/>
+
             {studentCode.map((item_sp) => {
                 {/* console.log("this is from map", item); */ }
-                return (
+                {/* console.log(item_sp); */}
+                if (item_sp.week == studentSelection) 
+                 return(
                     <div>
                         <h3>{item_sp.qn}</h3>
                         <SyntaxHighlighter language="python" style={docco} className="previous-s-container">
@@ -115,7 +126,8 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                 })
 
                         }}>Send note</button> */}
-                    </div>);
+                    </div>)
+                    
             })}
         </div>
     );

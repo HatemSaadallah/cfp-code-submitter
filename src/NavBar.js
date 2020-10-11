@@ -34,6 +34,7 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
           <NavLink className="NavLink" exact to="/previous-submissions">Previous Submissions</NavLink>
           <NavLink className="NavLink" exact to="/office-hours">Sessions</NavLink>
           <NavLink className="NavLink" exact to="/TAs_info">TAs</NavLink>
+
           {(isSuperUser) ?
             <NavLink to="/admin">Admin Panel</NavLink>
             :
