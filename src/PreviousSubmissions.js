@@ -117,19 +117,23 @@ export default function PreviousSubmissions({ nameOfUser }) {
                         <textarea onChange={(text) => setNote(text.target.value)}></textarea>
                         <button onClick={() => {
                             let question_name = item_sp.qn;
-                            realdb.ref(`notes/${nameOfUser}/${question_name}/${note_id}`)
-                                .set({
-                                    nameOfUser,
-                                    note,
-                                    note_id,
-                                    question_name
-                                })
-                                .then(_ => {
-                                    console.log("Note sent successfully");
-                                }).catch(error => {
-                                    console.log("An error occurred", error);
-                                })
-
+                            if (note === undefined) {
+                                console.log("well, that was an undefined value :), ")
+                                alert("Add a note to send :)")
+                            } else {
+                                realdb.ref(`notes/${nameOfUser}/${question_name}/${note_id}`)
+                                    .set({
+                                        nameOfUser,
+                                        note,
+                                        note_id,
+                                        question_name
+                                    })
+                                    .then(_ => {
+                                        console.log("Note sent successfully");
+                                    }).catch(error => {
+                                        console.log("An error occurred", error);
+                                    })
+                            }
                         }}>Send note</button>
                     </div>);
                    
