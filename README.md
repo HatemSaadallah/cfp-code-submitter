@@ -21,5 +21,5 @@
 - [x] Add next session link.(Easy) (by Mohammed Atalah)
 - [ ] Active NavLink.
 ## Bugs to fix:
-- [ ] Fix the login page arbitrary appearance.
+- [x] Fix the login page arbitrary appearance. (by Ahmed Herzallah)
 
