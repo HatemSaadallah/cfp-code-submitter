@@ -3,7 +3,7 @@ import "./styling/styles.css";
 import ReactMarkdown from 'react-markdown';
 import { Accordion, Card } from "react-bootstrap";
 
-export default function Questions({ questions }) {
+export default function Questions({ questions, submissions }) {
   return (
     <div className="questions">
       {questions.map(question => {
