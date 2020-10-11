@@ -3,6 +3,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import firebase from "firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Dropdown } from "react-bootstrap";
+import { NavLink } from 'react-router-dom'
 
 
 var firebaseConfig = {
@@ -28,13 +29,13 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
       <Navbar.Toggle />
       {(signedIn) ?
         <div class="userNav">
-          <Nav.Link href="/pastproblems">Past Problems</Nav.Link>
-          <Nav.Link href="/gists">Gists</Nav.Link>
-          <Nav.Link href="/previous-submissions">Previous Submissions</Nav.Link>
-          <Nav.Link href="/office-hours">Sessions</Nav.Link>
-          <Nav.Link href="/TAs_info">TAs</Nav.Link>
+          <NavLink exact to="/pastproblems">Past Problems</NavLink>
+          <NavLink exact to="/gists">Gists</NavLink>
+          <NavLink exact to="/previous-submissions">Previous Submissions</NavLink>
+          <NavLink exact to="/office-hours">Sessions</NavLink>
+          <NavLink exact to="/TAs_info">TAs</NavLink>
           {(isSuperUser) ?
-            <Nav.Link href="/admin">Admin Panel</Nav.Link>
+            <NavLink to="/admin">Admin Panel</NavLink>
             :
             null
           }
