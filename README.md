@@ -20,6 +20,7 @@
 - [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems. 
 - [x] Add next session link.(Easy) (by Mohammed Atalah)
 - [ ] Active NavLink.
+- [x] Add a week selection in previous submissions page.
 ## Bugs to fix:
 - [x] Fix the login page arbitrary appearance. (by Ahmed Herzallah)
 
