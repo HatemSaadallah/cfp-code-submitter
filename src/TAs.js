@@ -79,7 +79,7 @@ const studentsNames = [
 ]
 const realdb = firebase.database();
 
-export default function TAs({ nameOfTA }) {
+export default function TAs({ nameOfUser }) {
     const [studentCode, setStudentCode] = useState([]);
     const [studentName, setStudentName] = useState("");
     const [questionName, setQuestionName] = useState([]);
@@ -166,7 +166,7 @@ export default function TAs({ nameOfTA }) {
                             let question_name = questionName[index]
                             realdb.ref(`notes/${studentName}/${questionName[index]}/${note_id}`)
                                 .set({
-                                    nameOfTA,
+                                    nameOfUser,
                                     note,
                                     note_id,
                                     question_name

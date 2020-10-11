@@ -76,7 +76,7 @@ export default class App extends React.Component {
           />
           <h4 className="version">v 1.3.0 beta</h4>
           <h5 className="version">Thanks to <a href="https://github.com/Mohammed-Atalah">Mohammed Atalah</a> & <a href="https://github.com/AhmadHerzallah">Ahmad Herzallah</a></h5>
-          <h4 className="notify">Thanks to everyone who sent me a heads up regarding the signin page poping up whenever page changes. Due to some technical issues, this bug will take a while to fix, henceforth, I urge you to overlook it for a while (since it's been less than two days from the first line of code for this website)</h4>
+          {/* <h4 className="notify">The bug of flickering login page is finally solved!!! </h4> */}
         </div>
       );
     } else {
@@ -117,7 +117,7 @@ export default class App extends React.Component {
                 </Route>
                 <Route path="/admin">
                   {firebase.auth().currentUser.uid == "QDQ3iECmX1RIu2mJkNlQJHIlmkg1" || firebase.auth().currentUser.uid == "fZlj3iLifVM49ixPPzucktMgrkq2" || firebase.auth().currentUser.uid == "w80C141S5CQA8qcWGadFlzHuAbO2" ?
-                    <TAs nameOfTA={firebase.auth().currentUser.displayName}/> :
+                    <TAs nameOfUser={firebase.auth().currentUser.displayName}/> :
                     <h1>Sorry You do not have permission to view this page</h1>
                   }
                 </Route>

@@ -23,4 +23,5 @@
 - [x] Add a week selection in previous submissions page.
 ## Bugs to fix:
 - [x] Fix the login page arbitrary appearance. (by Ahmed Herzallah)
+- [x] Previous Submissions is not showing problems chronologically.
 

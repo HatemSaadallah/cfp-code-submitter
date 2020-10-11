@@ -155,13 +155,13 @@ body {
 }
 
 .notify {
-  margin: 0 auto;
+  margin: 0 auto !important;
   position: fixed;
   bottom: 10px
 }
 
 .notify,.version {
-  text-align: center
+  text-align: center !important
 }
 
 .version {
@@ -385,6 +385,7 @@ td{
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
 .active {
   color: #1da1f2 !important;
 }
