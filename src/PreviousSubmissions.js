@@ -70,10 +70,13 @@ export default function PreviousSubmissions({ nameOfUser }) {
                 {/* console.log("this is from map", item); */ }
                 return (
                     <div>
-                        <h3>{item_sp.qn}</h3>
+                        <div className="note_div">
+                        <h1>{item_sp.qn}</h1>
+                        </div>
                         <SyntaxHighlighter language="python" style={docco} className="previous-s-container">
                             {item_sp.code}
                         </SyntaxHighlighter>
+                        <div className="note_div">
                         <h3>Notes:</h3>
                         {
                             notesRet.hasOwnProperty(nameOfUser) ?
@@ -86,7 +89,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                                     if (itemChild[1].question_name == item_sp.qn)
                                                         return (
                                                             <div>
-                                                                <h1>{itemChild[1].nameOfTA}</h1>
+                                                                <h4>{itemChild[1].nameOfTA}</h4>
                                                                 <p>{itemChild[1].note}</p>
                                                             </div>
                                                         )
@@ -96,8 +99,10 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                         );
 
                                     })
-                                ) : <h1>Theres no comments here</h1>
+                                ) : <p>Theres no comments here</p>
                         }
+                        </div>
+                        <hr className="hr_q"/>
                         {/* <textarea onChange={(text) => setNote(text.target.value)}></textarea>
                         <button onClick={() => {
                             let question_name = item_sp.qn;
@@ -116,7 +121,9 @@ export default function PreviousSubmissions({ nameOfUser }) {
 
                         }}>Send note</button> */}
                     </div>);
+                   
             })}
+            
         </div>
     );
 }  
