@@ -71,7 +71,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
         <div>
             <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
             <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
-            <Select options={weeks} onChange={(e) => {
+            <Select className="selector" options={weeks} style="color: red" onChange={(e) => {
                 setStudentSelection(e.value);
             }}/>
 
