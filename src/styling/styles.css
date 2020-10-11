@@ -5,7 +5,7 @@ h1,p {
 h2,h3,h4,h5 {
   color: white !important;
 }
-p {
+p , .questions p{
   margin: 20px !important; 
 }
 li {
@@ -168,11 +168,12 @@ body {
   
 }
 
-.card{
+.card, .questions .card{
   background-color: #253341 !important;
   border-radius: 8px !important;
   border: hidden !important;
 }
+
 
 .card-header{
   background-color: #192734 !important;
