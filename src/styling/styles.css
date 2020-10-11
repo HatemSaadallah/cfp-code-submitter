@@ -5,7 +5,7 @@ h1,p {
 h2,h3,h4,h5 {
   color: white !important;
 }
-p {
+p , .questions p{
   margin: 20px !important; 
 }
 li {
@@ -110,18 +110,23 @@ body {
 .userNav {
   display: inline-block;
   margin-top: 2.5px;
+  
    
 }
 
-.nav-link {
+.nav-link , .userNav .NavLink{
   display: inline!important;
   font-family: Helvetica,sans-serif ;
   color: white !important;
  
 }
-.nav-link:hover {
-  transition: all 0.3s;
+.NavLink{
+  margin-right: 30px;
+}
+.nav-link:hover , .NavLink:hover , .active{
+  transition: all 0.3s !important;
   color: #1da1f2 !important;
+  text-decoration: none; 
 }
 
 .gistFold {
@@ -168,11 +173,12 @@ body {
   
 }
 
-.card{
+.card, .questions .card{
   background-color: #253341 !important;
   border-radius: 8px !important;
   border: hidden !important;
 }
+
 
 .card-header{
   background-color: #192734 !important;
@@ -369,8 +375,16 @@ td{
   color: #212529 !important
 }
 
-.active{
-  background-color: gold !important;
-  color:Black !important;
+.note_div{
+  width: 60%;
+  margin: auto;
 }
+.hr_q{
+  width: 65%;
+  background-color: white;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
