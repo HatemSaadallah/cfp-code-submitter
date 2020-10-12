@@ -73,7 +73,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
         <div>
             <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
             <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
-            <Select className="selector" options={weeks} style="color: red" onChange={(e) => {
+            <Select className="selector" options={weeks} onChange={(e) => {
                 setStudentSelection(e.value);
             }}/>
 
@@ -115,7 +115,8 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                 ) : <p>Theres no comments here</p>
                         }
                         </div>
-                        <hr className="hr_q"/>
+                        <div className="note_div">
+                        <hr className ="hr_send"/>
                         <textarea className="note_input" id="text_area" onChange={
                             (text) => setNote(text.target.value)}></textarea>
                         <Button variant="primary" className="note_btn center" onClick={() => {
@@ -138,6 +139,9 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                     })
                             }
                         }}>Send note</Button>
+                        
+                        </div>
+                        <hr className="hr_q"/>
                     </div>);
                    
 
