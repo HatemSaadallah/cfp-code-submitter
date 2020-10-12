@@ -147,7 +147,7 @@ export default function TAs({ nameOfUser }) {
                                                     if (itemChild[1].question_name == questionName[index])
                                                         return (
                                                             <div>
-                                                                <h1>{itemChild[1].nameOfTA}</h1>
+                                                                <h1>{itemChild[1].nameOfUser}</h1>
                                                                 <p>{itemChild[1].note}</p>
                                                             </div>
                                                         )
