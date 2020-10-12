@@ -49,7 +49,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
     // const [questionName, setQuestionName] = useState([]);
     const [notesRet, setNotesRet] = useState({});
     const [note, setNote] = useState();
-    const [studentSelection, setStudentSelection] = useState(null);
+    const [studentSelection, setStudentSelection] = useState(weeks[0].value);
     useEffect(() => {
         name(nameOfUser).then((data) => {
             // console.log(data);
@@ -73,7 +73,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
         <div>
             <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
             <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
-            <Select className="selector" options={weeks} onChange={(e) => {
+            <Select className="selector" options={weeks}  onChange={(e) => {
                 setStudentSelection(e.value);
             }}/>
 
