@@ -4,8 +4,9 @@ import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import firebase from "firebase";
 import "./styling/styles.css";
 import Select from 'react-select'
+import Button from 'react-bootstrap/Button'
 import {weeks} from './data/weeklyQuestions';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 var firebaseConfig = {
     apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
     authDomain: "cfp-code-submitter.firebaseapp.com",
@@ -54,7 +55,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
             // console.log(data);
             setStudentCode(data)
         });
-        realdb.ref("notes").on("value", snapshot => {
+            realdb.ref("notes").on("value", snapshot => {
             let allNotes = {};
             snapshot.forEach(snap => {
                 // console.log(snap)
@@ -65,13 +66,14 @@ export default function PreviousSubmissions({ nameOfUser }) {
             setNotesRet(allNotes);
             // console.log(Object.keys(allNotes).length)
         })
+        
     }, []);
     const note_id = `note-${Date.now()}`;
     return (
         <div>
             <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
             <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
-            <Select className="selector" options={weeks} style="color: red" onChange={(e) => {
+            <Select className="selector" options={weeks} onChange={(e) => {
                 setStudentSelection(e.value);
             }}/>
 
@@ -113,9 +115,11 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                 ) : <p>Theres no comments here</p>
                         }
                         </div>
-                        <hr className="hr_q"/>
-                        <textarea onChange={(text) => setNote(text.target.value)}></textarea>
-                        <button onClick={() => {
+                        <div className="note_div">
+                        <hr className ="hr_send"/>
+                        <textarea className="note_input" id="text_area" onChange={
+                            (text) => setNote(text.target.value)}></textarea>
+                        <Button variant="primary" className="note_btn center" onClick={() => {
                             let question_name = item_sp.qn;
                             if (note === undefined) {
                                 console.log("well, that was an undefined value :), ")
@@ -134,7 +138,10 @@ export default function PreviousSubmissions({ nameOfUser }) {
                                         console.log("An error occurred", error);
                                     })
                             }
-                        }}>Send note</button>
+                        }}>Send note</Button>
+                        
+                        </div>
+                        <hr className="hr_q"/>
                     </div>);
                    
 
