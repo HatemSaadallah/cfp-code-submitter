@@ -395,5 +395,20 @@ td{
   margin-left: 36%;
   margin-right: 50%;
 }
+.note_input {
+  resize: none;
+  display: block;
+  width: 400px;
+  height: 100px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.note_btn {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 20px !important;
+}
 
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */
