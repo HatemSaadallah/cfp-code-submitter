@@ -124,6 +124,9 @@ export default function PreviousSubmissions({ nameOfUser }) {
                             if (note === undefined) {
                                 console.log("well, that was an undefined value :), ")
                                 alert("Add a note to send :)")
+                            } else if (note === '') {
+                                console.log("well, that was an undefined value :), ")
+                                alert("Add a note to send :)")
                             } else {
                                 realdb.ref(`notes/${nameOfUser}/${question_name}/${note_id}`)
                                     .set({
