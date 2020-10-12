@@ -69,7 +69,6 @@ export default function PreviousSubmissions({ nameOfUser }) {
         
     }, []);
     const note_id = `note-${Date.now()}`;
-    let textarea_value = ''
     return (
         <div>
             <h1 className="previousSubsWelcomeMessage">Hello {nameOfUser}</h1>
