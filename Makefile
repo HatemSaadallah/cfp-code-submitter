@@ -10,3 +10,8 @@ build:
 	yarn build
 deploy:
 	yarn deploy
+
+upload:
+	git add .
+	git commit -m "automated commit"
+	git push

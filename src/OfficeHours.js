@@ -16,7 +16,7 @@ export default function OfficeHours(){
                     { title: 'event 1', date: '2020-10-12' },
                     { title: 'event 2', date: '2020-10-15' }
                 ]}
-
+                eventContent={renderEventContent}
             /> 
             {/*<iframe className="office-hours-sheet" src="https://sheet2api.com/table/Aut0uCtvTSQJ/next-session/Sheet1"*/
                 //width="100%" height="600" frameBorder="0"></iframe>
@@ -30,4 +30,12 @@ export default function OfficeHours(){
             /*width="100%" height="600" frameBorder="0"></iframe>*/}
         </div>
     );
+}
+function renderEventContent(eventInfo) {
+  return (
+    <>
+      <b>{eventInfo.timeText}</b>
+      <h3>{eventInfo.event.title}</h3>
+    </>
+  )
 }
