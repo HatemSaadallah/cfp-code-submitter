@@ -9,12 +9,19 @@ export default function Profile({ imageURL, name }) {
   function editAble() {
     document.getElementById('breif').contentEditable = 'true';
     document.getElementById('saveBtn').style.display = 'unset';
+    document.getElementById('breif').classList.add("breif_input");
+    
   }
   function editUnAble() {
     document.getElementById('breif').contentEditable = 'false';
     document.getElementById('saveBtn').style.display = 'none';
     console.log('brief changed.');
+    
+    document.getElementById('breif').classList.remove("breif_input");
   }
+ 
+    
+  
 
   return (
     <div>
@@ -25,14 +32,14 @@ export default function Profile({ imageURL, name }) {
         <h1 id="username" className="profile_name">
           {name}
         </h1>
-        <p className="breif" id="breif">
+        <p   id ="breif" className="breif">
           add your brief here :3
         </p>
         <Button onClick={editAble}>
-          <BiEdit />
+           Edit <BiEdit />
         </Button>
         <Button id="saveBtn" onClick={editUnAble}>
-          <ImCheckmark />
+         Save  <ImCheckmark />
         </Button>
       </div>
     </div>
