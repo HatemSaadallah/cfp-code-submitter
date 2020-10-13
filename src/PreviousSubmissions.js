@@ -7,6 +7,8 @@ import Select from 'react-select'
 import Button from 'react-bootstrap/Button'
 import {weeks} from './data/weeklyQuestions';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 var firebaseConfig = {
     apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
     authDomain: "cfp-code-submitter.firebaseapp.com",
@@ -44,6 +46,7 @@ async function name(nameOfStudent) {
 const realdb = firebase.database();
 
 
+
 export default function PreviousSubmissions({ nameOfUser }) {
     const [studentCode, setStudentCode] = useState([]);
     // const [questionName, setQuestionName] = useState([]);
@@ -55,7 +58,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
             // console.log(data);
             setStudentCode(data)
         });
-            realdb.ref("notes").on("value", snapshot => {
+        realdb.ref("notes").on("value", snapshot => {
             let allNotes = {};
             snapshot.forEach(snap => {
                 // console.log(snap)
@@ -66,7 +69,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
             setNotesRet(allNotes);
             // console.log(Object.keys(allNotes).length)
         })
-        
+
     }, []);
     const note_id = `note-${Date.now()}`;
     return (
@@ -76,80 +79,80 @@ export default function PreviousSubmissions({ nameOfUser }) {
             <Select className="selector" options={weeks}  onChange={(e) => {
                 setStudentSelection(e.value);
             }}/>
-
+           
             {studentCode.map((item_sp) => {
                 {/* console.log("this is from map", item); */ }
                 {/* console.log(item_sp); */}
                 if (item_sp.week == studentSelection) 
-                 return(
-                    <div>
-                        <div className="note_div">
-                        <h1>{item_sp.qn}</h1>
-                        </div>
-                        <SyntaxHighlighter language="python" style={docco} className="previous-s-container">
-                            {item_sp.code}
-                        </SyntaxHighlighter>
-                        <div className="note_div">
-                        <h3>Notes:</h3>
-                        {
-                            notesRet.hasOwnProperty(nameOfUser) ?
-                                (
-                                    Object.entries(notesRet[nameOfUser]).map(item => {
-                                        return (
-                                            <div>
-                                                {Object.entries(item[1]).map(itemChild => {
-                                                    {/* console.log("This is item child" ,itemChild) */}
-                                                    if (itemChild[1].question_name == item_sp.qn)
-                                                        return (
-                                                            <div>
-                                                                <h4>{itemChild[1].nameOfUser}</h4>
-                                                                <p>{itemChild[1].note}</p>
-                                                            </div>
-                                                        )
-                                                    else return (<span></span>)
-                                                })}
-                                            </div>
-                                        );
+                    return(
+                        <div>
+                            <div className="note_div">
+                                <h1>{item_sp.qn}</h1>
+                            </div>
+                            <SyntaxHighlighter language="python" style={docco} className="previous-s-container">
+                                {item_sp.code}
+                            </SyntaxHighlighter>
+                            <div className="note_div">
+                                <h3>Notes:</h3>
+                                {
+                                    notesRet.hasOwnProperty(nameOfUser) ?
+                                        (
+                                            Object.entries(notesRet[nameOfUser]).map(item => {
+                                                return (
+                                                    <div>
+                                                        {Object.entries(item[1]).map(itemChild => {
+                                                            {/* console.log("This is item child" ,itemChild) */}
+                                                            if (itemChild[1].question_name == item_sp.qn)
+                                                                return (
+                                                                    <div>
+                                                                        <h4>{itemChild[1].nameOfUser}</h4>
+                                                                        <p>{itemChild[1].note}</p>
+                                                                    </div>
+                                                                )
+                                                            else return (<span></span>)
+                                                        })}
+                                                    </div>
+                                                );
 
-                                    })
-                                ) : <p>Theres no comments here</p>
-                        }
-                        </div>
-                        <div className="note_div">
-                        <hr className ="hr_send"/>
-                        <textarea className="note_input" id="text_area" onChange={
-                            (text) => setNote(text.target.value)}></textarea>
-                        <Button variant="primary" className="note_btn center" onClick={() => {
-                            let question_name = item_sp.qn;
-                            if (note === undefined) {
-                                console.log("well, that was an undefined value :), ")
-                                alert("Add a note to send :)")
-                            } else if (note === '') {
-                                console.log("well, that was an undefined value :), ")
-                                alert("Add a note to send :)")
-                            } else {
-                                realdb.ref(`notes/${nameOfUser}/${question_name}/${note_id}`)
-                                    .set({
-                                        nameOfUser,
-                                        note,
-                                        note_id,
-                                        question_name
-                                    })
-                                    .then(_ => {
-                                        console.log("Note sent successfully");
-                                    }).catch(error => {
-                                        console.log("An error occurred", error);
-                                    })
-                            }
-                        }}>Send note</Button>
-                        
-                        </div>
-                        <hr className="hr_q"/>
-                    </div>);
-                   
+                                            })
+                                        ) : <p>Theres no comments here</p>
+                                }
+                            </div>
+                            <div className="note_div">
+                                <hr className ="hr_send"/>
+                                <textarea className="note_input" id="text_area" onChange={
+                                    (text) => setNote(text.target.value)}></textarea>
+                                <Button variant="primary" className="note_btn center" onClick={() => {
+                                    let question_name = item_sp.qn;
+                                    if (note === undefined) {
+                                        console.log("well, that was an undefined value :), ")
+                                        alert("Add a note to send :)")
+                                    } else if (note === '') {
+                                        console.log("well, that was an undefined value :), ")
+                                        alert("Add a note to send :)")
+                                    } else {
+                                        realdb.ref(`notes/${nameOfUser}/${question_name}/${note_id}`)
+                                            .set({
+                                                nameOfUser,
+                                                note,
+                                                note_id,
+                                                question_name
+                                            })
+                                            .then(_ => {
+                                                console.log("Note sent successfully");
+                                            }).catch(error => {
+                                                console.log("An error occurred", error);
+                                            })
+                                    }
+                                }}>Send note</Button>
+
+                            </div>
+                            <hr className="hr_q"/>
+                        </div>);
+
 
             })}
-            
+
         </div>
     );
 }  
