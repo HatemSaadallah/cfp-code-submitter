@@ -21,6 +21,7 @@
 - [x] Add next session link.(Easy) (by Mohammed Atalah)
 - [x] Active NavLink.
 - [x] Add a week selection in previous submissions page.
+- [ ] Add a place for casual submission. 
 ## Bugs to fix:
 - [x] Fix the login page arbitrary appearance. (by Ahmed Herzallah)
 - [x] Previous Submissions is not showing problems chronologically.
