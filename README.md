@@ -23,6 +23,7 @@
 - [x] Add a week selection in previous submissions page.
 - [ ] Add a place for casual submission. 
 - [ ] Add the ability for the user to edit the bio in the profile page, and upload it to firebase.
+- [ ] Make the sessions page more native. 
 ## Bugs to fix:
 - [x] Fix the login page arbitrary appearance. (by Ahmed Herzallah)
 - [x] Previous Submissions is not showing problems chronologically.
