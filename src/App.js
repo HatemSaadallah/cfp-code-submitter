@@ -11,6 +11,7 @@ import Gists from './Gists';
 import TAs from './TAs';
 import Footer from './footer';
 import TAs_info from './TAs_info';
+import Casual_Code from './casual_code';
 
 import PreviousSubmissions from './PreviousSubmissions';
 import Profile from './Profile';
@@ -111,6 +112,9 @@ export default class App extends React.Component {
                 </Route>
                 <Route path="/TAs_info">
                   <TAs_info nameOfUser={firebase.auth().currentUser.displayName} />
+                </Route>
+                <Route path="/casual_code">
+                  <Casual_Code nameOfUser={firebase.auth().currentUser.displayName} />
                 </Route>
                 <Route path="/profile">
                   <Profile imageURL={firebase.auth().currentUser.photoURL} name={firebase.auth().currentUser.displayName}/>
