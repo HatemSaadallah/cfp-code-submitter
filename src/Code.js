@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './styling/styles.css';
 import 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
@@ -59,16 +60,16 @@ if __name__ == '__main__':
   const [modalShow, setModalShow] = useState(false);
   return (
     <div>
-      <Questions questions={weeksproblem} className='currentQs' />
+      <Questions questions={weeksproblem} className="currentQs" />
 
-      <form className='codeSubmission'>
+      <form className="codeSubmission">
 
-        <div className='selectProblem'>
-          <Button aria-controls='simple-menu' aria-haspopup='true' onClick={recordButtonPosition}>
+        <div className="selectProblem">
+          <Button aria-controls="simple-menu" aria-haspopup="true" onClick={recordButtonPosition}>
             {message}
           </Button>
           <Menu
-            className='simple-menu'
+            className="simple-menu"
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
@@ -82,7 +83,7 @@ if __name__ == '__main__':
                       setSelectedQuestion(event.nativeEvent.target.outerText);
                       setMessage(event.nativeEvent.target.outerText);
                       setanchorEl(false);
-                    }}>{item['qName']}</MenuItem>
+                    }}>{item["qName"]}</MenuItem>
                   </div>
                 );
               })
@@ -90,11 +91,11 @@ if __name__ == '__main__':
           </Menu>
         </div>
         <AceEditor
-          className='theEditor'
-          placeholder='Insert your Python code'
-          mode='python'
-          theme='monokai'
-          name='blah2'
+          className="theEditor"
+          placeholder="Insert your Python code"
+          mode="python"
+          theme="monokai"
+          name="blah2"
           onChange={(code) => setCode(code)}
           fontSize={20}
           showPrintMargin={true}
@@ -112,8 +113,8 @@ if __name__ == '__main__':
         <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} nameOfQuestion={selectedQuestion} code={code} />
 
         <button
-          type='button'
-          className='send-button'
+          type="button"
+          className="send-button"
           onClick={() => {
             console.log('I am clicked');
             try {
@@ -121,18 +122,16 @@ if __name__ == '__main__':
                 code: code != null ? code : null,
                 nameOfQuestion: selectedQuestion != null ? selectedQuestion : null,
                 dateSubmitted: firebase.firestore.FieldValue.serverTimestamp(),
-                week: week, 
-                grade: 0, 
+                week,
+                grade: 0,
               })
-                .then(function () {
+                .then(() => {
                   setModalShow(true);
-                  // alert('Code Sent successfully');
                 })
-                .catch(function (error) {
-                  alert('Error sending, please contact Hatem');
+                .catch((error) => {
+                  alert('Error sending, please contact Hatem', error);
                 });
-            }
-            catch (FirebaseError) {
+            } catch (FirebaseError) {
               alert('Please select a question to submit');
             }
           }}
@@ -140,6 +139,13 @@ if __name__ == '__main__':
           Send Code
         </button>
       </form>
-    </div >
+    </div>
   );
 }
+Code.defaultProps = {
+  name: '',
+};
+
+Code.propTypes = {
+  name: PropTypes.string,
+};
