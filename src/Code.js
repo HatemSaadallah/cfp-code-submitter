@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./styling/styles.css";
+import React, { useState } from 'react';
+import './styling/styles.css';
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
@@ -10,17 +10,14 @@ import weeksproblem from "./data/weeklyQuestions";
 
 import AceEditor from "react-ace";
 
-
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-monokai";
-
-
 
 import { Button, Menu, MenuItem } from '@material-ui/core';
 
 import MyVerticallyCenteredModal from './Modal';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
   authDomain: "cfp-code-submitter.firebaseapp.com",
   databaseURL: "https://cfp-code-submitter.firebaseio.com",
@@ -36,7 +33,7 @@ try {
   firebase.analytics();
 } catch { }
 
-var db = firebase.firestore();
+let db = firebase.firestore();
 export default function Code({ name }) {
   const [code, setCode] = useState(
     `def main():
