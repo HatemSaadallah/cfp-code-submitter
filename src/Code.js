@@ -124,6 +124,7 @@ if __name__ == "__main__":
                 nameOfQuestion: selectedQuestion != null ? selectedQuestion : null,
                 dateSubmitted: firebase.firestore.FieldValue.serverTimestamp(),
                 week: week, 
+                grade: 0, 
               })
                 .then(function () {
                   setModalShow(true);

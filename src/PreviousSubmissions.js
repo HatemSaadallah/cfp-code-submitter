@@ -31,7 +31,7 @@ async function name(nameOfStudent) {
     let output = [];
     snapshot.docs.map(doc => {
         // console.log(doc.data());
-        let temp = { "qn": doc.data().nameOfQuestion, "code": doc.data().code, week: doc.data().week};
+        let temp = { "qn": doc.data().nameOfQuestion, "code": doc.data().code, week: doc.data().week, "grade": doc.data().grade};
         output.push(temp);
     })
     return output;
@@ -46,30 +46,31 @@ async function name(nameOfStudent) {
 const realdb = firebase.database();
 
 
-
 export default function PreviousSubmissions({ nameOfUser }) {
     const [studentCode, setStudentCode] = useState([]);
     // const [questionName, setQuestionName] = useState([]);
     const [notesRet, setNotesRet] = useState({});
     const [note, setNote] = useState();
     const [studentSelection, setStudentSelection] = useState(weeks[0].value);
+    const [grades, setGrades] = useState([]);
+
     useEffect(() => {
         name(nameOfUser).then((data) => {
-            // console.log(data);
             setStudentCode(data)
         });
+       
         realdb.ref("notes").on("value", snapshot => {
             let allNotes = {};
             snapshot.forEach(snap => {
                 // console.log(snap)
                 // allNotes.push(snap.val());
-                allNotes[snap.key] = snap.val()
-            })
-            // console.log(allNotes);
-            setNotesRet(allNotes);
-            // console.log(Object.keys(allNotes).length)
-        })
+                if(snap.key == nameOfUser){
 
+                    allNotes[snap.key] = snap.val()
+                }
+            })
+            setNotesRet(allNotes);
+        })
     }, []);
     const note_id = `note-${Date.now()}`;
     return (
@@ -79,15 +80,15 @@ export default function PreviousSubmissions({ nameOfUser }) {
             <Select className="selector" options={weeks}  onChange={(e) => {
                 setStudentSelection(e.value);
             }}/>
-           
+
             {studentCode.map((item_sp) => {
-                {/* console.log("this is from map", item); */ }
-                {/* console.log(item_sp); */}
+                let q = item_sp.qn;
                 if (item_sp.week == studentSelection) 
                     return(
                         <div>
                             <div className="note_div">
                                 <h1>{item_sp.qn}</h1>
+                                <h3>{item_sp.grade}</h3>
                             </div>
                             <SyntaxHighlighter language="python" style={docco} className="previous-s-container">
                                 {item_sp.code}

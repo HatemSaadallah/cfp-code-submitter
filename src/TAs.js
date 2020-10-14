@@ -28,6 +28,13 @@ async function name(nameOfStudent) {
         doc.data().code
     )
 }
+async function gradeRet(nameOfStudent) {
+    const snapshot = await firebase.firestore().collection(nameOfStudent).get()
+
+    return snapshot.docs.map(doc =>
+        doc.data()
+    )
+}
 
 async function nameOfQuestion(nameOfStudent) {
     const snapshot = await firebase.firestore().collection(nameOfStudent).get()
@@ -48,15 +55,6 @@ async function noteRetrieve(nameOfStudent, nameOfQuestion) {
     return output;
 }
 
-function fixEverything(name, questionData) {
-    questionData.map(qnm => {
-        noteRetrieve(name, qnm).then(data => {
-            // console.log(data);
-
-        });
-    })
-}
-
 var db = firebase.firestore();
 
 const studentsNames = [
@@ -75,6 +73,8 @@ const studentsNames = [
     "shimaa azoom",
     "Hassan Jouda",
     "Rawaa Zaqqut",
+    "Fatima Alzahraa",
+    "hanaa zaqout",
     "Hatem Saadallah"
 ]
 const realdb = firebase.database();
@@ -86,19 +86,19 @@ export default function TAs({ nameOfUser }) {
     const [note, setNote] = useState();
     const [notesRet, setNotesRet] = useState({});
     const note_id = `note-${Date.now()}`;
-
+    const [grade_sp, setGrade_sp] = useState([]);
+    const [grade, setGrade] = useState(0);
     useEffect(() => {
         realdb.ref("notes").on("value", snapshot => {
             let allNotes = {};
             snapshot.forEach(snap => {
-                // console.log(snap)
-                // allNotes.push(snap.val());
                 allNotes[snap.key] = snap.val()
             })
-            console.log(allNotes);
+            //console.log(allNotes);
             setNotesRet(allNotes);
-            console.log(Object.keys(allNotes).length)
         })
+
+
     }, []);
     return (
         <div>
@@ -110,6 +110,9 @@ export default function TAs({ nameOfUser }) {
 
                 <Dropdown.Menu>
                     {studentsNames.map(item => {
+                     
+
+                        //console.log("This is item",item)
                         return (
                             <Dropdown.Item onClick={(e) => {
                                 setStudentName(e.nativeEvent.target.outerText);
@@ -120,6 +123,9 @@ export default function TAs({ nameOfUser }) {
                                     setQuestionName(data);
                                     // console.log(e)
                                 })
+                                gradeRet(e.nativeEvent.target.outerText).then((data) => {
+                                    setGrade_sp(data);
+                                })
                             }}>{item}</Dropdown.Item>
                         );
                     })}
@@ -127,36 +133,44 @@ export default function TAs({ nameOfUser }) {
             </Dropdown>
             {<h1>{studentName}</h1>}
             {studentCode.map((code, index) => {
+                let arranged = {};
+                grade_sp.map((data) => {
+                    console.log("lol", data);
+                    arranged[data.nameOfQuestion] = data.grade;
+                })
+                console.log("This is arranged", arranged);
                 return (
                     <div>
                         <h1>{questionName[index]}</h1>
                         <SyntaxHighlighter language="python" style={docco}>
                             {code}
                         </SyntaxHighlighter>
+                         
+                        <h1>Grade {arranged[questionName[index]]}</h1>
                         <h1>Notes: </h1>
                         <div>
                             {
                                 notesRet.hasOwnProperty(studentName) ?
                                     (
-                                    Object.entries(notesRet[studentName]).map(item => {
-                                        {/* console.log(item) */ }
-                                        return (
-                                            <div>
-                                                {Object.entries(item[1]).map(itemChild => {
-                                                    {/* console.log("This is item child", itemChild); */}
-                                                    if (itemChild[1].question_name == questionName[index])
-                                                        return (
-                                                            <div>
-                                                                <h1>{itemChild[1].nameOfUser}</h1>
-                                                                <p>{itemChild[1].note}</p>
-                                                            </div>
-                                                        )
-                                                    else return (<span></span>)
-                                                })}
-                                            </div>
-                                        );
+                                        Object.entries(notesRet[studentName]).map(item => {
+                                            {/* console.log(item) */ }
+                                            return (
+                                                <div>
+                                                    {Object.entries(item[1]).map(itemChild => {
+                                                        {/* console.log("This is item child", itemChild); */}
+                                                        if (itemChild[1].question_name == questionName[index])
+                                                            return (
+                                                                <div>
+                                                                    <h1>{itemChild[1].nameOfUser}</h1>
+                                                                    <p>{itemChild[1].note}</p>
+                                                                </div>
+                                                            )
+                                                        else return (<span></span>)
+                                                    })}
+                                                </div>
+                                            );
 
-                                    })
+                                        })
                                     ): <h1>Theres no comments here</h1>
                             }
 
@@ -178,6 +192,21 @@ export default function TAs({ nameOfUser }) {
                                 })
 
                         }}>Send note</button>
+                        <input value={grade} type="number" onChange={grade => {
+                            setGrade(grade.target.value);
+                        }}/>
+                        <button onClick={() => {
+                            db.collection(nameOfUser).doc(questionName[index]).update({
+                                grade: grade
+                            })
+                                .then(function () {
+                                    alert("Grade Sent successfully");
+                                })
+                                .catch(function (error) {
+                                    alert("Error sending grade, please contact Hatem");
+                                });
+                        }
+                            }>Send Grade</button>
                     </div>);
             })}
         </div>
