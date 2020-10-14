@@ -41,21 +41,18 @@ export default function Code({ name }) {
     `def main():
   pass
 if __name__ == '__main__':
-  main()`
+  main()`,
   );
 
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [anchorEl, setanchorEl] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const [message, setMessage] = useState('Select Question to Submit');
-  const [week, setWeek] = useState(weeksproblem[0].week);
-
+  const { week } = weeksproblem[0];
   const recordButtonPosition = (event) => {
     console.log(event.currentTarget);
     setanchorEl(event.currentTarget);
-    setMenuOpen(true);
-  }
+  };
 
   const [modalShow, setModalShow] = useState(false);
   return (
@@ -76,17 +73,20 @@ if __name__ == '__main__':
             onClose={() => setanchorEl(false)}
           >
             {
-              weeksproblem.map(item => {
-                return (
-                  <div>
-                    <MenuItem onClick={(event) => {
-                      setSelectedQuestion(event.nativeEvent.target.outerText);
-                      setMessage(event.nativeEvent.target.outerText);
-                      setanchorEl(false);
-                    }}>{item["qName"]}</MenuItem>
-                  </div>
-                );
-              })
+              weeksproblem.map((item) => (
+                <div>
+                  <MenuItem onClick={(event) => {
+                    setSelectedQuestion(event.nativeEvent.target.outerText);
+                    setMessage(event.nativeEvent.target.outerText);
+                    setanchorEl(false);
+                  }}
+                  >
+                    {
+                      item.qName
+                    }
+                  </MenuItem>
+                </div>
+              ))
             }
           </Menu>
         </div>
@@ -96,11 +96,11 @@ if __name__ == '__main__':
           mode="python"
           theme="monokai"
           name="blah2"
-          onChange={(code) => setCode(code)}
+          onChange={(codeTyped) => setCode(codeTyped)}
           fontSize={20}
-          showPrintMargin={true}
-          showGutter={true}
-          highlightActiveLine={true}
+          showPrintMargin="true"
+          showGutter="true"
+          highlightActiveLine="true"
           value={code}
           setOptions={{
             enableBasicAutocompletion: true,
@@ -108,9 +108,15 @@ if __name__ == '__main__':
             enableSnippets: false,
             showLineNumbers: true,
             tabSize: 2,
-          }} />
+          }}
+        />
 
-        <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} nameOfQuestion={selectedQuestion} code={code} />
+        <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          nameOfQuestion={selectedQuestion}
+          code={code}
+        />
 
         <button
           type="button"
