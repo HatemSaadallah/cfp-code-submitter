@@ -1,62 +1,58 @@
-import React, { useState } from "react";
-import "./styling/styles.css";
-import Editor from "react-simple-code-editor";
-import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import './styling/styles.css';
+import 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
 import * as firebase from 'firebase';
-import Questions from "./Questions";
-import weeksproblem from "./data/weeklyQuestions";
 
-import AceEditor from "react-ace";
-
-
-import "ace-builds/src-noconflict/mode-python";
-import "ace-builds/src-noconflict/theme-monokai";
-
-
-
+import AceEditor from 'react-ace';
 import { Button, Menu, MenuItem } from '@material-ui/core';
+
+import Questions from './Questions';
+import weeksproblem from './data/weeklyQuestions';
+
+import 'ace-builds/src-noconflict/mode-python';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 import MyVerticallyCenteredModal from './Modal';
 
-var firebaseConfig = {
-  apiKey: "AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM",
-  authDomain: "cfp-code-submitter.firebaseapp.com",
-  databaseURL: "https://cfp-code-submitter.firebaseio.com",
-  projectId: "cfp-code-submitter",
-  storageBucket: "cfp-code-submitter.appspot.com",
-  messagingSenderId: "483775167429",
-  appId: "1:483775167429:web:6c0f89494372bc871829ac",
-  measurementId: "G-L6BZEQ6ZJ9"
+const firebaseConfig = {
+  apiKey: 'AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM',
+  authDomain: 'cfp-code-submitter.firebaseapp.com',
+  databaseURL: 'https://cfp-code-submitter.firebaseio.com',
+  projectId: 'cfp-code-submitter',
+  storageBucket: 'cfp-code-submitter.appspot.com',
+  messagingSenderId: '483775167429',
+  appId: '1:483775167429:web:6c0f89494372bc871829ac',
+  measurementId: 'G-L6BZEQ6ZJ9',
 };
 
 try {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-} catch { }
+} catch {
+  console.log('Failed to initialize app');
+}
 
-var db = firebase.firestore();
+const db = firebase.firestore();
 export default function Code({ name }) {
   const [code, setCode] = useState(
     `def main():
   pass
-if __name__ == "__main__":
-  main()`
+if __name__ == '__main__':
+  main()`,
   );
 
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [anchorEl, setanchorEl] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
-  const [message, setMessage] = useState("Select Question to Submit");
-  const [week, setWeek] = useState(weeksproblem[0].week);
-
+  const [message, setMessage] = useState('Select Question to Submit');
+  const { week } = weeksproblem[0];
   const recordButtonPosition = (event) => {
     console.log(event.currentTarget);
     setanchorEl(event.currentTarget);
-    setMenuOpen(true);
-  }
+  };
 
   const [modalShow, setModalShow] = useState(false);
   return (
@@ -77,17 +73,20 @@ if __name__ == "__main__":
             onClose={() => setanchorEl(false)}
           >
             {
-              weeksproblem.map(item => {
-                return (
-                  <div>
-                    <MenuItem onClick={(event) => {
-                      setSelectedQuestion(event.nativeEvent.target.outerText);
-                      setMessage(event.nativeEvent.target.outerText);
-                      setanchorEl(false);
-                    }}>{item["qName"]}</MenuItem>
-                  </div>
-                );
-              })
+              weeksproblem.map((item) => (
+                <div>
+                  <MenuItem onClick={(event) => {
+                    setSelectedQuestion(event.nativeEvent.target.outerText);
+                    setMessage(event.nativeEvent.target.outerText);
+                    setanchorEl(false);
+                  }}
+                  >
+                    {
+                      item.qName
+                    }
+                  </MenuItem>
+                </div>
+              ))
             }
           </Menu>
         </div>
@@ -97,11 +96,11 @@ if __name__ == "__main__":
           mode="python"
           theme="monokai"
           name="blah2"
-          onChange={(code) => setCode(code)}
+          onChange={(codeTyped) => setCode(codeTyped)}
           fontSize={20}
-          showPrintMargin={true}
-          showGutter={true}
-          highlightActiveLine={true}
+          showPrintMargin="true"
+          showGutter="true"
+          highlightActiveLine="true"
           value={code}
           setOptions={{
             enableBasicAutocompletion: true,
@@ -109,39 +108,50 @@ if __name__ == "__main__":
             enableSnippets: false,
             showLineNumbers: true,
             tabSize: 2,
-          }} />
+          }}
+        />
 
-        <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} nameOfQuestion={selectedQuestion} code={code} />
+        <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          nameOfQuestion={selectedQuestion}
+          code={code}
+        />
 
         <button
-          type='button'
+          type="button"
           className="send-button"
           onClick={() => {
-            console.log("I am clicked");
+            console.log('I am clicked');
             try {
               db.collection(name).doc(selectedQuestion).set({
                 code: code != null ? code : null,
                 nameOfQuestion: selectedQuestion != null ? selectedQuestion : null,
                 dateSubmitted: firebase.firestore.FieldValue.serverTimestamp(),
-                week: week, 
-                grade: 0, 
+                week,
+                grade: 0,
               })
-                .then(function () {
+                .then(() => {
                   setModalShow(true);
-                  // alert("Code Sent successfully");
                 })
-                .catch(function (error) {
-                  alert("Error sending, please contact Hatem");
+                .catch((error) => {
+                  alert('Error sending, please contact Hatem', error);
                 });
-            }
-            catch (FirebaseError) {
-              alert("Please select a question to submit");
+            } catch (FirebaseError) {
+              alert('Please select a question to submit');
             }
           }}
         >
           Send Code
         </button>
       </form>
-    </div >
+    </div>
   );
 }
+Code.defaultProps = {
+  name: '',
+};
+
+Code.propTypes = {
+  name: PropTypes.string,
+};

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import firebase from 'firebase';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Dropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: 'AIzaSyAW7-NGHjYyEOUWZL9eIvSp-glELUXuq0E',
   authDomain: 'inclass-qs.firebaseapp.com',
   databaseURL: 'https://inclass-qs.firebaseio.com',
@@ -17,7 +15,9 @@ var firebaseConfig = {
 };
 try {
   firebase.initializeApp(firebaseConfig);
-} catch {}
+} catch {
+  console.log("An error occured");
+}
 
 export default function NavBar({ name, signedIn, isSuperUser = false }) {
   return (
