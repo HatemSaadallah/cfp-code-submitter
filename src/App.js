@@ -83,8 +83,7 @@ export default class App extends React.Component {
           <h4 className="version">v 1.3.0 beta</h4>
           <h5 className="version">
             Thanks to
-            <a href="https://github.com/Mohammed-Atalah">Mohammed Atalah</a>
-            &
+            <a href="https://github.com/Mohammed-Atalah">Mohammed Atalah</a>&
             <a href="https://github.com/AhmadHerzallah">Ahmad Herzallah</a>
           </h5>
           {/* <h4 className="notify">The bug of flickering login page is finally solved!!! </h4> */}
@@ -102,13 +101,15 @@ export default class App extends React.Component {
               name={firebase.auth().currentUser.displayName}
               signedIn="true"
               isSuperUser={
-                firebase.auth().currentUser.uid === 'QDQ3iECmX1RIu2mJkNlQJHIlmkg1'
-                || firebase.auth().currentUser.uid === 'fZlj3iLifVM49ixPPzucktMgrkq2'
-                || firebase.auth().currentUser.uid === 'w80C141S5CQA8qcWGadFlzHuAbO2'
+                firebase.auth().currentUser.uid ===
+                  'QDQ3iECmX1RIu2mJkNlQJHIlmkg1' ||
+                firebase.auth().currentUser.uid ===
+                  'fZlj3iLifVM49ixPPzucktMgrkq2' ||
+                firebase.auth().currentUser.uid ===
+                  'w80C141S5CQA8qcWGadFlzHuAbO2'
               }
             />
             <Switch>
-
               <Route path="/main">
                 <Code name={firebase.auth().currentUser.displayName} />
               </Route>
@@ -119,13 +120,19 @@ export default class App extends React.Component {
                 <Gists />
               </Route>
               <Route path="/previous-submissions">
-                <PreviousSubmissions nameOfUser={firebase.auth().currentUser.displayName} />
+                <PreviousSubmissions
+                  nameOfUser={firebase.auth().currentUser.displayName}
+                />
               </Route>
               <Route path="/office-hours">
-                <OfficeHours nameOfUser={firebase.auth().currentUser.displayName} />
+                <OfficeHours
+                  nameOfUser={firebase.auth().currentUser.displayName}
+                />
               </Route>
               <Route path="/TAs_info">
-                <TAs_info nameOfUser={firebase.auth().currentUser.displayName} />
+                <TAs_info
+                  nameOfUser={firebase.auth().currentUser.displayName}
+                />
               </Route>
               <Route path="/profile">
                 <Profile
@@ -134,13 +141,16 @@ export default class App extends React.Component {
                 />
               </Route>
               <Route path="/admin">
-                {
-                    firebase.auth().currentUser.uid === 'QDQ3iECmX1RIu2mJkNlQJHIlmkg1'
-                    || firebase.auth().currentUser.uid === 'fZlj3iLifVM49ixPPzucktMgrkq2'
-                    || firebase.auth().currentUser.uid === 'w80C141S5CQA8qcWGadFlzHuAbO2'
-                      ? <TAs nameOfUser={firebase.auth().currentUser.displayName} />
-                      : <h1>Sorry You do not have permission to view this page</h1>
-                }
+                {firebase.auth().currentUser.uid ===
+                  'QDQ3iECmX1RIu2mJkNlQJHIlmkg1' ||
+                firebase.auth().currentUser.uid ===
+                  'fZlj3iLifVM49ixPPzucktMgrkq2' ||
+                firebase.auth().currentUser.uid ===
+                  'w80C141S5CQA8qcWGadFlzHuAbO2' ? (
+                  <TAs nameOfUser={firebase.auth().currentUser.displayName} />
+                ) : (
+                  <h1>Sorry You do not have permission to view this page</h1>
+                )}
               </Route>
               <Route path="/">
                 <Code name={firebase.auth().currentUser.displayName} />
