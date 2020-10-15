@@ -73,7 +73,9 @@ export default function PreviousSubmissions({ nameOfUser }) {
         Hello
         {nameOfUser}
       </h1>
-      <h3 className="previousSubsWelcomeMessage">Here are your previous submissions</h3>
+      <h3 className="previousSubsWelcomeMessage">
+        Here are your previous submissions
+      </h3>
       <Select
         className="selector"
         options={weeks}
@@ -84,81 +86,88 @@ export default function PreviousSubmissions({ nameOfUser }) {
 
       {studentCode.map((item_sp) => {
         let q = item_sp.qn;
-        if (item_sp.week == studentSelection) return (
-          <div>
-            <div className="note_div">
-              <h1>{item_sp.qn}</h1>
-              <h3>{item_sp.grade}</h3>
-            </div>
-            <SyntaxHighlighter 
-              language="python" 
-              style={docco} 
-              className="previous-s-container">
-              {item_sp.code}
-            </SyntaxHighlighter>
-            <div className="note_div">
-              <h3>Notes:</h3>
-              {
-                Object.prototype.hasOwnProperty.call(notesRet, nameOfUser) 
-                  ?
-                  (
-                    Object.entries(notesRet[nameOfUser]).map((item) => 
-                    {
-                      return (
-                        <div>
-                          {Object.entries(item[1]).map(itemChild => {
-                            if (itemChild[1].question_name == item_sp.qn)
-                              return (
-                                <div>
-                                  <h4>{itemChild[1].nameOfUser}</h4>
-                                  <p>{itemChild[1].note}</p>
-                                </div>
-                              )
-                            else return (<span></span>)
-                          })}
-                        </div>
-                      );
-
-                    })
-                  ) : <p>Theres no comments here</p>
-              }
-            </div>
-            <div className="note_div">
-              <hr className ="hr_send"/>
-              <textarea className="note_input" id="text_area" onChange={
-                (text) => setNote(text.target.value)}></textarea>
-              <Button variant="primary" className="note_btn center" onClick={() => {
-                let question_name = item_sp.qn;
-                if (note === undefined) {
-                  console.log("well, that was an undefined value :), ")
-                  alert("Add a note to send :)")
-                } else if (note === '') {
-                  console.log("well, that was an undefined value :), ")
-                  alert("Add a note to send :)")
-                } else {
-                  realdb.ref(`notes/${nameOfUser}/${question_name}/${note_id}`)
-                    .set({
-                      nameOfUser,
-                      note,
-                      note_id,
-                      question_name
-                    })
-                    .then(() => {
-                      console.log("Note sent successfully");
-                    }).catch(error => {
-                      console.log("An error occurred", error);
-                    });
-                }
-              }}
+        if (item_sp.week == studentSelection)
+          return (
+            <div>
+              <div className="note_div">
+                <h1>{item_sp.qn}</h1>
+                <h3>
+                  {item_sp.grade == 0 ? 'Not Graded yet.' : item_sp.grade}
+                </h3>
+              </div>
+              <SyntaxHighlighter
+                language="python"
+                style={docco}
+                className="previous-s-container"
               >
-                Send note
-              </Button>
-
+                {item_sp.code}
+              </SyntaxHighlighter>
+              <div className="note_div">
+                <h3>Notes:</h3>
+                {Object.prototype.hasOwnProperty.call(notesRet, nameOfUser) ? (
+                  Object.entries(notesRet[nameOfUser]).map((item) => {
+                    return (
+                      <div>
+                        {Object.entries(item[1]).map((itemChild) => {
+                          if (itemChild[1].question_name == item_sp.qn)
+                            return (
+                              <div>
+                                <h4>{itemChild[1].nameOfUser}</h4>
+                                <p>{itemChild[1].note}</p>
+                              </div>
+                            );
+                          else return <span></span>;
+                        })}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p>Theres no comments here</p>
+                )}
+              </div>
+              <div className="note_div">
+                <hr className="hr_send" />
+                <textarea
+                  className="note_input"
+                  id="text_area"
+                  onChange={(text) => setNote(text.target.value)}
+                ></textarea>
+                <Button
+                  variant="primary"
+                  className="note_btn center"
+                  onClick={() => {
+                    let question_name = item_sp.qn;
+                    if (note === undefined) {
+                      console.log('well, that was an undefined value :), ');
+                      alert('Add a note to send :)');
+                    } else if (note === '') {
+                      console.log('well, that was an undefined value :), ');
+                      alert('Add a note to send :)');
+                    } else {
+                      realdb
+                        .ref(`notes/${nameOfUser}/${question_name}/${note_id}`)
+                        .set({
+                          nameOfUser,
+                          note,
+                          note_id,
+                          question_name,
+                        })
+                        .then(() => {
+                          console.log('Note sent successfully');
+                        })
+                        .catch((error) => {
+                          console.log('An error occurred', error);
+                        });
+                    }
+                  }}
+                >
+                  Send note
+                </Button>
+              </div>
+              <hr className="hr_q" />
             </div>
-            <hr className="hr_q" />
-          </div>);
+          );
       })}
-
     </div>
   );
 }
