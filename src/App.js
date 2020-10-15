@@ -12,10 +12,11 @@ import TAs from './TAs';
 import Footer from './footer';
 import TAs_info from './TAs_info';
 import Casual_Code from './casual_code';
-
 import PreviousSubmissions from './PreviousSubmissions';
 import Profile from './Profile';
 import OfficeHours from './OfficeHours';
+import zayanbir from './images/zayanbir.png';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM',
@@ -75,6 +76,7 @@ export default class App extends React.Component {
           <h1 className="welcome-msg">
             Welcome to All Code for Palestine Students, TAs, and Instructors
           </h1>
+          <img src={zayanbir} alt="Zayan Birthday" className="birthday"/>
           <p className="signin-msg">Please sign-in:</p>
           <StyledFirebaseAuth
             uiConfig={uiConfig}
