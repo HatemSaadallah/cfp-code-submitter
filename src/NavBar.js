@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Navbar, Nav } from 'react-bootstrap';
 import firebase from 'firebase';
 import { NavLink } from 'react-router-dom';
@@ -16,10 +17,10 @@ const firebaseConfig = {
 try {
   firebase.initializeApp(firebaseConfig);
 } catch {
-  console.log("An error occured");
+  console.log('An error occured');
 }
 
-export default function NavBar({ name, signedIn, isSuperUser = false }) {
+export default function NavBar({ name, signedIn, isSuperUser }) {
   return (
     <Navbar className="NavBar">
       <Navbar.Brand>
@@ -27,7 +28,7 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
       </Navbar.Brand>
       <Navbar.Toggle />
       {signedIn ? (
-        <div class="userNav">
+        <div className="userNav">
           <NavLink className="NavLink" exact to="/pastproblems">
             Past Problems
           </NavLink>
@@ -50,27 +51,20 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
 
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>
-          {signedIn ? null : <a>You are not signed in</a>}
+          {signedIn ? null : <span>You are not signed in</span>}
           {signedIn ? (
             <div className="signedIn">
               {/* <Dropdown> */}
 
               {/* <Dropdown.Toggle id="dropdown-basic" className="profile"> */}
               <NavLink to="profile">
-                <a className="nameUser">{name}</a>
+                <span className="nameUser">{name}</span>
               </NavLink>
               <img
+                alt="profile"
                 className="profileImg"
                 src={firebase.auth().currentUser.photoURL}
               />
-              {/* </Dropdown.Toggle> */}
-
-              {/* <Dropdown.Menu>
-                  
-                  <Dropdown.Item 
-                    onClick={() => firebase.auth().signOut()}>Sign Out</Dropdown.Item>
-                </Dropdown.Menu> */}
-              {/* </Dropdown> */}
             </div>
           ) : null}
         </Navbar.Text>
@@ -78,3 +72,14 @@ export default function NavBar({ name, signedIn, isSuperUser = false }) {
     </Navbar>
   );
 }
+NavBar.defaultProps = {
+  name: '',
+  signedIn: false,
+  isSuperUser: false,
+};
+
+NavBar.propTypes = {
+  name: PropTypes.string,
+  signedIn: PropTypes.bool,
+  isSuperUser: false,
+};
