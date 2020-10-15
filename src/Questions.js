@@ -2,6 +2,7 @@ import React from "react";
 import "./styling/styles.css";
 import ReactMarkdown from 'react-markdown';
 import { Accordion, Card } from "react-bootstrap";
+import zayanbir from './images/zayanbir.png';
 
 export default function Questions({ questions, submissions }) {
   return (
@@ -10,6 +11,7 @@ export default function Questions({ questions, submissions }) {
       {/* <a href="/casual_code" className="a_casual_code_btn" >
         <button type="button" className="casual_code_btn"> Submit Your Code Now</button>
       </a>  */}
+      <img src={zayanbir} alt="Zayan Birthday" className="birthday"/>
       {questions.map(question => {
         return (
           <div>
