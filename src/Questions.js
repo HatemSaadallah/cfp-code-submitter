@@ -5,11 +5,16 @@ import { Accordion, Card } from "react-bootstrap";
 
 export default function Questions({ questions, submissions }) {
   return (
+    
     <div className="questions">
+      {/* <a href="/casual_code" className="a_casual_code_btn" >
+        <button type="button" className="casual_code_btn"> Submit Your Code Now</button>
+      </a>  */}
       {questions.map(question => {
         return (
           <div>
             <Accordion defaultActiveKey="1">
+              
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey={question["num"]}>
                 <h3>Q{question["num"]}- {question["qName"]}</h3>

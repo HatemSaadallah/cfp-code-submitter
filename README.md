@@ -21,7 +21,7 @@
 - [x] Add next session link.(Easy) (by Mohammed Atalah)
 - [x] Active NavLink.
 - [x] Add a week selection in previous submissions page.
-- [ ] Add a place for casual submission. 
+- [x] Add a place for casual submission. 
 - [ ] Add the ability for the user to edit the bio in the profile page, and upload it to firebase.
 - [ ] Make the sessions page more native. 
 ## Bugs to fix:
