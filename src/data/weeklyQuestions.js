@@ -1,25 +1,24 @@
 export const weeks = [
   { value: '4', label: 'Week 4' },
   { value: '3', label: 'Week 3' },
-]
-
+];
 
 const week4qs = [
   {
-    "week": 4,
-    "num": "1",
-    "qName": "Sum of Prime Numbers",
-    "content": `
+    week: 4,
+    num: '1',
+    qName: 'Sum of Prime Numbers',
+    content: `
 Create a function that takes a list of numbers and returns the sum of all prime numbers in the list.
     
   \`    sum_primes([2, 3, 4, 11, 20, 50, 71]) = 87 \`
-    `
+    `,
   },
   {
-    "week": 4,
-    "num": "2",
-    "qName": "The Minion Game",
-    "content": `
+    week: 4,
+    num: '2',
+    qName: 'The Minion Game',
+    content: `
 Kevin and Stuart want to play the ***'The Minion Game'***.
 #### Game Rules
 
@@ -73,20 +72,20 @@ If the game is a draw, print Draw.
 
 Notes:
 Vowels are only defined as *AEIOU*. In this problem, *Y* is not considered a vowel.
-    `
-  }
-] 
+    `,
+  },
+];
 export const pastproblems = [
   [
     {
-      "week": 3,
-      "num": "1",
-      "qName": "Test's results",
-      "content": `
+      week: 3,
+      num: '1',
+      qName: 'Test\'s results',
+      content: `
   It's important day today: the class has just had a math test. You will be given a list of marks. Complete the function that will:
   * Calculate the average mark of the whole class and round it to 3 decimal places.
-  * Make a dictionary/hash with keys \`"h", "a", "l"\` to make clear how many high, average and low marks they got. High marks are 9 & 10, average marks are 7 & 8, and low marks are 1 to 6.
-  * Return list \`[class_average, dictionary]\` if there are different type of marks, or \`[class_average, dictionary, "They did well"]\` if there are only high marks.
+  * Make a dictionary/hash with keys \`'h', 'a', 'l'\` to make clear how many high, average and low marks they got. High marks are 9 & 10, average marks are 7 & 8, and low marks are 1 to 6.
+  * Return list \`[class_average, dictionary]\` if there are different type of marks, or \`[class_average, dictionary, 'They did well']\` if there are only high marks.
   
   ### Examples
   
@@ -96,35 +95,35 @@ export const pastproblems = [
         [5, 6, 4, 8, 9, 8, 9, 10, 10, 10] ==> [7.9, {'h': 5, 'a': 2, 'l': 3}]
   \`\`\`
   
-        `
+        `,
     },
     {
-      "num": "2",
-      "qName": "Number = Index",
-      "content": `Given a sorted array of distinct integers, write a function index_equals_value that returns the lowest index for which array[index] == index.
+      num: '2',
+      qName: 'Number = Index',
+      content: `Given a sorted array of distinct integers, write a function index_equals_value that returns the lowest index for which array[index] == index.
   Return -1 if there is no such index.
         
   Your algorithm should be very performant.
   
   ### Examples
-          input: \[-8, 0, 2, 5]\
+          input: [-8, 0, 2, 5]\
           output: 2 # since array[2] == 2
   
-          input: \[-1, 0, 3, 6]\
+          input: [-1, 0, 3, 6]\
           output: -1 # since no index array satisfies array[index] == index
-  `
+  `,
     },
   ],
   [
     {
-      "week": 2,
-      "qName": "Divisibility",
-      "content": "Write a Python program to find those numbers which are divisible by 7 and multiple of 5, between 1500 and 2700 (both included). (Easy)"
+      week: 2,
+      qName: 'Divisibility',
+      content: 'Write a Python program to find those numbers which are divisible by 7 and multiple of 5, between 1500 and 2700 (both included). (Easy)',
     },
     {
-      "week": 2,
-      "qName": "Convert Temperature",
-      "content": `Write a Python program to convert temperatures to and from celsius, fahrenheit. (Easy)
+      week: 2,
+      qName: 'Convert Temperature',
+      content: `Write a Python program to convert temperatures to and from celsius, fahrenheit. (Easy)
       Formula : c/5 = f-32/9 
       
       
@@ -134,12 +133,12 @@ export const pastproblems = [
     
       60°C is 140 in Fahrenheit
 
-      45°F is 7 in Celsius`
+      45°F is 7 in Celsius`,
     },
     {
-      "week": 2,
-      "qName": "Count Even & Odd",
-      "content": `Write a Python program to count the number of even and odd numbers from a series of numbers. (Easy)
+      week: 2,
+      qName: 'Count Even & Odd',
+      content: `Write a Python program to count the number of even and odd numbers from a series of numbers. (Easy)
       
 Sample numbers : numbers = (1, 2, 3, 4, 5, 6, 7, 8, 9)
 
@@ -147,20 +146,20 @@ Sample numbers : numbers = (1, 2, 3, 4, 5, 6, 7, 8, 9)
       
       Number of even numbers : 5
       
-      Number of odd numbers : 4`
+      Number of odd numbers : 4`,
     },
     {
-      "week": 2,
-      "qName": "Print a pyramid of Astriks",
-      "content": ` Write a Python program to construct the following pattern, using a nested for loop. (Medium) 
+      week: 2,
+      qName: 'Print a pyramid of Astriks',
+      content: ` Write a Python program to construct the following pattern, using a nested for loop. (Medium) 
 
 ![Astroks](https://i.imgur.com/G6fwloR.png)
-      `
+      `,
     },
     {
-      "week": 2,
-      "qName": "Management (Exteremly Hard)",
-      "content": `
+      week: 2,
+      qName: 'Management (Exteremly Hard)',
+      content: `
 A company has N members, who are assigned ID numbers 1,...,N.
 
 Every member, except the member numbered 1 , has exactly one immediate boss with a smaller ID number.
@@ -225,27 +224,26 @@ The input form:
       1
       1
       0
-      `
-
+      `,
 
     },
   ],
   [
     {
-      "week": 1,
-      "qName": "Even or Odd?",
-      "content": "Ask the user for a number. Depending on whether the number is even or odd, print out an appropriate message to the user. Hint: how does an even / odd number react differently when divided by 2?"
+      week: 1,
+      qName: 'Even or Odd?',
+      content: 'Ask the user for a number. Depending on whether the number is even or odd, print out an appropriate message to the user. Hint: how does an even / odd number react differently when divided by 2?',
     },
     {
-      "week": 1,
-      "qName": "Find the GCD",
-      "content": "Use Euclid's algorithm for finding the gcd of two numbers."
+      week: 1,
+      qName: 'Find the GCD',
+      content: 'Use Euclid\'s algorithm for finding the gcd of two numbers.',
     },
     {
-      "week": 1,
-      "qName": "Palindrime Checker",
-      "content": "Ask the user for a string and print out whether this string is a palindrome or not. (A palindrome is a string that reads the same forwards and backwards.)"
+      week: 1,
+      qName: 'Palindrime Checker',
+      content: 'Ask the user for a string and print out whether this string is a palindrome or not. (A palindrome is a string that reads the same forwards and backwards.)',
     },
-  ]
-]
+  ],
+];
 export default week4qs;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Gist from 'super-react-gist';
 import { Accordion, Card } from 'react-bootstrap';
-import { gists } from './data/gistsLinks';
+import gists from './data/gistsLinks';
 
 export default function Gists() {
   return (
