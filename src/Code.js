@@ -16,8 +16,8 @@ import 'ace-builds/src-noconflict/mode-python';
 import 'ace-builds/src-noconflict/theme-monokai';
 
 import MyVerticallyCenteredModal from './Modal';
-
 import zayanbir from './images/zayanbir.png';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM',
   authDomain: 'cfp-code-submitter.firebaseapp.com',
@@ -58,7 +58,7 @@ if __name__ == '__main__':
   const [modalShow, setModalShow] = useState(false);
   return (
     <div>
-      <img src={zayanbir} alt="Zayan Birthday" className="birthday"/>
+      <img src={zayanbir} alt="Zayan Birthday" className="birthday" />
       <Questions questions={weeksproblem} className="currentQs" />
 
       <form className="codeSubmission">

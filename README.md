@@ -14,10 +14,10 @@
 - [x] Added React Bootstrap Accordion Component to all pages, which reduces the amount of information there is at a time.
 - [x] Activated Github login
 - [ ] Deploy Redux in the website to fix glitching. (Exteremly Hard)
-- [ ] Add The ability to grade assignments. (Medium)
+- [x] Add The ability to grade assignments. (Medium)
 - [x] Add the ability to add notes on assignments. 
 - [x] Add external link tab (Kahoot, Games, etc) (Easy) (by Mohammed Atalah)
-- [ ] Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems. 
+- ~~[ ]~~ ~~Make the Previous Submissions button just for the current week's problems, and add on the user profile all the solving problems.~~
 - [x] Add next session link.(Easy) (by Mohammed Atalah)
 - [x] Active NavLink.
 - [x] Add a week selection in previous submissions page.
