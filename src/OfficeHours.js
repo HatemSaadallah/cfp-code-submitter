@@ -3,6 +3,9 @@ import './styling/styles.css';
 
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { INITIAL_EVENTS, createEventId } from './data/events';
 
 function renderEventContent(eventInfo) {
   return (
@@ -17,13 +20,17 @@ export default function OfficeHours() {
   return (
     <div className="office-hours-container">
       <FullCalendar
-        plugins={[dayGridPlugin]}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        headerToolbar={{
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay',
+        }}
         initialView="dayGridMonth"
-        weekends={false}
-        events={[
-          { title: 'event 1', date: '2020-10-12' },
-          { title: 'event 2', date: '2020-10-15' },
-        ]}
+        // editable={true}
+        selectable={true}
+        // selectMirror={true}
+        initialEvents={INITIAL_EVENTS}
         eventContent={renderEventContent}
       />
     </div>

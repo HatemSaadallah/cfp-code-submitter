@@ -468,4 +468,25 @@ td{
   margin: 0 auto;
   display: block;
 }
+
+.fc-event {
+  display: block;
+  border: 1px solid #3788d8;
+  border: 1px solid var(--fc-event-border-color, #3788d8);
+  background-color: #3788d8;
+  background-color: var(--fc-event-bg-color, #3788d8)
+}
+.fc-event b {
+  color: #fff !important
+}
+.fc-event h3 {
+  font-size: 20px;
+  margin-left: 15px;
+}
+.fc-event:hover {
+  border: 1px solid #3788d8 !important;
+  border: 1px solid var(--fc-event-border-color, #3788d8) !important;
+  background-color: #3788d8 !important;
+  background-color: var(--fc-event-bg-color, #3788d8) !important;
+}
 /*# sourceMappingURL=main.66d117ca.chunk.css.map */

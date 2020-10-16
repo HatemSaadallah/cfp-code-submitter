@@ -1505,10 +1505,27 @@
   dependencies:
     tslib "^2.0.0"
 
-"@fullcalendar/daygrid@^5.3.2":
+"@fullcalendar/core@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-5.3.1.tgz#183140648e4c07a452e10a13259768406065329f"
+  integrity sha512-CqcpMimyuTf4DI+s1Se9bjVQMa2PDGtTBj8CYaCf8nSu+Wc6/RoimhIiA5bDTyg4KQFqXFT8ojt1avC05ZBvgg==
+  dependencies:
+    "@fullcalendar/common" "~5.3.1"
+    preact "^10.0.5"
+    tslib "^2.0.0"
+
+"@fullcalendar/daygrid@^5.3.2", "@fullcalendar/daygrid@~5.3.1":
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-5.3.2.tgz#c12160fb76729f13dc423c0db12664969ef01af0"
   integrity sha512-BK+YIecF3q9d/+6lAnf6WiJEEs7Wpa/mu9gXpkEf8vn4nl2bicPHUwykg5dUMCBy7ADAkDoL7VuBVi0XBRtPYw==
+  dependencies:
+    "@fullcalendar/common" "~5.3.1"
+    tslib "^2.0.0"
+
+"@fullcalendar/interaction@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/interaction/-/interaction-5.3.1.tgz#0eaf6c9210df3b5f947e40c3582009c99c2551f6"
+  integrity sha512-S1QAIazLQ7yBlUFyQbXzvXj36u39/G6H0qI2bUuQ4lY5VlUMGkiKZqb8oDHz1wE9/keuBL5CX2K/WTDGJ19Mng==
   dependencies:
     "@fullcalendar/common" "~5.3.1"
     tslib "^2.0.0"
@@ -1519,6 +1536,15 @@
   integrity sha512-CuZSaOniy9XmISRMJcN241dGBUDIOMHU5RCCISjahIDZb7+qmQvSC572GYh3P4iYzoiMLMUtNU9flXvxASCUVw==
   dependencies:
     "@fullcalendar/common" "~5.3.1"
+    tslib "^2.0.0"
+
+"@fullcalendar/timegrid@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/timegrid/-/timegrid-5.3.1.tgz#c56d3c62b366eea701ef002adbbf999713648d9b"
+  integrity sha512-ahyJC/kybGip5pTLC4cpsEdnhDZb3Hg0F7LTD/VVK4GxzplDiI0ZaWACC4O22zmp1+7a40NUMIV0HLO3D5SV4A==
+  dependencies:
+    "@fullcalendar/common" "~5.3.1"
+    "@fullcalendar/daygrid" "~5.3.1"
     tslib "^2.0.0"
 
 "@grpc/grpc-js@^1.0.0":
@@ -10000,6 +10026,11 @@ postcss@^7, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.17, po
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
+
+preact@^10.0.5:
+  version "10.5.4"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.4.tgz#1e4d148f949fa54656df6c9bc9218bd4e12016e3"
+  integrity sha512-u0LnVtL9WWF61RLzIbEsVFOdsahoTQkQqeRwyf4eWuLMFrxTH/C47tqcnizbUH54E4KG8UzuuZaMc9KarHmpqQ==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
