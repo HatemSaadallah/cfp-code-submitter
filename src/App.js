@@ -17,7 +17,6 @@ import Profile from './Profile';
 import OfficeHours from './OfficeHours';
 import zayanbir from './images/zayanbir.png';
 
-
 const firebaseConfig = {
   apiKey: 'AIzaSyBQLxaTvjqJKTLeNEae1J2ZeufVUpQfnLM',
   authDomain: 'cfp-code-submitter.firebaseapp.com',
@@ -113,7 +112,7 @@ export default class App extends React.Component {
               }
             />
             <Switch>
-              <Route path="/">
+              <Route path="/main">
                 <Code name={firebase.auth().currentUser.displayName} />
               </Route>
               <Route path="/pastproblems">
