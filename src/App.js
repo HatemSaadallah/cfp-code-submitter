@@ -85,7 +85,8 @@ export default class App extends React.Component {
           <h4 className="version">v 1.3.0 beta</h4>
           <h5 className="version">
             Thanks to
-            <a href="https://github.com/Mohammed-Atalah">Mohammed Atalah</a>&
+            <a href="https://github.com/Mohammed-Atalah">Mohammed Atalah</a>
+            &
             <a href="https://github.com/AhmadHerzallah">Ahmad Herzallah</a>
           </h5>
           {/* <h4 className="notify">The bug of flickering login page is finally solved!!! </h4> */}
@@ -112,7 +113,7 @@ export default class App extends React.Component {
               }
             />
             <Switch>
-              <Route path="/main">
+              <Route path="/">
                 <Code name={firebase.auth().currentUser.displayName} />
               </Route>
               <Route path="/pastproblems">

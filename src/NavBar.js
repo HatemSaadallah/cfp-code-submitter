@@ -24,7 +24,7 @@ export default function NavBar({ name, signedIn, isSuperUser }) {
   return (
     <Navbar className="NavBar">
       <Navbar.Brand>
-        <Nav.Link href="/main">Code for Palestine Online Submitter</Nav.Link>
+        <Nav.Link href="/">Code for Palestine Online Submitter</Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle />
       {signedIn ? (

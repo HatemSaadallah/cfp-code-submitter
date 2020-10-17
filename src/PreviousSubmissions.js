@@ -85,7 +85,6 @@ export default function PreviousSubmissions({ nameOfUser }) {
       />
 
       {studentCode.map((item_sp) => {
-        let q = item_sp.qn;
         if (item_sp.week == studentSelection)
           return (
             <div>
