@@ -56,33 +56,55 @@ export default function Profile({ imageURL, name }) {
           {name}
         </h1>
         <p id="breif" className="breif" onChange={(text) => console.log(text)}>
-          {bio}
+          {bio === '' ? 'Add your bio' : bio}
         </p>
-        <Button onClick={() => {
-          editAble(); }
-          }
+        <Button
+          onClick={() => {
+            editAble();
+          }}
         >
           Edit
-          <BiEdit onChange={(e) => { console.log(e) }} />
+          <BiEdit
+            onChange={(e) => {
+              console.log(e);
+            }}
+          />
         </Button>
         <Button
           id="saveBtn"
           onClick={() => {
             editUnAble();
-            const sBio = document.getElementById('breif').innerHTML;
-            setBio(sBio);
-            realdb
-              .ref(`bio/${name}`)
-              .set({
-                name,
-                sBio,
-              })
-              .then(() => {
-                console.log('Bio sent successfully');
-              })
-              .catch((error) => {
-                console.log('error sending bio');
-              });
+            let sBio = document.getElementById('breif').innerHTML;
+            if (sBio === '') {
+              document.getElementById('breif').innerHTML = 'Add your bio';
+              setBio(sBio);
+              realdb
+                .ref(`bio/${name}`)
+                .set({
+                  name,
+                  sBio,
+                })
+                .then(() => {
+                  console.log('Bio sent successfully');
+                })
+                .catch((error) => {
+                  console.log('error sending bio');
+                });
+            } else {
+              setBio(sBio);
+              realdb
+                .ref(`bio/${name}`)
+                .set({
+                  name,
+                  sBio,
+                })
+                .then(() => {
+                  console.log('Bio sent successfully');
+                })
+                .catch((error) => {
+                  console.log('error sending bio');
+                });
+            }
           }}
         >
           Save
