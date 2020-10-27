@@ -71,7 +71,7 @@ If x = 1 and y = 1 then x × y = 1. If x = 2 and y = 1 then x × y = 2. Therefor
 # Sample Input 2
 \`[3, 5, -4, -2]\`
 # Sample Output 2
-\`2\`
+\`-6\`
 
 The answer can be negative.
 
