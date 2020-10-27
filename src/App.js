@@ -75,7 +75,6 @@ export default class App extends React.Component {
           <h1 className="welcome-msg">
             Welcome to All Code for Palestine Students, TAs, and Instructors
           </h1>
-          <img src={zayanbir} alt="Zayan Birthday" className="birthday"/>
           <p className="signin-msg">Please sign-in:</p>
           <StyledFirebaseAuth
             uiConfig={uiConfig}
