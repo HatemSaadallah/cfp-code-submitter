@@ -16,7 +16,7 @@ Given is a point (x1,…,xN) in an N-dimensional space.
 Find the Manhattan distance, Euclidian distance, and Chebyshev distance between this point and the origin. Here, each of them is defined as follows:
 - The Manhattan distance: \`|x1| + … + |xN|\`
 
-- The Euclidian distance: ![euclidean distance](http://www.sciweavers.org/tex2img.php?eq=%5Csqrt%7B%7Cx1%7C%5E2%20%2B%20...%20%2B%20%7CxN%7C%5E2%7D%0A&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)    
+- The Euclidian distance: ![euclidean distance](https://bit.ly/2TsS7Fx)    
 
 - The Chebyshev distance: \`max(|x1|, ..., |xn|)\`
 
