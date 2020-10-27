@@ -1,24 +1,104 @@
 export const weeks = [
+  { value: '5', label: 'Week 5' },
   { value: '4', label: 'Week 4' },
   { value: '3', label: 'Week 3' },
 ];
 
-const week4qs = [
+const week5qs = [
   {
-    week: 4,
+    week: 5,
     num: '1',
-    qName: 'Sum of Prime Numbers',
+    qName: 'Various distances',
     content: `
-Create a function that takes a list of numbers and returns the sum of all prime numbers in the list.
-    
-  \`    sum_primes([2, 3, 4, 11, 20, 50, 71]) = 87 \`
+# Problem Statement
+Given is a point (x1,…,xN) in an N-dimensional space.
+
+Find the Manhattan distance, Euclidian distance, and Chebyshev distance between this point and the origin. Here, each of them is defined as follows:
+- The Manhattan distance: \`|x1| + … + |xN|\`
+
+- The Euclidian distance: ![euclidean distance](http://www.sciweavers.org/tex2img.php?eq=%5Csqrt%7B%7Cx1%7C%5E2%20%2B%20...%20%2B%20%7CxN%7C%5E2%7D%0A&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)    
+
+- The Chebyshev distance: \`max(|x1|, ..., |xn|)\`
+
+Note: Define a separate function for each distance and make it return the value.
+## Output
+Print the Manhattan distance, Euclidian distance, and Chebyshev distance between the given point and the origin, each in its own line. Each value in your print will be acceptedwhen its absolute or relative error from the correct value is at most 10^−9.
+
+## Sample Input 
+\`\`\`python
+  [2, -1]
+\`\`\`
+## Sample Output
+\`\`\`python
+  3
+  2.236067977499790
+  2
+\`\`\`
+
+## Sample Input 2
+\`\`\`python
+  [3, -1, -4, 1, -5, 9, 2, -6, 5, -3]
+\`\`\`
+## Sample Output 2
+\`\`\`python
+  39
+  14.387494569938159
+  9
+\`\`\`
     `,
   },
   {
-    week: 4,
+    week: 5,
     num: '2',
-    qName: 'The Minion Game',
+    qName: 'Product Max',
     content: `
+Given are integers 
+a, b, c and d. If x and y are integers and a ≤ x ≤ b and c ≤ y ≤ d hold, what is the maximum possible value of x × y
+
+# Input
+Input is given from Standard Input in the following format:
+\`a b c d\`
+# Output
+Return the answer.
+
+# Sample Input
+\`[1 2 1 1]\`
+# Sample Output
+\`2\`
+
+If x = 1 and y = 1 then x × y = 1. If x = 2 and y = 1 then x × y = 2. Therefore, the answer is 2.
+
+# Sample Input 2
+\`[3, 5, -4, -2]\`
+# Sample Output 2
+\`2\`
+
+The answer can be negative.
+
+# Sample Input 3
+\`[-1000000000, 0, -1000000000, 0]\`
+# Sample Output 3
+\`1000000000000000000\`
+    `,
+  },
+];
+export const pastproblems = [
+  [
+    {
+      week: 4,
+      num: '1',
+      qName: 'Sum of Prime Numbers',
+      content: `
+Create a function that takes a list of numbers and returns the sum of all prime numbers in the list.
+
+  \`    sum_primes([2, 3, 4, 11, 20, 50, 71]) = 87 \`
+    `,
+    },
+    {
+      week: 4,
+      num: '2',
+      qName: 'The Minion Game',
+      content: `
 Kevin and Stuart want to play the ***'The Minion Game'***.
 #### Game Rules
 
@@ -73,9 +153,8 @@ If the game is a draw, print Draw.
 Notes:
 Vowels are only defined as *AEIOU*. In this problem, *Y* is not considered a vowel.
     `,
-  },
-];
-export const pastproblems = [
+    },
+  ],
   [
     {
       week: 3,
@@ -86,15 +165,15 @@ export const pastproblems = [
   * Calculate the average mark of the whole class and round it to 3 decimal places.
   * Make a dictionary/hash with keys \`'h', 'a', 'l'\` to make clear how many high, average and low marks they got. High marks are 9 & 10, average marks are 7 & 8, and low marks are 1 to 6.
   * Return list \`[class_average, dictionary]\` if there are different type of marks, or \`[class_average, dictionary, 'They did well']\` if there are only high marks.
-  
+
   ### Examples
-  
+
   \`\`\`bash
         [10, 9, 9, 10, 9, 10, 9] ==> [9.429, {'h': 7, 'a': 0, 'l': 0}, 'They did well']
-  
+
         [5, 6, 4, 8, 9, 8, 9, 10, 10, 10] ==> [7.9, {'h': 5, 'a': 2, 'l': 3}]
   \`\`\`
-  
+
         `,
     },
     {
@@ -102,13 +181,13 @@ export const pastproblems = [
       qName: 'Number = Index',
       content: `Given a sorted array of distinct integers, write a function index_equals_value that returns the lowest index for which array[index] == index.
   Return -1 if there is no such index.
-        
+
   Your algorithm should be very performant.
-  
+
   ### Examples
           input: [-8, 0, 2, 5]\
           output: 2 # since array[2] == 2
-  
+
           input: [-1, 0, 3, 6]\
           output: -1 # since no index array satisfies array[index] == index
   `,
@@ -125,12 +204,12 @@ export const pastproblems = [
       qName: 'Convert Temperature',
       content: `Write a Python program to convert temperatures to and from celsius, fahrenheit. (Easy)
       Formula : c/5 = f-32/9 
-      
-      
+
+
       [ where c = temperature in celsius and f = temperature in fahrenheit ]
-            
+
 *Expected Output :*
-    
+
       60°C is 140 in Fahrenheit
 
       45°F is 7 in Celsius`,
@@ -139,13 +218,13 @@ export const pastproblems = [
       week: 2,
       qName: 'Count Even & Odd',
       content: `Write a Python program to count the number of even and odd numbers from a series of numbers. (Easy)
-      
+
 Sample numbers : numbers = (1, 2, 3, 4, 5, 6, 7, 8, 9)
 
 *Expected Output* :
-      
+
       Number of even numbers : 5
-      
+
       Number of odd numbers : 4`,
     },
     {
@@ -167,7 +246,7 @@ Every member, except the member numbered 1 , has exactly one immediate boss with
 When a person X is the immediate boss of a person Y , the person Y is said to be an immediate subordinate of the person X .
 
 You are given the information that the immediate boss of the member numbered i is the member numbered A i . For each member, find how many immediate subordinates it has.
-      
+
 The input form:
       ![test](https://i.imgur.com/cNryNgO.png)
 
@@ -246,4 +325,4 @@ The input form:
     },
   ],
 ];
-export default week4qs;
+export default week5qs;

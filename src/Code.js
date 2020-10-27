@@ -58,7 +58,6 @@ if __name__ == '__main__':
   const [modalShow, setModalShow] = useState(false);
   return (
     <div>
-      <img src={zayanbir} alt="Zayan Birthday" className="birthday" />
       <Questions questions={weeksproblem} className="currentQs" />
 
       <form className="codeSubmission">
