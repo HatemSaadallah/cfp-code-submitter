@@ -25,26 +25,24 @@ Note: Define a separate function for each distance and make it return the value.
 Print the Manhattan distance, Euclidian distance, and Chebyshev distance between the given point and the origin, each in its own line. Each value in your print will be acceptedwhen its absolute or relative error from the correct value is at most 10^−9.
 
 ## Sample Input 
-\`\`\`python
-  [2, -1]
-\`\`\`
+  \`[2, -1]\`
 ## Sample Output
-\`\`\`python
+  \`
   3
   2.236067977499790
   2
-\`\`\`
+  \`  
 
 ## Sample Input 2
-\`\`\`python
+  \`
   [3, -1, -4, 1, -5, 9, 2, -6, 5, -3]
-\`\`\`
+  \`
 ## Sample Output 2
-\`\`\`python
+  \`
   39
   14.387494569938159
   9
-\`\`\`
+  \`
     `,
   },
   {
@@ -62,7 +60,7 @@ Input is given from Standard Input in the following format:
 Return the answer.
 
 # Sample Input
-\`[1 2 1 1]\`
+\`[1, 2, 1, 1]\`
 # Sample Output
 \`2\`
 

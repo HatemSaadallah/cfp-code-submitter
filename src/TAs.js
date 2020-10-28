@@ -45,15 +45,6 @@ async function nameOfQuestion(nameOfStudent) {
     return qNames;
 }
 
-async function noteRetrieve(nameOfStudent, nameOfQuestion) {
-    const snapshot = await firebase.firestore().collection(nameOfStudent).doc(nameOfQuestion).collection("notes").get()
-    let output = [];
-    snapshot.docs.map(doc => {
-        output.push(doc.data())
-    })
-
-    return output;
-}
 
 var db = firebase.firestore();
 
@@ -110,7 +101,7 @@ export default function TAs({ nameOfUser }) {
 
                 <Dropdown.Menu>
                     {studentsNames.map(item => {
-                     
+
 
                         //console.log("This is item",item)
                         return (
@@ -121,7 +112,6 @@ export default function TAs({ nameOfUser }) {
                                 });
                                 nameOfQuestion(e.nativeEvent.target.outerText).then(data => {
                                     setQuestionName(data);
-                                    // console.log(e)
                                 })
                                 gradeRet(e.nativeEvent.target.outerText).then((data) => {
                                     setGrade_sp(data);
@@ -145,7 +135,7 @@ export default function TAs({ nameOfUser }) {
                         <SyntaxHighlighter language="python" style={docco}>
                             {code}
                         </SyntaxHighlighter>
-                         
+
                         <h1>Grade {arranged[questionName[index]]}</h1>
                         <h1>Notes: </h1>
                         <div>
@@ -153,11 +143,9 @@ export default function TAs({ nameOfUser }) {
                                 notesRet.hasOwnProperty(studentName) ?
                                     (
                                         Object.entries(notesRet[studentName]).map(item => {
-                                            {/* console.log(item) */ }
                                             return (
                                                 <div>
                                                     {Object.entries(item[1]).map(itemChild => {
-                                                        {/* console.log("This is item child", itemChild); */}
                                                         if (itemChild[1].question_name == questionName[index])
                                                             return (
                                                                 <div>
@@ -196,7 +184,7 @@ export default function TAs({ nameOfUser }) {
                             setGrade(grade.target.value);
                         }}/>
                         <button onClick={() => {
-                            db.collection(nameOfUser).doc(questionName[index]).update({
+                            db.collection(studentName).doc(questionName[index]).update({
                                 grade: grade
                             })
                                 .then(function () {
