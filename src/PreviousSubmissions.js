@@ -91,7 +91,9 @@ export default function PreviousSubmissions({ nameOfUser }) {
               <div className="note_div">
                 <h1>{item_sp.qn}</h1>
                 <h3>
-                  {item_sp.grade == 0 ? 'Not Graded yet.' : item_sp.grade}
+                  {item_sp.grade == 0
+                    ? 'Not Graded yet.'
+                    : item_sp.grade + '/5'}
                 </h3>
               </div>
               <SyntaxHighlighter
