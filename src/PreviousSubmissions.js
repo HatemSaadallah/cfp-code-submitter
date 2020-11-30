@@ -71,7 +71,7 @@ export default function PreviousSubmissions({ nameOfUser }) {
     <div>
       <h1 className="previousSubsWelcomeMessage">
         Hello
-        {nameOfUser}
+        {` ${nameOfUser}`}
       </h1>
       <h3 className="previousSubsWelcomeMessage">
         Here are your previous submissions
